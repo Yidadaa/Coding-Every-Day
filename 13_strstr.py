@@ -10,4 +10,4 @@ class Solution:
                 return i
         return -1
 
-print(Solution().strStr(None, 'dfd'))
+print(Solution().strStr("1213dfd", 'dfd'))
