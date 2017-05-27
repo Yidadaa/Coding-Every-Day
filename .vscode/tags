@@ -1,0 +1,107 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+100_removeDuplicates.py	../100_removeDuplicates.py	1;"	kind:file	line:1
+101_removeDuplicates_[easy].py	../101_removeDuplicates_[easy].py	1;"	kind:file	line:1
+138_subArraySum.py	../138_subArraySum.py	1;"	kind:file	line:1
+139_subarraySumClosest_[middle].py	../139_subarraySumClosest_[middle].py	1;"	kind:file	line:1
+13_strstr.py	../13_strstr.py	1;"	kind:file	line:1
+141_sqrt_[easy].py	../141_sqrt_[easy].py	1;"	kind:file	line:1
+14_binarySearch_[easy].py	../14_binarySearch_[easy].py	1;"	kind:file	line:1
+171_anagrams.py	../171_anagrams.py	1;"	kind:file	line:1
+172_removeElement.py	../172_removeElement.py	1;"	kind:file	line:1
+189_firstMissingPositive.py	../189_firstMissingPositive.py	1;"	kind:file	line:1
+28_searchMatrix_[easy].py	../28_searchMatrix_[easy].py	1;"	kind:file	line:1
+31_partitionArray_[middle].py	../31_partitionArray_[middle].py	1;"	kind:file	line:1
+50_productExcludeItself_[easy].py	../50_productExcludeItself_[easy].py	1;"	kind:file	line:1
+54_atoi.py	../54_atoi.py	1;"	kind:file	line:1
+56_twoSum_[easy].py	../56_twoSum_[easy].py	1;"	kind:file	line:1
+57_threeSum_[middle].py	../57_threeSum_[middle].py	1;"	kind:file	line:1
+58_fourSum.[middle].py	../58_fourSum.[middle].py	1;"	kind:file	line:1
+59_threeSumClosest_[middle].py	../59_threeSumClosest_[middle].py	1;"	kind:file	line:1
+60_searchInsert_[easy].py	../60_searchInsert_[easy].py	1;"	kind:file	line:1
+62_search_[middle].py	../62_search_[middle].py	1;"	kind:file	line:1
+632_maxNodeOfTree_[easy].py	../632_maxNodeOfTree_[easy].py	1;"	kind:file	line:1
+64_mergeSortedArray.py	../64_mergeSortedArray.py	1;"	kind:file	line:1
+6_mergeSortedArray_[easy].py	../6_mergeSortedArray_[easy].py	1;"	kind:file	line:1
+74_firstBadVersion_[easy].py	../74_firstBadVersion_[easy].py	1;"	kind:file	line:1
+78_longestCommonPrefix.py	../78_longestCommonPrefix.py	1;"	kind:file	line:1
+79_longestCommonSubstring.py	../79_longestCommonSubstring.py	1;"	kind:file	line:1
+A	../28_searchMatrix_[easy].py	/^A = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 50], [53, 60, 64, 70]]$/;"	kind:variable	line:49
+Solution	../100_removeDuplicates.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../101_removeDuplicates_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../138_subArraySum.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../139_subarraySumClosest_[middle].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../13_strstr.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../141_sqrt_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../14_binarySearch_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../171_anagrams.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../172_removeElement.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../189_firstMissingPositive.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../28_searchMatrix_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../31_partitionArray_[middle].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../50_productExcludeItself_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../54_atoi.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../56_twoSum_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../57_threeSum_[middle].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../58_fourSum.[middle].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../59_threeSumClosest_[middle].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../60_searchInsert_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../62_search_[middle].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../632_maxNodeOfTree_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../64_mergeSortedArray.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../6_mergeSortedArray_[easy].py	/^    class Solution:$/;"	kind:class	line:1
+Solution	../74_firstBadVersion_[easy].py	/^class Solution:$/;"	kind:class	line:8
+Solution	../78_longestCommonPrefix.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../79_longestCommonSubstring.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../compareStr.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../happyNum.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../hashCode.py	/^class Solution:$/;"	kind:class	line:29
+Solution	../pixelLength.py	/^class Solution:$/;"	kind:class	line:2
+__init__	../compareStr.py	/^    def __init__(self):$/;"	kind:member	line:7
+anagrams	../171_anagrams.py	/^    def anagrams(self, strs):$/;"	kind:member	line:4
+atoi	../54_atoi.py	/^    def atoi(self, str):$/;"	kind:member	line:4
+binarySearch	../14_binarySearch_[easy].py	/^    def binarySearch(self, nums, target):$/;"	kind:member	line:5
+compareStr.py	../compareStr.py	1;"	kind:file	line:1
+compareStrings	../compareStr.py	/^    def compareStrings(self, A, B):$/;"	kind:member	line:9
+do_cprofile	../hashCode.py	/^def do_cprofile(filename):$/;"	kind:function	line:5
+filename	../hashCode.py	/^filename = ".\\mkm_run.prof"$/;"	kind:variable	line:28
+findFirstBadVersion	../74_firstBadVersion_[easy].py	/^    def findFirstBadVersion(self, n):$/;"	kind:member	line:13
+firstMissingPositive	../189_firstMissingPositive.py	/^    def firstMissingPositive(self, A):$/;"	kind:member	line:4
+fourSum	../58_fourSum.[middle].py	/^    def fourSum(self ,numbers, target):$/;"	kind:member	line:8
+func	../compareStr.py	/^        def func(x):$/;"	kind:function	line:12
+happyNum.py	../happyNum.py	1;"	kind:file	line:1
+hashCode	../hashCode.py	/^    def hashCode(self, key, HASH_SIZE):$/;"	kind:member	line:36
+hashCode.py	../hashCode.py	1;"	kind:file	line:1
+isBadVersion	../74_firstBadVersion_[easy].py	/^    def isBadVersion(self, n):$/;"	kind:member	line:30
+isHappy	../happyNum.py	/^    def isHappy(self, n):$/;"	kind:member	line:4
+longestCommonPrefix	../78_longestCommonPrefix.py	/^    def longestCommonPrefix(self, strs):$/;"	kind:member	line:4
+longestCommonSubstring	../79_longestCommonSubstring.py	/^    def longestCommonSubstring(self, A, B):$/;"	kind:member	line:4
+maxNode	../632_maxNodeOfTree_[easy].py	/^    def maxNode(self, root):$/;"	kind:member	line:19
+mergeSortedArray	../64_mergeSortedArray.py	/^    def mergeSortedArray(self, A, m, B, n):$/;"	kind:member	line:8
+mergeSortedArray	../6_mergeSortedArray_[easy].py	/^        def mergeSortedArray(self, A, B):$/;"	kind:member	line:8
+partitionArray	../31_partitionArray_[middle].py	/^    def partitionArray(self, nums, k):$/;"	kind:member	line:7
+pixelLength	../pixelLength.py	/^    def pixelLength(self, x, y):$/;"	kind:member	line:5
+pixelLength.py	../pixelLength.py	1;"	kind:file	line:1
+preOrder	../632_maxNodeOfTree_[easy].py	/^    def preOrder(self, node):$/;"	kind:member	line:8
+productExcludeItself	../50_productExcludeItself_[easy].py	/^    def productExcludeItself(self, A):$/;"	kind:member	line:6
+profiled_func	../hashCode.py	/^        def profiled_func(*args, **kwargs):$/;"	kind:function	line:10
+removeDuplicates	../100_removeDuplicates.py	/^    def removeDuplicates(self, A):$/;"	kind:member	line:6
+removeDuplicates	../101_removeDuplicates_[easy].py	/^    def removeDuplicates(self, A):$/;"	kind:member	line:6
+removeElement	../172_removeElement.py	/^    def removeElement(self, A, elem):$/;"	kind:member	line:7
+search	../62_search_[middle].py	/^    def search(self, A, target):`/;"	kind:member	line:7
+searchInsert	../60_searchInsert_[easy].py	/^    def searchInsert(self, A, target):$/;"	kind:member	line:7
+searchMatrix	../28_searchMatrix_[easy].py	/^    def searchMatrix(self, matrix, target):$/;"	kind:member	line:8
+sqrt	../141_sqrt_[easy].py	/^    def sqrt(self, x):$/;"	kind:member	line:6
+strStr	../13_strstr.py	/^    def strStr(self, source, target):$/;"	kind:member	line:2
+subarraySum	../138_subArraySum.py	/^    def subarraySum(self, nums):$/;"	kind:member	line:7
+subarraySumClosest	../139_subarraySumClosest_[middle].py	/^    def subarraySumClosest(self, nums):$/;"	kind:member	line:7
+test	../14_binarySearch_[easy].py	/^test = [[[2,2,2,2,2,2,2,2,3,4],2,0], [[1,2,3], 3, 2], [[1,2],-1,-1], [[],1,-1], [[1],1,0], [[4,5,9,9,12,13,14,15,15,18], 10,-1]]$/;"	kind:variable	line:33
+test	../28_searchMatrix_[easy].py	/^test = [[A, 1, True], [A, 2, False], [A, 3, True], [A, 50, True], [A, 11, True], [[], 0, False], [A, 70, True], [A, 53, True]]$/;"	kind:variable	line:50
+threeSum	../57_threeSum_[middle].py	/^    def threeSum(self, numbers):$/;"	kind:member	line:6
+threeSumClosest	../59_threeSumClosest_[middle].py	/^    def threeSumClosest(self, numbers, target):$/;"	kind:member	line:7
+twoSum	../56_twoSum_[easy].py	/^    def twoSum(self, numbers, target):$/;"	kind:member	line:7
+wrapper	../hashCode.py	/^    def wrapper(func):$/;"	kind:function	line:9
