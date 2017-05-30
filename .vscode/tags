@@ -13,6 +13,7 @@
 14_binarySearch_[easy].py	../14_binarySearch_[easy].py	1;"	kind:file	line:1
 171_anagrams.py	../171_anagrams.py	1;"	kind:file	line:1
 172_removeElement.py	../172_removeElement.py	1;"	kind:file	line:1
+183_woodCut_[hard].py	../183_woodCut_[hard].py	1;"	kind:file	line:1
 189_firstMissingPositive.py	../189_firstMissingPositive.py	1;"	kind:file	line:1
 28_searchMatrix_[easy].py	../28_searchMatrix_[easy].py	1;"	kind:file	line:1
 31_partitionArray_[middle].py	../31_partitionArray_[middle].py	1;"	kind:file	line:1
@@ -23,6 +24,7 @@
 58_fourSum.[middle].py	../58_fourSum.[middle].py	1;"	kind:file	line:1
 59_threeSumClosest_[middle].py	../59_threeSumClosest_[middle].py	1;"	kind:file	line:1
 60_searchInsert_[easy].py	../60_searchInsert_[easy].py	1;"	kind:file	line:1
+61_searchRange_[middle].py	../61_searchRange_[middle].py	1;"	kind:file	line:1
 62_search_[middle].py	../62_search_[middle].py	1;"	kind:file	line:1
 632_maxNodeOfTree_[easy].py	../632_maxNodeOfTree_[easy].py	1;"	kind:file	line:1
 64_mergeSortedArray.py	../64_mergeSortedArray.py	1;"	kind:file	line:1
@@ -40,6 +42,7 @@ Solution	../141_sqrt_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../14_binarySearch_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../171_anagrams.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../172_removeElement.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../183_woodCut_[hard].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../189_firstMissingPositive.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../28_searchMatrix_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../31_partitionArray_[middle].py	/^class Solution:$/;"	kind:class	line:1
@@ -50,6 +53,7 @@ Solution	../57_threeSum_[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../58_fourSum.[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../59_threeSumClosest_[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../60_searchInsert_[easy].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../61_searchRange_[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../62_search_[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../632_maxNodeOfTree_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../64_mergeSortedArray.py	/^class Solution:$/;"	kind:class	line:1
@@ -97,14 +101,18 @@ removeElement	../172_removeElement.py	/^    def removeElement(self, A, elem):$/;
 search	../62_search_[middle].py	/^    def search(self, A, target):$/;"	kind:member	line:7
 searchInsert	../60_searchInsert_[easy].py	/^    def searchInsert(self, A, target):$/;"	kind:member	line:7
 searchMatrix	../28_searchMatrix_[easy].py	/^    def searchMatrix(self, matrix, target):$/;"	kind:member	line:8
+searchRange	../61_searchRange_[middle].py	/^    def searchRange(self, A, target):$/;"	kind:member	line:7
 sqrt	../141_sqrt_[easy].py	/^    def sqrt(self, x):$/;"	kind:member	line:6
 strStr	../13_strstr.py	/^    def strStr(self, source, target):$/;"	kind:member	line:2
 subarraySum	../138_subArraySum.py	/^    def subarraySum(self, nums):$/;"	kind:member	line:7
 subarraySumClosest	../139_subarraySumClosest_[middle].py	/^    def subarraySumClosest(self, nums):$/;"	kind:member	line:7
 test	../14_binarySearch_[easy].py	/^test = [[[2,2,2,2,2,2,2,2,3,4],2,0], [[1,2,3], 3, 2], [[1,2],-1,-1], [[],1,-1], [[1],1,0], [[4,5,9,9,12,13,14,15,15,18], 10,-1]]$/;"	kind:variable	line:33
+test	../183_woodCut_[hard].py	/^test = [[12, 2, 4]]$/;"	kind:variable	line:31
 test	../28_searchMatrix_[easy].py	/^test = [[A, 1, True], [A, 2, False], [A, 3, True], [A, 50, True], [A, 11, True], [[], 0, False], [A, 70, True], [A, 53, True]]$/;"	kind:variable	line:50
+test	../61_searchRange_[middle].py	/^test = [[5]]$/;"	kind:variable	line:31
 test	../62_search_[middle].py	/^test = [[1,2,3,9000]]$/;"	kind:variable	line:64
 threeSum	../57_threeSum_[middle].py	/^    def threeSum(self, numbers):$/;"	kind:member	line:6
 threeSumClosest	../59_threeSumClosest_[middle].py	/^    def threeSumClosest(self, numbers, target):$/;"	kind:member	line:7
 twoSum	../56_twoSum_[easy].py	/^    def twoSum(self, numbers, target):$/;"	kind:member	line:7
+woodCut	../183_woodCut_[hard].py	/^    def woodCut(self, L, k):$/;"	kind:member	line:7
 wrapper	../hashCode.py	/^    def wrapper(func):$/;"	kind:function	line:9
