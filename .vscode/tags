@@ -9,6 +9,7 @@
 138_subArraySum.py	../138_subArraySum.py	1;"	kind:file	line:1
 139_subarraySumClosest_[middle].py	../139_subarraySumClosest_[middle].py	1;"	kind:file	line:1
 13_strstr.py	../13_strstr.py	1;"	kind:file	line:1
+140_fastPower_[middle].py	../140_fastPower_[middle].py	1;"	kind:file	line:1
 141_sqrt_[easy].py	../141_sqrt_[easy].py	1;"	kind:file	line:1
 14_binarySearch_[easy].py	../14_binarySearch_[easy].py	1;"	kind:file	line:1
 163_numTrees_[middle].py	../163_numTrees_[middle].py	1;"	kind:file	line:1
@@ -43,6 +44,7 @@ Solution	../101_removeDuplicates_[easy].py	/^class Solution:$/;"	kind:class	line
 Solution	../138_subArraySum.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../139_subarraySumClosest_[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../13_strstr.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../140_fastPower_[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../141_sqrt_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../14_binarySearch_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../163_numTrees_[middle].py	/^class Solution:$/;"	kind:class	line:1
@@ -90,6 +92,7 @@ compareStr.py	../compareStr.py	1;"	kind:file	line:1
 compareStrings	../compareStr.py	/^    def compareStrings(self, A, B):$/;"	kind:member	line:9
 do_cprofile	../hashCode.py	/^def do_cprofile(filename):$/;"	kind:function	line:5
 factorial	../163_numTrees_[middle].py	/^    def factorial(self, n):$/;"	kind:member	line:10
+fastPower	../140_fastPower_[middle].py	/^    def fastPower(self, a, b, n):$/;"	kind:member	line:6
 filename	../hashCode.py	/^filename = ".\\mkm_run.prof"$/;"	kind:variable	line:28
 findFirstBadVersion	../74_firstBadVersion_[easy].py	/^    def findFirstBadVersion(self, n):$/;"	kind:member	line:13
 firstMissingPositive	../189_firstMissingPositive.py	/^    def firstMissingPositive(self, A):$/;"	kind:member	line:4
@@ -125,6 +128,7 @@ sqrt	../141_sqrt_[easy].py	/^    def sqrt(self, x):$/;"	kind:member	line:6
 strStr	../13_strstr.py	/^    def strStr(self, source, target):$/;"	kind:member	line:2
 subarraySum	../138_subArraySum.py	/^    def subarraySum(self, nums):$/;"	kind:member	line:7
 subarraySumClosest	../139_subarraySumClosest_[middle].py	/^    def subarraySumClosest(self, nums):$/;"	kind:member	line:7
+test	../140_fastPower_[middle].py	/^test = [[2, 12, 3], [123, 2, 4], [3, 7, 5], [31, 1, 0]]$/;"	kind:variable	line:23
 test	../14_binarySearch_[easy].py	/^test = [[[2,2,2,2,2,2,2,2,3,4],2,0], [[1,2,3], 3, 2], [[1,2],-1,-1], [[],1,-1], [[1],1,0], [[4,5,9,9,12,13,14,15,15,18], 10,-1]]$/;"	kind:variable	line:33
 test	../179_updateBits_[middle].py	/^def test():$/;"	kind:function	line:85
 test	../179_updateBits_[middle].py	/^test = [[21, 214, 0, 9, 214], [-21, 214, 0, 9, -810], [1, -1, 0, 31, -1], [21, -1, 0, 31, -1], [456,31,27,31,-134217272], [456,31,26,31,2080375240]]$/;"	kind:variable	line:80
