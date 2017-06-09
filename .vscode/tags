@@ -16,6 +16,7 @@
 171_anagrams.py	../171_anagrams.py	1;"	kind:file	line:1
 172_removeElement.py	../172_removeElement.py	1;"	kind:file	line:1
 179_updateBits_[middle].py	../179_updateBits_[middle].py	1;"	kind:file	line:1
+180_binaryRepresentation_[hard].py	../180_binaryRepresentation_[hard].py	1;"	kind:file	line:1
 181_bitSwapRequired_[easy].py	../181_bitSwapRequired_[easy].py	1;"	kind:file	line:1
 183_woodCut_[hard].py	../183_woodCut_[hard].py	1;"	kind:file	line:1
 189_firstMissingPositive.py	../189_firstMissingPositive.py	1;"	kind:file	line:1
@@ -51,6 +52,7 @@ Solution	../163_numTrees_[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../171_anagrams.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../172_removeElement.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../179_updateBits_[middle].py	/^class Solution:$/;"	kind:class	line:67
+Solution	../180_binaryRepresentation_[hard].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../181_bitSwapRequired_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../183_woodCut_[hard].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../189_firstMissingPositive.py	/^class Solution:$/;"	kind:class	line:1
@@ -84,12 +86,14 @@ atoi	../54_atoi.py	/^    def atoi(self, str):$/;"	kind:member	line:4
 bin2int_32bit	../179_updateBits_[middle].py	/^    def bin2int_32bit(self, bin):$/;"	kind:member	line:47
 bin_add	../179_updateBits_[middle].py	/^    def bin_add(self, bin_a, bin_b):$/;"	kind:member	line:34
 bin_neg	../179_updateBits_[middle].py	/^    def bin_neg(self, bin):$/;"	kind:member	line:25
+binaryRepresentation	../180_binaryRepresentation_[hard].py	/^    def binaryRepresentation(self, n):$/;"	kind:member	line:4
 binarySearch	../14_binarySearch_[easy].py	/^    def binarySearch(self, nums, target):$/;"	kind:member	line:5
 binarySearch	../62_search_[middle].py	/^    def binarySearch(self, A, target):$/;"	kind:member	line:40
 bitSwapRequired	../181_bitSwapRequired_[easy].py	/^    def bitSwapRequired(self, a, b):$/;"	kind:member	line:6
 bit_and	../179_updateBits_[middle].py	/^    def bit_and(self, bin_a, bin_b):$/;"	kind:member	line:58
 compareStr.py	../compareStr.py	1;"	kind:file	line:1
 compareStrings	../compareStr.py	/^    def compareStrings(self, A, B):$/;"	kind:member	line:9
+dec2bin	../180_binaryRepresentation_[hard].py	/^    def dec2bin(self, dec):$/;"	kind:member	line:23
 do_cprofile	../hashCode.py	/^def do_cprofile(filename):$/;"	kind:function	line:5
 factorial	../163_numTrees_[middle].py	/^    def factorial(self, n):$/;"	kind:member	line:10
 fastPower	../140_fastPower_[middle].py	/^    def fastPower(self, a, b, n):$/;"	kind:member	line:6
@@ -132,6 +136,7 @@ test	../140_fastPower_[middle].py	/^test = [[2, 12, 3], [123, 2, 4], [3, 7, 5], 
 test	../14_binarySearch_[easy].py	/^test = [[[2,2,2,2,2,2,2,2,3,4],2,0], [[1,2,3], 3, 2], [[1,2],-1,-1], [[],1,-1], [[1],1,0], [[4,5,9,9,12,13,14,15,15,18], 10,-1]]$/;"	kind:variable	line:33
 test	../179_updateBits_[middle].py	/^def test():$/;"	kind:function	line:85
 test	../179_updateBits_[middle].py	/^test = [[21, 214, 0, 9, 214], [-21, 214, 0, 9, -810], [1, -1, 0, 31, -1], [21, -1, 0, 31, -1], [456,31,27,31,-134217272], [456,31,26,31,2080375240]]$/;"	kind:variable	line:80
+test	../180_binaryRepresentation_[hard].py	/^test = [['3.72', 'ERROR'], ['1.5', '1.1'], ['3.5', '11.1'], ['-3.5', '-11.1'], ['1.0', '1']]$/;"	kind:variable	line:40
 test	../181_bitSwapRequired_[easy].py	/^test = [[1, -1], [2, 3], [1, 1]]$/;"	kind:variable	line:36
 test	../183_woodCut_[hard].py	/^test = [[12, 2, 4]]$/;"	kind:variable	line:31
 test	../28_searchMatrix_[easy].py	/^test = [[A, 1, True], [A, 2, False], [A, 3, True], [A, 50, True], [A, 11, True], [[], 0, False], [A, 70, True], [A, 53, True]]$/;"	kind:variable	line:50
