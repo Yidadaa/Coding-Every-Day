@@ -19,10 +19,12 @@
 180_binaryRepresentation_[hard].py	../180_binaryRepresentation_[hard].py	1;"	kind:file	line:1
 181_bitSwapRequired_[easy].py	../181_bitSwapRequired_[easy].py	1;"	kind:file	line:1
 183_woodCut_[hard].py	../183_woodCut_[hard].py	1;"	kind:file	line:1
+187_canCompleteCircuit_[middle].py	../187_canCompleteCircuit_[middle].py	1;"	kind:file	line:1
 189_firstMissingPositive.py	../189_firstMissingPositive.py	1;"	kind:file	line:1
 28_searchMatrix_[easy].py	../28_searchMatrix_[easy].py	1;"	kind:file	line:1
 2_trailingZeros_[easy].py	../2_trailingZeros_[easy].py	1;"	kind:file	line:1
 31_partitionArray_[middle].py	../31_partitionArray_[middle].py	1;"	kind:file	line:1
+46_majorityNumber_[easy].py	../46_majorityNumber_[easy].py	1;"	kind:file	line:1
 50_productExcludeItself_[easy].py	../50_productExcludeItself_[easy].py	1;"	kind:file	line:1
 54_atoi.py	../54_atoi.py	1;"	kind:file	line:1
 56_twoSum_[easy].py	../56_twoSum_[easy].py	1;"	kind:file	line:1
@@ -38,6 +40,7 @@
 74_firstBadVersion_[easy].py	../74_firstBadVersion_[easy].py	1;"	kind:file	line:1
 78_longestCommonPrefix.py	../78_longestCommonPrefix.py	1;"	kind:file	line:1
 79_longestCommonSubstring.py	../79_longestCommonSubstring.py	1;"	kind:file	line:1
+82_singleNumber_[easy].py	../82_singleNumber_[easy].py	1;"	kind:file	line:1
 A	../28_searchMatrix_[easy].py	/^A = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 50], [53, 60, 64, 70]]$/;"	kind:variable	line:49
 Binary	../179_updateBits_[middle].py	/^class Binary():$/;"	kind:class	line:1
 Solution	../100_removeDuplicates.py	/^class Solution:$/;"	kind:class	line:1
@@ -55,10 +58,12 @@ Solution	../179_updateBits_[middle].py	/^class Solution:$/;"	kind:class	line:67
 Solution	../180_binaryRepresentation_[hard].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../181_bitSwapRequired_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../183_woodCut_[hard].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../187_canCompleteCircuit_[middle].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../189_firstMissingPositive.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../28_searchMatrix_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../2_trailingZeros_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../31_partitionArray_[middle].py	/^class Solution:$/;"	kind:class	line:1
+Solution	../46_majorityNumber_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../50_productExcludeItself_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../54_atoi.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../56_twoSum_[easy].py	/^class Solution:$/;"	kind:class	line:1
@@ -74,6 +79,7 @@ Solution	../6_mergeSortedArray_[easy].py	/^    class Solution:$/;"	kind:class	li
 Solution	../74_firstBadVersion_[easy].py	/^class Solution:$/;"	kind:class	line:8
 Solution	../78_longestCommonPrefix.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../79_longestCommonSubstring.py	/^class Solution:$/;"	kind:class	line:1
+Solution	../82_singleNumber_[easy].py	/^class Solution:$/;"	kind:class	line:1
 Solution	../compareStr.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../happyNum.py	/^class Solution:$/;"	kind:class	line:1
 Solution	../hashCode.py	/^class Solution:$/;"	kind:class	line:29
@@ -91,6 +97,7 @@ binarySearch	../14_binarySearch_[easy].py	/^    def binarySearch(self, nums, tar
 binarySearch	../62_search_[middle].py	/^    def binarySearch(self, A, target):$/;"	kind:member	line:40
 bitSwapRequired	../181_bitSwapRequired_[easy].py	/^    def bitSwapRequired(self, a, b):$/;"	kind:member	line:6
 bit_and	../179_updateBits_[middle].py	/^    def bit_and(self, bin_a, bin_b):$/;"	kind:member	line:58
+canCompleteCircuit	../187_canCompleteCircuit_[middle].py	/^    def canCompleteCircuit(self, gas, cost):$/;"	kind:member	line:5
 compareStr.py	../compareStr.py	1;"	kind:file	line:1
 compareStrings	../compareStr.py	/^    def compareStrings(self, A, B):$/;"	kind:member	line:9
 dec2bin	../180_binaryRepresentation_[hard].py	/^    def dec2bin(self, dec):$/;"	kind:member	line:23
@@ -111,6 +118,7 @@ isBadVersion	../74_firstBadVersion_[easy].py	/^    def isBadVersion(self, n):$/;
 isHappy	../happyNum.py	/^    def isHappy(self, n):$/;"	kind:member	line:4
 longestCommonPrefix	../78_longestCommonPrefix.py	/^    def longestCommonPrefix(self, strs):$/;"	kind:member	line:4
 longestCommonSubstring	../79_longestCommonSubstring.py	/^    def longestCommonSubstring(self, A, B):$/;"	kind:member	line:4
+majorityNumber	../46_majorityNumber_[easy].py	/^    def majorityNumber(self, nums):$/;"	kind:member	line:6
 maxNode	../632_maxNodeOfTree_[easy].py	/^    def maxNode(self, root):$/;"	kind:member	line:19
 mergeSortedArray	../64_mergeSortedArray.py	/^    def mergeSortedArray(self, A, m, B, n):$/;"	kind:member	line:8
 mergeSortedArray	../6_mergeSortedArray_[easy].py	/^        def mergeSortedArray(self, A, B):$/;"	kind:member	line:8
@@ -128,6 +136,7 @@ search	../62_search_[middle].py	/^    def search(self, A, target):$/;"	kind:memb
 searchInsert	../60_searchInsert_[easy].py	/^    def searchInsert(self, A, target):$/;"	kind:member	line:7
 searchMatrix	../28_searchMatrix_[easy].py	/^    def searchMatrix(self, matrix, target):$/;"	kind:member	line:8
 searchRange	../61_searchRange_[middle].py	/^    def searchRange(self, A, target):$/;"	kind:member	line:7
+singleNumber	../82_singleNumber_[easy].py	/^    def singleNumber(self, A):$/;"	kind:member	line:6
 sqrt	../141_sqrt_[easy].py	/^    def sqrt(self, x):$/;"	kind:member	line:6
 strStr	../13_strstr.py	/^    def strStr(self, source, target):$/;"	kind:member	line:2
 subarraySum	../138_subArraySum.py	/^    def subarraySum(self, nums):$/;"	kind:member	line:7
@@ -139,9 +148,12 @@ test	../179_updateBits_[middle].py	/^test = [[21, 214, 0, 9, 214], [-21, 214, 0,
 test	../180_binaryRepresentation_[hard].py	/^test = [['3.72', 'ERROR'], ['1.5', '1.1'], ['3.5', '11.1'], ['-3.5', '-11.1'], ['1.0', '1']]$/;"	kind:variable	line:40
 test	../181_bitSwapRequired_[easy].py	/^test = [[1, -1], [2, 3], [1, 1]]$/;"	kind:variable	line:36
 test	../183_woodCut_[hard].py	/^test = [[12, 2, 4]]$/;"	kind:variable	line:31
+test	../187_canCompleteCircuit_[middle].py	/^test = [[[0], [0]], [[1, 1, 3, 1], [2, 2, 1, 1]], [[1,4,2,3,1], [2,2,1,1,5]]]$/;"	kind:variable	line:26
 test	../28_searchMatrix_[easy].py	/^test = [[A, 1, True], [A, 2, False], [A, 3, True], [A, 50, True], [A, 11, True], [[], 0, False], [A, 70, True], [A, 53, True]]$/;"	kind:variable	line:50
+test	../46_majorityNumber_[easy].py	/^test = [[1, 2, 1, 2, 1], [1], [], [1, 1, 2, 1], [2, 3, 4, 1, 1, 1, 1], [1, 1]]$/;"	kind:variable	line:32
 test	../61_searchRange_[middle].py	/^test = [[5]]$/;"	kind:variable	line:31
 test	../62_search_[middle].py	/^test = [[1,2,3,9000]]$/;"	kind:variable	line:64
+test	../82_singleNumber_[easy].py	/^test = [[1], [1, 2, 2, 3, 3], [1, 2, 2], []]$/;"	kind:variable	line:15
 threeSum	../57_threeSum_[middle].py	/^    def threeSum(self, numbers):$/;"	kind:member	line:6
 threeSumClosest	../59_threeSumClosest_[middle].py	/^    def threeSumClosest(self, numbers, target):$/;"	kind:member	line:7
 trailingZeros	../2_trailingZeros_[easy].py	/^    def trailingZeros(self, n):$/;"	kind:member	line:4
