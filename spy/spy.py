@@ -37,5 +37,5 @@ def readInfo(filepath):
         downloadMusic(info['url'], info['name'])
         index += 1
 
-readInfo("test.csv")
+readInfo("target.csv")
 # print('fuck')

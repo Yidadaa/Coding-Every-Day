@@ -1,8 +1,11 @@
-$curPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('.\target.csv')
-$targetPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('.\fuck.xls')
+# param([string]$file=$(throw "Parameter missing: -file xlsFile required"))
+$sourcePath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('.\input.xls')
+$targetPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('.\target.csv')
 $excel = New-Object -ComObject Excel.Application
-# $excel.Visible = $true
-$excel.Workbooks.Open($targetPath).SaveAs($curPath, 6)
+$excel.Visible = $false
+$excel.DisplayAlerts = $false
+$excel.Workbooks.Open($sourcePath).SaveAs($targetPath, 6)
 $excel.Workbooks.Close()
 $excel.Quit()
-(Get-Content $curPath) | Set-Content $curPath -Encoding UTF8
+# (Get-Content $targetPath) | Set-Content $targetPath -Encoding UTF8
+C:\Users\yida\AppData\Local\Programs\Python\Python36\python.exe .\spy.py
