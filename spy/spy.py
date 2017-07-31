@@ -31,8 +31,11 @@ def readInfo(filepath):
             'name': info[0],
             'url': info[2]
         })
+    index = 1
     for info in dataList:
+        print('Downloading ' + str(index) + '/' + str(len(dataList)) + '-' + info['name'])
         downloadMusic(info['url'], info['name'])
+        index += 1
 
 readInfo("test.csv")
 # print('fuck')
