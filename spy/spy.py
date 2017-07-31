@@ -35,3 +35,4 @@ def readInfo(filepath):
         downloadMusic(info['url'], info['name'])
 
 readInfo("test.csv")
+# print('fuck')
