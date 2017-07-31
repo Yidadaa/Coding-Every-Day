@@ -21,7 +21,7 @@ def downloadMusic(url, name):
     except ValueError as e:
         print('歌曲不存在')
         return False
-    with open(sys.path[0] + '/' + musicName + '-' + name + '.m4a', 'wb') as f:
+    with open(sys.path[0] + '/' + musicName + ' ' + name + '.m4a', 'wb') as f:
         f.write(music.read())
     return True
 
