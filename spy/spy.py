@@ -16,7 +16,11 @@ def downloadMusic(url, name):
     musicName = content[content.find('"song_name"'):content.rfind(',"tail_name"')].replace('"', '').replace('song_name:', '')
     playurlRaw = content[playurlBeginIndex : playurlEndIndex]
     playurl = playurlRaw.replace('"', '').replace('playurl:', '')
-    music = urllib2.urlopen(playurl)
+    try:
+        music = urllib2.urlopen(playurl)
+    except ValueError as e:
+        print('歌曲不存在')
+        return False
     with open(sys.path[0] + '/' + musicName + '-' + name + '.m4a', 'wb') as f:
         f.write(music.read())
     return True
