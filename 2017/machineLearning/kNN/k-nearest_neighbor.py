@@ -11,6 +11,7 @@ class kdTreeNode:
         self.lchild = None
         self.rchild = None
         self.parent = parent
+        self.range = None # 所有子树的节点数据集合
 
 class kdTree:
     def __init__(self, training_data):
@@ -27,6 +28,7 @@ class kdTree:
         sorted_data = sorted(data, key=lambda x: x[key_index])
         median_point = sorted_data[index] # 获取中位数
         node = kdTreeNode(median_point, last_node)
+        node.range = data
         node.lchild = self.construct_kd_tree(sorted_data[0:index], key_index + 1, node) # 分割左侧
         node.rchild = self.construct_kd_tree(sorted_data[index + 1:], key_index + 1, node) # 分割右侧
         return node
@@ -36,12 +38,14 @@ class kdTree:
         key_index = 0
         min_neighbor = None
         while nn is not None:
+            # 找出与target最接近的叶子节点
             min_neighbor = nn
             nn = nn.lchild if target[key_index] < nn.data[key_index] else nn.rchild
             key_index = (key_index + 1) % self.dimension
         min_distance = self.L2_distance(target, min_neighbor.data)
         result = min_neighbor
         while min_neighbor.parent is not None:
+            # 从刚才得到的叶子节点向上遍历，找到最接近的树节点
             min_neighbor = min_neighbor.parent
             L2_distance =self.L2_distance(min_neighbor.data, target)
             if L2_distance < min_distance:
