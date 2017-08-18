@@ -21,9 +21,9 @@ data = [
     [3, 'M', 1],
     [3, 'L', 1],
     [3, 'L', -1]
-]
+] # 训练数据
 
-test = [2, 'S']
+test = [2, 'S'] # 测试数据
 
 def conditional_probability(data):
     '''
@@ -55,13 +55,13 @@ def posterior_probability(y_probability, hash_data, input_data):
     @name 计算后验概率
     @param{dict} y_probability: 存储每一个class的先验概率，key是类名，value是概率
     @param{dict} hash_data: 存储输入变量的每一维所有可能取值的条件概率，结构
-                    hash_data: { <- dict
-                        [class_name]: [ <- list
-                            [list_index]: { <- dict
-                                [第list_index维的x向量所有可能取值]: 对应概率
-                            }
-                        ]
-                    }
+        hash_data: { <- dict
+            [class_name]: [ <- list
+                [list_index]: { <- dict
+                    [第list_index维的x向量所有可能取值]: 对应概率
+                }
+            ]
+        }
     '''
     result = {}
     for i in hash_data:
