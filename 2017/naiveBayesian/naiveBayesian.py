@@ -1,7 +1,8 @@
 '''
-朴素贝叶斯文本分类器
+朴素贝叶斯文本分类器(贝努力模型)
 '''
 import re
+import numpy as np
 
 class naiveBayesianTextClassifier():
     def __init__(self, train_data):
@@ -31,9 +32,9 @@ class naiveBayesianTextClassifier():
                 if word in text_dict.keys():
                     text_dict[word] += 1
                 else:
-                    text_dict[word] = 1
+                    text_dict[word] = 2 # 这里进行拉普拉斯平滑
         for word in text_dict:
-            text_dict[word] /= total_count # 计算频率
+            text_dict[word] /= total_count + 2 # 计算频率，同样对分母做平滑处理
         return text_dict
 
     def predict(self, text):
@@ -48,54 +49,74 @@ class naiveBayesianTextClassifier():
         for word in words:
             if word in self.common_words:
                 # self.common_words[word]
-                a *= self.spam_words[word] if word in self.spam_words else 1 / self.total_count
-                b *= self.ham_words[word] if word in self.ham_words else 1 / self.total_count
+                a *= self.spam_words[word] if word in self.spam_words else 1 / (self.total_count + 2)
+                b *= self.ham_words[word] if word in self.ham_words else 1 / (self.total_count + 2)
         
-        is_spam = a / (a + b)
+        is_spam = a / (a + b) # 为了便于判断，对a和b进行一些处理
         is_ham = b / (a + b)
 
         return { 'spam': is_spam, 'ham': is_ham }
 
+class NBClassifier():
+    def __init__(self):
+        self.groups_prob = {}
+        self.class_prior_prob = {}
+        self.dimension = 0
 
-if __name__ == '__main__':
-    '''
-    读取训练数据，训练数据来源：http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/
-    '''
-    file_content = []
-    with open('./trainData/data.txt') as f:
-        file_content = f.readlines()
+    def fit(self, X, Y):
+        '''
+        训练函数
+        '''
+        if len(X) != len(Y):
+            raise Exception('输入数据维度不相等，请检查数据输入')
+        classes = {}
+        total_count = len(Y)
+        # 先统计所有类别，这里使用拉普拉斯平滑
+        for num in Y:
+            if num in classes:
+                classes[num] += 1
+            else:
+                classes[num] = 2
+        class_prior_prob = {} # 类别的先验概率
+        for c in classes:
+            class_prior_prob[c] = classes[c] / total_count
+        # 然后计算每个类别下，每个特征的概率
+        groups = {}
+        for i in range(total_count):
+            if Y[i] in groups:
+                groups[Y[i]].append(X[i])
+            else:
+                groups[Y[i]] = [X[i]]
+        groups_prob = {}
+        for g in groups:
+            group_data = groups[g]
+            feature_count = np.array(group_data).sum(axis=0) # 由于是贝努力模型，每个特征只有0/1两种情况
+            groups_prob[g] = (feature_count + 1) / (len(group_data) + 2) # 计算特征存在的概率，应用拉普拉斯平滑
+        
+        self.groups_prob = groups_prob
+        self.class_prior_prob = class_prior_prob
+        self.dimension = len(X[0])
 
-    group_content = {
-        'spam': [],
-        'ham': []
-    }
-
-    sample_count = int(len(file_content) * 0.8) # 取80%做训练集，剩下的做测试集
-    for line in file_content[0:sample_count]:
-        line_content = line.split('\t')
-        if line_content[0] in group_content.keys():
-            group_content[line_content[0]].append(line_content[1])
-
-    test_data = file_content[sample_count:]
-
-    test = naiveBayesianTextClassifier(group_content)
-    total = len(test_data)
-    right = 0
-    for text in test_data:
-        text_info = text.split('\t')
-        res = test.predict(text_info[1])
-        the_class = 'spam' if res['spam'] > res['ham'] else 'ham'
-        if the_class == text_info[0]:
-            right += 1
-    print('交叉验证结果:', right, '/', total, '=',right / total)
-    strings = open('./oral8000.txt').readlines()
-    strings = map(lambda x: re.sub(r'[\u4e00-\u9fa5\u3000\n]', '', x), strings)
-    strings = list(strings)
-    total = len(strings)
-    right = 0
-    for text in strings:
-        res = test.predict(text)
-        the_class = 'spam' if res['spam'] > res['ham'] else 'ham'
-        if the_class == 'ham':
-            right += 1
-    print('口语8000句验证结果:', right, '/', total, '=',right / total)
+    def predict(self, X):
+        '''
+        预测函数
+        '''
+        if len(X) == 0:
+            return []
+        elif len(X[0]) != self.dimension:
+            raise Exception('请检查输入数据的维度', self.dimension)
+        return_y = []
+        for x_val in X:
+            p_groups_prob = []
+            # 计算每一类的后验概率
+            for g in self.groups_prob:
+                feature_prob = self.groups_prob[g]
+                prob = self.class_prior_prob[g]
+                for i in range(len(feature_prob)):
+                    if x_val[i] == 1:
+                        prob *= feature_prob[i]
+                p_groups_prob.append([g, prob])
+            # 找出最大后验概率
+            p_groups_prob = sorted(p_groups_prob, key=lambda x: x[1], reverse=True)
+            return_y.append(p_groups_prob[0][0]) # 返回对应的类别
+        return return_y
