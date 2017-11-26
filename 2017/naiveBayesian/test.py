@@ -3,6 +3,7 @@
 '''
 
 import json
+import numpy as np
 from sklearn.naive_bayes import BernoulliNB
 from naiveBayesian import NBClassifier
 from processData import extract_feature
@@ -15,17 +16,15 @@ def pre_process():
         file_content = f.readlines()
     extract_feature(file_content)
 
-def compare():
+def compare(train_rate=0.9, feature_rate=0.3):
     with open('./data/features.json') as f:
         json_content = f.read()
     model = json.loads(json_content)
     lower_array = model['lower_array']
     feature_words = [x[0] for x in model['MI']]
 
-    train_rate = 0.9
     total_count = len(lower_array)
     train_count = int(total_count * train_rate)
-    feature_rate = 0.3
     feature_total_count = len(feature_words)
     feature_count = int(feature_total_count * feature_rate)
 
@@ -40,16 +39,29 @@ def compare():
     test_truth = Y[train_count:]
     classifier = BernoulliNB()
     classifier.fit(train_data_x, train_data_y)
-    test_predict = classifier.predict(test_data)
-    right_count = sum([test_predict[i] == test_truth[i] for i in range(len(test_data))])
-    print('使用sklearn模型预测：', right_count / len(test_data)) 
+    sk_predict = classifier.predict(test_data)
 
     my_classifier = NBClassifier()
     my_classifier.fit(train_data_x, train_data_y)
     my_predict = my_classifier.predict(test_data)
-    right_count = sum([my_predict[i] == test_truth[i] for i in range(len(test_data))])
-    print('我的模型预测：', right_count / len(test_data)) 
 
+    TFNP_count_sklearn = np.array([[0, 0], [0, 0]]) # 四个值分别是[TN, FP], [FN, TP]
+    TFNP_count_me = np.array([[0, 0], [0, 0]])
+    for i in range(len(test_data)):
+        TFNP_count_sklearn[test_truth[i]][sk_predict[i]] += 1
+        TFNP_count_me[test_truth[i]][my_predict[i]] += 1
+    return [TFNP_count_sklearn.reshape([1, 4]).tolist()[0], TFNP_count_me.reshape([1, 4]).tolist()[0]]
+
+def compute_P_R_F1(TFNP):
+    '''
+    计算精确度，召回率和F1值
+    '''
+    [TN, FP, FN, TP] = TFNP
+    A = (TP + TN) / sum(TFNP) # 正确率
+    P = TP / (TP + FP) # 精确率
+    R = TP / (TP + FN) # 召回率
+    F1 = 2 * TP / (2 * TP + FP + FN) # F1
+    return [A, P, R, F1]
 
 def get_feature_array(lower_array, feature_words):
     '''
@@ -64,4 +76,24 @@ def get_feature_array(lower_array, feature_words):
     return feature_array
 
 # pre_process()
-compare()
+data = []
+for i in range(40):
+    train_rate = 0.9
+    feature_rate = 0.1 + i / 100
+    [TFNP_sk, TFNP_me] = compare(train_rate, feature_rate)
+    P_R_F1_sk = compute_P_R_F1(TFNP_sk)
+    P_R_F1_me = compute_P_R_F1(TFNP_me)
+    data.append([train_rate, feature_rate, P_R_F1_sk, P_R_F1_me])
+    print(i, end='\r')
+
+for i in range(5):
+    train_rate = 0.9 - i / 10
+    feature_rate = 0.1
+    [TFNP_sk, TFNP_me] = compare(train_rate, feature_rate)
+    P_R_F1_sk = compute_P_R_F1(TFNP_sk)
+    P_R_F1_me = compute_P_R_F1(TFNP_me)
+    data.append([train_rate, feature_rate, P_R_F1_sk, P_R_F1_me])
+    print(i, end='\r')
+
+with open('./data/res.json', 'w') as f:
+    f.write(json.dumps(data))
