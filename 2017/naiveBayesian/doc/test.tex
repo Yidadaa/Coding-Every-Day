@@ -3,6 +3,7 @@
 \XeTeXlinebreakskip = 0pt plus 1pt
 \usepackage{fontspec}
 \usepackage{geometry}
+\usepackage{graphicx}
 \usepackage{indentfirst}
 \usepackage[colorlinks, linkcolor=blue]{hyperref}
 
@@ -64,21 +65,35 @@
 由以上推导出的独立特征模型，我们可以构造相应的分类器，也就是朴素贝叶斯分类器。朴素贝叶斯分类器采用最大后验概率作为决策规则，及对于各个类别$C_i$，取后验概率最大的类别作为选定类别。每个类别的后验概率计算公式为：
 \[P(C_i|F_1, ..., F_n)=\frac{P(C_i)\prod_{j=1}^nP(F_j|C)}{\sum_{i=1}^m \prod_{j=1}^nP(C_j)P(C_j|F_k)}\]
 
+\subsection{使用互信息筛选特征词}
+直接用训练集中所有出现过的词汇做为特征词汇，会导致分类器的词表十分巨大，从而降低算法的性能。因此，我们决定提取其中的部分词汇，做为特征词。\\
+
+理想的特征词应当与分类结果密切相关。在概率论和信息论中，两个随机变量的互信息（Mutual Information，简称MI）是变量间相互依赖性的量度。一般地，两个随机变量$X, Y$的互信息可以定义为：
+\[MI(X; Y)=\sum_{y\in Y}\sum_{x\in X}p(x, y)log(\frac{p(x, y)}{p(x)p(y)})\]
+其中$p(x,y)$是$X$和$Y$的联合概率分布函数，而$p(x)$和$p(y)$分别是$X$和$Y$的边缘概率分布函数。\\
+
+我们计算了所有在训练集中出现的词汇与词汇所在类别的互信息，然后按照互信息值的大小排序，选取前n个词汇作为特征词，从而使算法的复杂度大幅度降低。
+
+\begin{table*}[hbtp]
+    \centering
+    \caption{SMS Spam Collection 数据集部分样本}
+    \begin{tabular}{lp{14cm}}
+        \hline
+        ham&	Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...\\
+        ham&	Ok lar... Joking wif u oni...\\
+        spam&	Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T\&C's apply 08452810075over18's\\
+        ham&	U dun say so early hor... U c already then say...\\
+        ham&	Nah I don't think he goes to usf, he lives around here though\\
+        \hline
+    \end{tabular}
+    \end{table*}
+
 \section{实验结果}
 我们使用了一个公开的骚扰短信标注数据集（SMS Spam Collection v.1, \url{http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/}）进行训练，该数据集包含了5574条英文短信数据，其中骚扰短信有470条，正常短信为4827条。\\
 [2ex]
-\begin{table*}[htp]
-\centering
-\caption{SMS Spam Collection 数据集部分样本}
-\begin{tabular}{lp{14cm}}
-    \hline
-    ham&	Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...\\
-    ham&	Ok lar... Joking wif u oni...\\
-    spam&	Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T\&C's apply 08452810075over18's\\
-    ham&	U dun say so early hor... U c already then say...\\
-    ham&	Nah I don't think he goes to usf, he lives around here though\\
-    \hline
-\end{tabular}
-\end{table*}
-训练时，我们
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig_1.jpg}
+    \caption{与sklearn中的分类器的性能对比}
+\end{figure*}
 \end{document}

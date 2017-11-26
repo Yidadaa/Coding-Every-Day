@@ -2,4 +2,5 @@
 \BOOKMARK [1][-]{section.2}{主要方法}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{朴素贝叶斯概率模型}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{构造分类器}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{实验结果}{}% 5
+\BOOKMARK [2][-]{subsection.2.3}{使用互信息筛选特征词}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{实验结果}{}% 6
