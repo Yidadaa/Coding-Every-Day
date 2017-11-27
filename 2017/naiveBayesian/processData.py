@@ -28,7 +28,7 @@ def extract_feature(row_array):
         i_x_y = np.array([[1, 1], [1, 1]]) # 全部赋值为1，做拉普拉斯平滑
         for line in lower_array:
             # 计算word和line的存在情况
-            word_is_in_line = 1 if word in line else 0
+            word_is_in_line = 1 if word in line[1:] else 0
             class_is_spam = 1 if line[0] == 'spam' else 0
             i_x[word_is_in_line] += 1
             i_y[class_is_spam] += 1
@@ -40,5 +40,30 @@ def extract_feature(row_array):
         MI = np.array([[p_x_y[x][y] * math.log2(p_x_y[x][y] / p_x[x] / p_y[y]) for y in [0, 1]] for x in [0, 1]]).sum()
         words_MI.append([word, str(MI)])
     words_MI = sorted(words_MI, key=lambda x: x[1], reverse=True) # 根据互信息进行排序
+    print(words_MI[0:5])
     with open('./data/features.json', 'w') as f:
         f.write(json.dumps({ 'lower_array': lower_array, 'MI': words_MI }))
+
+def get_feature_array(lower_array, feature_words):
+    '''
+    预处理数据
+    '''
+    feature_array = []
+    for line in lower_array:
+        line_words = line[1:]
+        class_ = 1 if line[0] == 'spam' else 0
+        feature = [1 if word in line_words else 0 for word in feature_words]
+        feature_array.append([class_] + feature)
+    return feature_array
+
+
+def pre_process():
+    '''
+    预处理数据
+    '''
+    with open('./trainData/data.txt') as f:
+        file_content = f.readlines()
+    extract_feature(file_content)
+
+if __name__ == '__main__':
+    pre_process()

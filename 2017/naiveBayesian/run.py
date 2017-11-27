@@ -6,20 +6,12 @@ import json
 import numpy as np
 from sklearn.naive_bayes import BernoulliNB
 from naiveBayesian import NBClassifier
-from processData import extract_feature
+from processData import get_feature_array
 import timeit
 
 with open('./data/features.json') as f:
     json_content = f.read()
 model = json.loads(json_content)
-
-def pre_process():
-    '''
-    预处理数据
-    '''
-    with open('./trainData/data.txt') as f:
-        file_content = f.readlines()
-    extract_feature(file_content)
 
 def compare(train_rate=0.9, feature_rate=0.3, laplace_lambda=1):
     lower_array = model['lower_array']
@@ -64,18 +56,6 @@ def compute_P_R_F1(TFNP):
     R = TP / (TP + FN) if TP + FN > 0 else 0# 召回率
     F1 = 2 * TP / (2 * TP + FP + FN) if TP + FP + FN > 0 else 0# F1
     return [A, P, R, F1]
-
-def get_feature_array(lower_array, feature_words):
-    '''
-    预处理数据
-    '''
-    feature_array = []
-    for line in lower_array:
-        line_words = line[1:]
-        class_ = 1 if line[0] == 'spam' else 0
-        feature = [1 if word in line_words else 0 for word in feature_words]
-        feature_array.append([class_] + feature)
-    return feature_array
 
 data = []
 # for i in range(45):

@@ -53,7 +53,7 @@ class NBClassifier():
         if len(X) == 0:
             return []
         elif len(X[0]) != self.dimension:
-            raise Exception('请检查输入数据的维度', self.dimension)
+            raise Exception('请检查输入数据的维度', self.dimension, len(X[0]))
         return_y = []
         for x_val in X:
             p_groups_prob = []

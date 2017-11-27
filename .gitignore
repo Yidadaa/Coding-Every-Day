@@ -2,3 +2,4 @@ tags
 *.aux
 *.log
 *.gz
+*.out
