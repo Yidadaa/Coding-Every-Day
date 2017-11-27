@@ -25,9 +25,9 @@
 
 \section{摘要}
 
-在人们的日常生活中，垃圾邮件常常影响人们的心情和工作效率。例如，人们会因为阅读一篇垃圾邮件而浪费时间和精力。所以，分类垃圾邮件一直是一个贴近生活并且有很大作用的应用。\\
+在人们的日常生活中，垃圾短信常常影响人们的心情和工作效率。例如，人们会因为阅读一篇垃圾短信而浪费时间和精力。所以，分类垃圾短信一直是一个贴近生活并且有很大作用的应用。\\
 
-分类垃圾邮件，这是一个二分类问题，在机器学习中有很多分类器能够用来解决这样一个二分类问题，例如支持向量机（SVM），朴素贝叶斯分类器等。在这次设计中，我们使用朴素贝叶斯分类器来分类垃圾邮件。\\
+分类垃圾短信，这是一个二分类问题，在机器学习中有很多分类器能够用来解决这样一个二分类问题，例如支持向量机（SVM），朴素贝叶斯分类器等。在这次设计中，我们使用朴素贝叶斯分类器来分类垃圾短信。\\
 
 在机器学习中，朴素贝叶斯分类器是一系列以假设特征之间强（朴素）独立下运用贝叶斯定理为基础的简单概率分类器。\\
 
@@ -35,11 +35,25 @@
 
 对于某些类型的概率模型，在监督式学习的样本集中能获取得非常好的分类效果。在许多实际应用中，朴素贝叶斯模型参数估计使用最大似然估计方法；换而言之，在不用到贝叶斯概率或者任何贝叶斯模型的情况下，朴素贝叶斯模型也能奏效。\\
 
-朴素贝叶斯自20世纪50年代已广泛研究。在20世纪60年代初就以另外一个名称引入到文本信息检索界中，并仍然是文本分类的一种热门（基准）方法，文本分类是以词频为特征判断文件所属类别或其他（如垃圾邮件、合法性、体育或政治等等）的问题。通过适当的预处理，它可以与这个领域更先进的方法（包括支持向量机）相竞争。它在自动医疗诊断中也有应用。\\
-
 在本文中，我们使用朴素贝叶斯方法来实现文本分类进而分类垃圾短信。我们的训练集是由5574条短信构成，其中有747条垃圾短信。我们使用了交叉验证的方法对我们的分类器进行了验证，最后得到了很好的结果。\\
 
 本文的结构如下：在第2部分，我们将介绍朴素贝叶斯的基本原理以及我们实现的思路。在第三部分，我们展示我们分类器所得到的结果，并探讨了可能影响分类器性能的几个参数。在第四部分，我们对这次的课程设计做一个总结。
+
+
+\begin{table*}[hbtp]
+    \centering
+    \begin{tabular}{lp{14cm}}
+        \hline
+        ham&	I never realized that you were so embarassed by your accomodations. I thought you liked it, since i was doing the best i could and you always seemed so happy about "the cave". I'm sorry I didn't and don't have more to give. I'm sorry i offered. I'm sorry your room was so embarassing.\\
+        ham&	Fair enough, anything going on?\\
+        spam&	Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T\&C's apply 08452810075over18's\\
+        ham&	Yeah hopefully, if tyler can't do it I could maybe ask around a bit\\
+        ham&	Nah I don't think he goes to usf, he lives around here though\\
+        \hline
+    \end{tabular}
+    \caption{SMS Spam Collection 数据集部分样本}
+    \label{table_1}
+\end{table*}
 
 \section{主要方法}
 \subsection{朴素贝叶斯概率模型}
@@ -75,21 +89,6 @@
 我们计算了所有在训练集中出现的词汇与词汇所在类别的互信息，然后按照互信息值的大小排序，选取前n个词汇作为特征词，从而使算法的复杂度大幅度降低。
 
 \section{实验结果}
-
-\begin{table*}[hbtp]
-    \centering
-    \begin{tabular}{lp{14cm}}
-        \hline
-        ham&	I never realized that you were so embarassed by your accomodations. I thought you liked it, since i was doing the best i could and you always seemed so happy about "the cave". I'm sorry I didn't and don't have more to give. I'm sorry i offered. I'm sorry your room was so embarassing.\\
-        ham&	Fair enough, anything going on?\\
-        spam&	Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T\&C's apply 08452810075over18's\\
-        ham&	Yeah hopefully, if tyler can't do it I could maybe ask around a bit\\
-        ham&	Nah I don't think he goes to usf, he lives around here though\\
-        \hline
-    \end{tabular}
-    \caption{SMS Spam Collection 数据集部分样本}
-    \label{table_1}
-    \end{table*}
 
 我们使用了一个公开的骚扰短信标注数据集（SMS Spam Collection v.1, \url{http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/}）进行训练，该数据集包含了5574条英文短信数据，其中骚扰短信有470条，正常短信为4827条。表\ref{table_1}列出了数据集的部分样本。\\
 
