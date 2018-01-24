@@ -1,0 +1,1612 @@
+{
+    "pager": {
+        "page": 1,
+        "pageSize": 20,
+        "totalPage": 44,
+        "totalRow": 869
+    },
+    "rewards": [
+        {
+            "ownerId": 544538,
+            "name": "神经网络汇率预测",
+            "description": "利用机器深度学习，接入汇率实时数据，预测汇率走势。",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/9eea1a40-4294-4f17-92b8-025141834f89.png",
+            "price": "50000",
+            "roles": "后端开发",
+            "type": "OTHER",
+            "status": "RECRUITING",
+            "pubTime": "1516705128000",
+            "duration": 90,
+            "firstSample": "https://github.com/llSourcell/ethereum_future/blob/master/A%20Deep%20Learning%20Approach%20to%20Predicting%20Cryptocurrency%20Prices.ipynb",
+            "contactName": "高先生",
+            "contactEmail": "qilovex@vip.qq.com",
+            "contactMobile": "18677779779",
+            "applyCount": 2,
+            "serviceFee": "0",
+            "rewardDemand": "无特殊限制。能完成github所举样例工程即可。",
+            "phoneCountryCode": "+86",
+            "id": 12739,
+            "owner": {
+                "id": 544538,
+                "username": "codin",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "district": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516705128000",
+            "roleType": {
+                "id": 9,
+                "name": "后端开发",
+                "description": "后端开发",
+                "showOrder": 28
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 9,
+            "industry": "2",
+            "industryName": "P2P 金融",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "其他",
+            "visitCount": 41
+        },
+        {
+            "ownerId": 506366,
+            "name": "医疗服务小程序",
+            "description": "医疗服务类小程序，主要功能为为消费者提供药价查询，药师远程咨询等功能，具体可参见产品原型。要求输出设计及前端，后端我方可自行开发",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/84cee959-19bb-43bb-8f37-362bc76c2de3.png",
+            "price": "25000",
+            "roles": "开发团队",
+            "type": "WEAPP",
+            "status": "RECRUITING",
+            "pubTime": "1516699767000",
+            "duration": 30,
+            "contactName": "solarsail",
+            "contactEmail": "ccj@globalnewmed.com",
+            "contactMobile": "13911049013",
+            "firstFile": 67961,
+            "applyCount": 5,
+            "serviceFee": "0",
+            "rewardDemand": "要求必须在北京，有小程序开发经验！\n时间灵活，每周可保证2个半天面对面交流！",
+            "phoneCountryCode": "+86",
+            "id": 12738,
+            "owner": {
+                "id": 506366,
+                "username": "baicaicai",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "name": "baicaicai",
+                "city": {},
+                "province": {},
+                "district": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516699767000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "4",
+            "industryName": "医疗 O2O",
+            "files": [
+                {
+                    "id": 67961,
+                    "filename": "医疗小程序前端.docx",
+                    "url": "http://coding-net-public-file.qiniudn.com/6e9316af-f690-4386-9c57-81bf750acdee.docx",
+                    "extension": "docx",
+                    "size": 69622
+                }
+            ],
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "小程序",
+            "visitCount": 61
+        },
+        {
+            "ownerId": 543854,
+            "name": "区块链应用上海驻场开发-Javascript",
+            "description": "项目介绍：\n某应用的前端开发、编辑器开发，需要驻场，或人在上海可以定期当面交流，并且有较多的时间投入到本项目。\n预期开发量约3人月，需求共2人，具体报价、分工方式面议。\n1.精通 Javascript 前端开发，熟悉 Vue.js 引擎\n2.了解 Web3协议与区块链开发\n3.根据已有需求文档进行开发\n4.有2年以上开发经验，\n5.有良好的契约精神及沟通能力",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/b126469f-eee8-4d12-affb-c5e97495a938.png",
+            "price": "50000",
+            "roles": "开发团队",
+            "type": "HTML5",
+            "status": "RECRUITING",
+            "pubTime": "1516699617000",
+            "duration": 20,
+            "contactName": "上海新番网络科技有限公司",
+            "contactEmail": "xiao.li@seeinfront.com",
+            "contactMobile": "13585775143",
+            "serviceFee": "0",
+            "rewardDemand": "需在上海驻场",
+            "phoneCountryCode": "+86",
+            "id": 12737,
+            "owner": {
+                "id": 543854,
+                "username": "xiao_seeinfront",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "name": "上海新番网络科技有限公司",
+                "city": {
+                    "id": 310101,
+                    "parentId": 310000,
+                    "name": "黄浦区",
+                    "alias": "黄浦区",
+                    "pinyin": "HuangPuQu",
+                    "abbr": "HPQ",
+                    "zip": "200001",
+                    "level": 2
+                },
+                "province": {
+                    "id": 310000,
+                    "name": "上海市",
+                    "alias": "上海",
+                    "pinyin": "ShangHai",
+                    "abbr": "SH",
+                    "zip": "200000",
+                    "level": 1
+                },
+                "district": {},
+                "identityStatus": "CHECKED",
+                "demandType": "ENTERPRISE",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "infoComplete": true,
+                "identityPassed": true,
+                "contractComplete": true,
+                "enterpriseDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 3
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516699617000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "17",
+            "industryName": "游戏",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "HTML5 应用",
+            "visitCount": 38
+        },
+        {
+            "ownerId": 543854,
+            "name": "区块链应用上海驻场开发-PHP",
+            "description": "项目介绍：\n某应用的服务器端接口开发，需要驻场；或人在上海可以定期当面交流，并且有较多的时间投入到本项目。\n预期开发量约1-2人/月，具体报价面议；\n1.精通 PHP 语言，熟悉 laravel 引擎\n2.了解 Web3协议与区块链开发者优先\n3.根据已有需求文档进行开发\n4.有2年以上开发经验，\n5.有良好的契约精神及沟通能力",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/3712e546-b26f-4182-b652-a5779c524e4b.png",
+            "price": "50000",
+            "roles": "开发团队",
+            "type": "HTML5",
+            "status": "RECRUITING",
+            "pubTime": "1516699381000",
+            "duration": 20,
+            "contactName": "上海新番网络科技有限公司",
+            "contactEmail": "xiao.li@seeinfront.com",
+            "contactMobile": "13585775143",
+            "serviceFee": "0",
+            "rewardDemand": "需在上海驻场",
+            "phoneCountryCode": "+86",
+            "id": 12734,
+            "owner": {
+                "id": 543854,
+                "username": "xiao_seeinfront",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "name": "上海新番网络科技有限公司",
+                "city": {
+                    "id": 310101,
+                    "parentId": 310000,
+                    "name": "黄浦区",
+                    "alias": "黄浦区",
+                    "pinyin": "HuangPuQu",
+                    "abbr": "HPQ",
+                    "zip": "200001",
+                    "level": 2
+                },
+                "province": {
+                    "id": 310000,
+                    "name": "上海市",
+                    "alias": "上海",
+                    "pinyin": "ShangHai",
+                    "abbr": "SH",
+                    "zip": "200000",
+                    "level": 1
+                },
+                "district": {},
+                "identityStatus": "CHECKED",
+                "demandType": "ENTERPRISE",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "infoComplete": true,
+                "identityPassed": true,
+                "contractComplete": true,
+                "enterpriseDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 3
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516699381000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "17",
+            "industryName": "游戏",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "HTML5 应用",
+            "visitCount": 14
+        },
+        {
+            "ownerId": 543854,
+            "name": "区块链应用智能合约开发-Solidity",
+            "description": "项目介绍：\n某应用的智能合约开发，可以远程合作。预期第一期2-3个智能合约，具体报价面议。\n1.精通 Solidity智能合约开发\n2.有实际上线项目，了解项目从开发到上线的全部步骤\n3.根据已有需求文档进行开发，\n4.有良好的契约精神及沟通能力\n时间周期：1-2周",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/41d71f72-10d5-40a6-b8f2-37fab87f4e70.png",
+            "price": "50000",
+            "roles": "开发团队",
+            "type": "HTML5",
+            "status": "RECRUITING",
+            "pubTime": "1516699216000",
+            "duration": 14,
+            "contactName": "上海新番网络科技有限公司",
+            "contactEmail": "xiao.li@seeinfront.com",
+            "contactMobile": "13585775143",
+            "applyCount": 2,
+            "serviceFee": "0",
+            "rewardDemand": "可远程",
+            "phoneCountryCode": "+86",
+            "id": 12730,
+            "owner": {
+                "id": 543854,
+                "username": "xiao_seeinfront",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "name": "上海新番网络科技有限公司",
+                "city": {
+                    "id": 310101,
+                    "parentId": 310000,
+                    "name": "黄浦区",
+                    "alias": "黄浦区",
+                    "pinyin": "HuangPuQu",
+                    "abbr": "HPQ",
+                    "zip": "200001",
+                    "level": 2
+                },
+                "province": {
+                    "id": 310000,
+                    "name": "上海市",
+                    "alias": "上海",
+                    "pinyin": "ShangHai",
+                    "abbr": "SH",
+                    "zip": "200000",
+                    "level": 1
+                },
+                "district": {},
+                "identityStatus": "CHECKED",
+                "demandType": "ENTERPRISE",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "infoComplete": true,
+                "identityPassed": true,
+                "contractComplete": true,
+                "enterpriseDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 3
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516699216000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "17",
+            "industryName": "游戏",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "HTML5 应用",
+            "visitCount": 31
+        },
+        {
+            "ownerId": 544494,
+            "name": "培训机构信息展示网站",
+            "description": "一个小型培训班的网站，主要用来展示培训机构介绍，老师信息，课程信息，开课时间等。暂时不需要太多动态内容。",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/e496cbee-1585-4b28-b417-4555bd4988ad.png",
+            "price": "1500",
+            "roles": "前端开发",
+            "status": "RECRUITING",
+            "pubTime": "1516696795000",
+            "duration": 14,
+            "firstSample": "http://www.520it.com/",
+            "contactName": "蓝先生",
+            "contactEmail": "511310095@qq.com",
+            "contactMobile": "17097238150",
+            "applyCount": 6,
+            "serviceFee": "0",
+            "rewardDemand": "有前端开发经验，熟悉js css h5，最好有过类似项目经验。在深圳优先考虑~",
+            "phoneCountryCode": "+86",
+            "id": 12728,
+            "owner": {
+                "id": 544494,
+                "username": "deeplan",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "district": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516696795000",
+            "roleType": {
+                "id": 5,
+                "name": "前端开发",
+                "description": "前端开发",
+                "showOrder": 27
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 5,
+            "industry": "14,13",
+            "industryName": "教育,内容管理 CMS",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "Web 网站",
+            "visitCount": 53
+        },
+        {
+            "ownerId": 189522,
+            "name": "【小白健康】小程序日常维护",
+            "description": "小程序日常维护                                                                          ",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/84cee959-19bb-43bb-8f37-362bc76c2de3.png",
+            "price": "4620",
+            "roles": "后端开发",
+            "type": "WEAPP",
+            "status": "RECRUITING",
+            "pubTime": "1516688672000",
+            "duration": 7,
+            "contactName": "刘宇",
+            "contactEmail": "1423426860@qq.com",
+            "contactMobile": "13918460558",
+            "applyCount": 2,
+            "serviceFee": "0",
+            "rewardDemand": "小程序日常维护",
+            "phoneCountryCode": "+86",
+            "id": 12723,
+            "owner": {
+                "id": 189522,
+                "username": "georgeliuyu",
+                "avatar": "https://dn-coding-net-production-static.qbox.me/325196a6-032d-4b58-952a-8ca3d0acf789.png?imageMogr2/auto-orient/format/png/crop/!509x509a0a0",
+                "status": "ACTIVATED",
+                "name": "刘宇",
+                "city": {
+                    "id": 310115,
+                    "parentId": 310000,
+                    "name": "浦东新区",
+                    "alias": "浦东新区",
+                    "pinyin": "PuDongXinQu",
+                    "abbr": "PDXQ",
+                    "zip": "200120",
+                    "level": 2
+                },
+                "province": {
+                    "id": 310000,
+                    "name": "上海市",
+                    "alias": "上海",
+                    "pinyin": "ShangHai",
+                    "abbr": "SH",
+                    "zip": "200000",
+                    "level": 1
+                },
+                "identityStatus": "CHECKED",
+                "demandType": "ENTERPRISE",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "developerManager": {},
+                "infoComplete": true,
+                "identityPassed": true,
+                "contractComplete": true,
+                "enterpriseDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 97
+                },
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516688672000",
+            "roleType": {
+                "id": 9,
+                "name": "后端开发",
+                "description": "后端开发",
+                "showOrder": 28
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 9,
+            "industry": "4",
+            "industryName": "医疗 O2O",
+            "statusText": "招募中",
+            "typeText": "小程序",
+            "visitCount": 47
+        },
+        {
+            "ownerId": 544225,
+            "name": "安卓手机脚本-辅助自动抢订单",
+            "description": "安卓手机辅助脚本.辅助自动抢某个app平台上的订单  速度要快（极速）.功能要求 识别订单：即时订单/预约订单/订单公里/订单金额多少-要可设 可调.要求通用任何一台安卓手机能正常使用.要生成激活码机器.有这方面经验的优先合作。能做出来的请接单 \n再谈谈价格 详细的具体要求……",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/84cee959-19bb-43bb-8f37-362bc76c2de3.png",
+            "price": "3000",
+            "roles": "Android开发",
+            "type": "WEAPP",
+            "status": "RECRUITING",
+            "pubTime": "1516685108000",
+            "duration": 7,
+            "contactName": "R先生",
+            "contactEmail": "523157249@qq.com",
+            "contactMobile": "18218881488",
+            "applyCount": 1,
+            "serviceFee": "0",
+            "rewardDemand": "安卓手机辅助脚本.辅助自动抢某个app平台上的订单  速度要快（极速）.功能要求 识别订单：即时订单/预约订单/订单公里/订单金额多少-要可设 可调.要求通用任何一台安卓手机能正常使用.要生成激活码机器.有这方面经验的优先合作。能做出来的请接单 \n再谈谈价格 详细的具体要求……",
+            "phoneCountryCode": "+86",
+            "id": 12710,
+            "owner": {
+                "id": 544225,
+                "username": "R18218881488",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "name": "R先生",
+                "city": {
+                    "id": 440600,
+                    "parentId": 440000,
+                    "name": "佛山市",
+                    "alias": "佛山",
+                    "pinyin": "FuShan",
+                    "abbr": "FS",
+                    "zip": "528000",
+                    "level": 2
+                },
+                "province": {
+                    "id": 440000,
+                    "name": "广东省",
+                    "alias": "广东",
+                    "pinyin": "GuangDong",
+                    "abbr": "GD",
+                    "zip": "510000",
+                    "level": 1
+                },
+                "district": {
+                    "id": 440605,
+                    "parentId": 440600,
+                    "name": "南海区",
+                    "alias": "南海区",
+                    "pinyin": "NanHaiQu",
+                    "abbr": "NHQ",
+                    "zip": "528200",
+                    "level": 3
+                },
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516685108000",
+            "roleType": {
+                "id": 6,
+                "name": "Android开发",
+                "description": "Android开发",
+                "showOrder": 24
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 6,
+            "industry": "18,16,19",
+            "industryName": "平台类,智能硬件,工具类",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "小程序",
+            "visitCount": 51
+        },
+        {
+            "ownerId": 543970,
+            "name": "智慧建筑",
+            "description": "参考汽车之家手机端的全景图及3d功能，通过建筑模型实现对项目的实时显示和反馈。",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/84cee959-19bb-43bb-8f37-362bc76c2de3.png",
+            "price": "300000",
+            "roles": "开发团队",
+            "type": "WEAPP",
+            "status": "RECRUITING",
+            "pubTime": "1516667668000",
+            "duration": 70,
+            "contactName": "深圳市方大建科集团有限公司",
+            "contactEmail": "xingsj@fangda.com",
+            "contactMobile": "18620372253",
+            "applyCount": 12,
+            "serviceFee": "0",
+            "rewardDemand": "要求团队在广州深圳地区，需要前端后端开发分别至少一名是全职，其余可以考虑兼职。\n发包方可以提供位于深圳南山科技园办公室供团队驻场办公",
+            "phoneCountryCode": "+86",
+            "id": 12705,
+            "owner": {
+                "id": 543970,
+                "username": "bluesurfire",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "name": "深圳市方大建科集团有限公司",
+                "city": {
+                    "id": 440300,
+                    "parentId": 440000,
+                    "name": "深圳市",
+                    "alias": "深圳",
+                    "pinyin": "ShenZhen",
+                    "abbr": "SZ",
+                    "zip": "518000",
+                    "level": 2
+                },
+                "province": {
+                    "id": 440000,
+                    "name": "广东省",
+                    "alias": "广东",
+                    "pinyin": "GuangDong",
+                    "abbr": "GD",
+                    "zip": "510000",
+                    "level": 1
+                },
+                "district": {
+                    "id": 440305,
+                    "parentId": 440300,
+                    "name": "南山区",
+                    "alias": "南山区",
+                    "pinyin": "NanShanQu",
+                    "abbr": "NSQ",
+                    "zip": "518052",
+                    "level": 3
+                },
+                "identityStatus": "CHECKED",
+                "demandType": "ENTERPRISE",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "infoComplete": true,
+                "identityPassed": true,
+                "contractComplete": true,
+                "enterpriseDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516667668000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "13,18,19",
+            "industryName": "内容管理 CMS,平台类,工具类",
+            "statusText": "招募中",
+            "typeText": "小程序",
+            "visitCount": 132
+        },
+        {
+            "ownerId": 544352,
+            "name": "个人用的单机app",
+            "description": "1.一期项目的设计要求：是我私人使用的单机APP，自己出的费用，非公司性质，请不要议价，接受价格者再接单。最主要的就是涉及：将excel数据导入手机app的SQLite数据库，app将数据自定义多级分组。也就是任意层级树形列表和选择列表间对SQLite的数据操作。\n\n2.请一定先看，附件的说明文档。请在Android下精通SQLite和JAVA的再接单。\n\n3.能按时按之质交付的，二期有望继续合作。",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/ef076319-59d6-4fdb-af06-59f9479c49e7.png",
+            "price": "3000",
+            "roles": "Android开发",
+            "type": "APP",
+            "status": "RECRUITING",
+            "pubTime": "1516642216000",
+            "duration": 15,
+            "contactName": "陆先生",
+            "contactEmail": "10915843@qq.com",
+            "contactMobile": "18877281747",
+            "firstFile": 67810,
+            "applyCount": 2,
+            "serviceFee": "0",
+            "rewardDemand": "应在Android下精通SQLite和JAVA的",
+            "phoneCountryCode": "+86",
+            "id": 12701,
+            "owner": {
+                "id": 544352,
+                "username": "ludwj",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "district": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516642216000",
+            "roleType": {
+                "id": 6,
+                "name": "Android开发",
+                "description": "Android开发",
+                "showOrder": 24
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 6,
+            "industry": "23",
+            "industryName": "其他",
+            "files": [
+                {
+                    "id": 67810,
+                    "filename": "说明文档.docx",
+                    "url": "http://coding-net-public-file.qiniudn.com/ae3f3af6-84a4-4835-a3b3-c2c9d7da5621.docx",
+                    "extension": "docx",
+                    "size": 707018
+                }
+            ],
+            "statusText": "招募中",
+            "typeText": "APP 开发",
+            "visitCount": 116
+        },
+        {
+            "ownerId": 544317,
+            "name": "游戏源码修复",
+            "description": "目前源码不完整,需要修复功能并成功架设进入游戏.制作场景编辑器/模型编辑器\n游戏为2D回合制,\n源码连接 https://drive.google.com/file/d/0B2haC5o7Q0_9U0JXajF1Unp2bUE/view?usp=sharing",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/9e10564c-a40f-4824-95bc-a000d5be045f.png",
+            "price": "5000",
+            "roles": "后端开发",
+            "type": "OTHER",
+            "status": "RECRUITING",
+            "pubTime": "1516624685000",
+            "duration": 30,
+            "firstSample": "http://games.qq.com/z/mwol/",
+            "contactName": "孙俊峰",
+            "contactEmail": "969623300@qq.com",
+            "contactMobile": "18566772752",
+            "applyCount": 1,
+            "serviceFee": "0",
+            "rewardDemand": "vc++,",
+            "phoneCountryCode": "+86",
+            "id": 12699,
+            "owner": {
+                "id": 544317,
+                "username": "aspchina",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "name": "孙俊峰",
+                "city": {
+                    "id": 440300,
+                    "parentId": 440000,
+                    "name": "深圳市",
+                    "alias": "深圳",
+                    "pinyin": "ShenZhen",
+                    "abbr": "SZ",
+                    "zip": "518000",
+                    "level": 2
+                },
+                "province": {
+                    "id": 440000,
+                    "name": "广东省",
+                    "alias": "广东",
+                    "pinyin": "GuangDong",
+                    "abbr": "GD",
+                    "zip": "510000",
+                    "level": 1
+                },
+                "district": {
+                    "id": 440310,
+                    "parentId": 440300,
+                    "name": "龙华新区",
+                    "alias": "龙华",
+                    "pinyin": "LongHuaXinQu",
+                    "abbr": "LHXQ",
+                    "zip": "518110",
+                    "level": 3
+                },
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "infoComplete": true,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516624685000",
+            "roleType": {
+                "id": 9,
+                "name": "后端开发",
+                "description": "后端开发",
+                "showOrder": 28
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 9,
+            "industry": "17",
+            "industryName": "游戏",
+            "statusText": "招募中",
+            "typeText": "其他",
+            "visitCount": 66
+        },
+        {
+            "ownerId": 149621,
+            "name": "平台小程序游戏化UI设计",
+            "description": "小程序模块包括：\n个人管理（订单、钱包、卡包、经验值、等级、积分、勋章）\n门店搜索、门店介绍、门店预约、门店数据\n竞猜\n排行榜\n天梯赛\n好友约战\n商店（道具、奖品兑换/购买）",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/84cee959-19bb-43bb-8f37-362bc76c2de3.png",
+            "price": "30000",
+            "roles": "设计师",
+            "type": "WEAPP",
+            "status": "RECRUITING",
+            "pubTime": "1516612819000",
+            "duration": 15,
+            "firstSample": "头脑王者",
+            "contactName": "钟先生",
+            "contactEmail": "1943024@qq.com",
+            "contactMobile": "18628000512",
+            "applyCount": 3,
+            "serviceFee": "0",
+            "rewardDemand": "类似“头脑王者”的小程序界面设计，要求全部手绘原创。",
+            "phoneCountryCode": "+86",
+            "id": 12697,
+            "owner": {
+                "id": 149621,
+                "username": "yefudy",
+                "avatar": "https://coding.net/static/fruit_avatar/Fruit-10.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "developerManager": {},
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 7
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516612819000",
+            "roleType": {
+                "id": 2,
+                "name": "设计师",
+                "description": "设计师",
+                "showOrder": 22
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 2,
+            "industry": "11,17",
+            "industryName": "运动类 O2O,游戏",
+            "statusText": "招募中",
+            "typeText": "小程序",
+            "visitCount": 72
+        },
+        {
+            "ownerId": 149621,
+            "name": "真实钓鱼游戏系统开发",
+            "description": "xxx是一家室内钓鱼馆品牌，定位“钓鱼+娱乐”的新型消费场景。结合智能化、游戏化、社交化打造一个超有趣的室内钓鱼馆品牌。\n\n软件系统：\n平台管理端（web）：平台全局设置、店铺管理、采购管理、商品管理、订单管理、会员管理、游戏管理、营销管理（竞猜、裂变红包、优惠券）、财务管理、数据分析；\n店铺管理端（web）：店铺设置、采购管理、商品管理、订单管理、会员管理、游戏管理、营销管理、数据分析、资产管理；\n消费者端（小程序）：\n门店搜索、门店预约、门店数据、排行榜、排位赛、好友对战、商城（道具、奖品）、个人管理（经验值、等级、积分、钱包、卡包、订单）、\n\n硬件设备：\n收银机\n电子鱼护\n互动电视机\n手环\n",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/9eea1a40-4294-4f17-92b8-025141834f89.png",
+            "price": "20000",
+            "roles": "产品经理",
+            "type": "OTHER",
+            "status": "RECRUITING",
+            "pubTime": "1516612418000",
+            "duration": 15,
+            "firstSample": "ktv解决方案",
+            "secondSample": "桑拿系统解决方案",
+            "contactName": "钟宇航",
+            "contactEmail": "1943024@qq.com",
+            "contactMobile": "18628000512",
+            "firstFile": 67786,
+            "secondFile": 67786,
+            "serviceFee": "0",
+            "rewardDemand": "需要有参与B端和C端的产品经验，能够结合市场情况，输出一套需求文档和原型文档。",
+            "phoneCountryCode": "+86",
+            "id": 12694,
+            "owner": {
+                "id": 149621,
+                "username": "yefudy",
+                "avatar": "https://coding.net/static/fruit_avatar/Fruit-10.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "developerManager": {},
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 7
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516612418000",
+            "roleType": {
+                "id": 10,
+                "name": "产品经理",
+                "description": "负责产品原型制作、需求文档撰写",
+                "showOrder": 21
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 10,
+            "industry": "18,11",
+            "industryName": "平台类,运动类 O2O",
+            "files": [
+                {
+                    "id": 67786,
+                    "filename": "F1DAE438-A69D-4874-9C3A-172622694F2F-346-00000108BB19A162_tmp.JPG",
+                    "url": "http://coding-net-public-file.qiniudn.com/2ffe5709-96f5-4a88-b25c-46a4bd218df0.JPG",
+                    "extension": "JPG",
+                    "size": 1614159
+                },
+                {
+                    "id": 67786,
+                    "filename": "F1DAE438-A69D-4874-9C3A-172622694F2F-346-00000108BB19A162_tmp.JPG",
+                    "url": "http://coding-net-public-file.qiniudn.com/2ffe5709-96f5-4a88-b25c-46a4bd218df0.JPG",
+                    "extension": "JPG",
+                    "size": 1614159
+                }
+            ],
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "其他",
+            "visitCount": 61
+        },
+        {
+            "ownerId": 544272,
+            "name": "嵌入式视频设备网页前后端",
+            "description": "1、h.264视频流网页播放\n2、功能包括后端推流传输，前端收流显示\n2、移动端、PC端浏览器适配\n3、后端开发go、c语言优先，其他语言面议\n4、完整实现前后端功能，附带源代码",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/3712e546-b26f-4182-b652-a5779c524e4b.png",
+            "price": "15000",
+            "roles": "开发团队",
+            "type": "HTML5",
+            "status": "RECRUITING",
+            "pubTime": "1516611562000",
+            "duration": 30,
+            "contactName": "黄",
+            "contactEmail": "hxin_94@163.com",
+            "contactMobile": "18120179653",
+            "applyCount": 5,
+            "serviceFee": "0",
+            "rewardDemand": "1、h264视频播放\n2、前端h5开发优先，后端go\\c开发优先",
+            "phoneCountryCode": "+86",
+            "id": 12690,
+            "owner": {
+                "id": 544272,
+                "username": "H_Xode",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "district": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516611562000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "16",
+            "industryName": "智能硬件",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "HTML5 应用",
+            "visitCount": 62
+        },
+        {
+            "ownerId": 544250,
+            "name": "小型健身馆用户app",
+            "description": "1.为小型健身房使用，客户要能注册，要能查看课程，要能预约课程，要能充值，然后可能对课程可以评论啊留言建议；\n2.然后官方后台可以查看用户信息，更新课程，收款，等操作内容。",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/ef076319-59d6-4fdb-af06-59f9479c49e7.png",
+            "price": "20000",
+            "roles": "开发团队",
+            "type": "APP",
+            "status": "RECRUITING",
+            "pubTime": "1516607866000",
+            "duration": 45,
+            "contactName": "leo",
+            "contactEmail": "qian.liu.0823@gmail.com",
+            "contactMobile": "15510128884",
+            "applyCount": 32,
+            "serviceFee": "0",
+            "rewardDemand": "靠谱，有兴趣，有相关经验更好",
+            "phoneCountryCode": "+86",
+            "id": 12686,
+            "owner": {
+                "id": 544250,
+                "username": "leo_rj",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "district": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516607866000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "11",
+            "industryName": "运动类 O2O",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "APP 开发",
+            "visitCount": 136
+        },
+        {
+            "ownerId": 189522,
+            "name": "【小白健康】找一个长期接包python后端",
+            "description": "我们希望请你来阅读小白服务后端代码，了解后端服务技术架构。\n目的是找到能全职远程的后端同学，承诺每月不低于10k的任务。\n详情见：https://shimo.im/doc/9FDVsDfqyvIZH7S0?r=LJZED",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/84cee959-19bb-43bb-8f37-362bc76c2de3.png",
+            "price": "1000",
+            "roles": "后端开发",
+            "type": "WEAPP",
+            "status": "RECRUITING",
+            "pubTime": "1516602986000",
+            "duration": 7,
+            "contactName": "刘宇",
+            "contactEmail": "1423426860@qq.com",
+            "contactMobile": "13918460558",
+            "applyCount": 2,
+            "serviceFee": "0",
+            "rewardDemand": "平均issue回复时间30min\n全职 SOHO，不考虑兼职\n接下来若可能，有充分的时间参与项目开发进一步工作\n后端经验3年以上，有架构经验更佳\n有责任心\n\n进度管理：\n可以进行一次时间调整申请，最长不超过2天。\n未申请或已经有过调整的，每延期一天按项目金额的10%进行罚款。\n超过5天，需求方有权取消项目。\n需求方原因造成的延误不包含在内。",
+            "phoneCountryCode": "+86",
+            "id": 12682,
+            "owner": {
+                "id": 189522,
+                "username": "georgeliuyu",
+                "avatar": "https://dn-coding-net-production-static.qbox.me/325196a6-032d-4b58-952a-8ca3d0acf789.png?imageMogr2/auto-orient/format/png/crop/!509x509a0a0",
+                "status": "ACTIVATED",
+                "name": "刘宇",
+                "city": {
+                    "id": 310115,
+                    "parentId": 310000,
+                    "name": "浦东新区",
+                    "alias": "浦东新区",
+                    "pinyin": "PuDongXinQu",
+                    "abbr": "PDXQ",
+                    "zip": "200120",
+                    "level": 2
+                },
+                "province": {
+                    "id": 310000,
+                    "name": "上海市",
+                    "alias": "上海",
+                    "pinyin": "ShangHai",
+                    "abbr": "SH",
+                    "zip": "200000",
+                    "level": 1
+                },
+                "identityStatus": "CHECKED",
+                "demandType": "ENTERPRISE",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "developerManager": {},
+                "infoComplete": true,
+                "identityPassed": true,
+                "contractComplete": true,
+                "enterpriseDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 97
+                },
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516602986000",
+            "roleType": {
+                "id": 9,
+                "name": "后端开发",
+                "description": "后端开发",
+                "showOrder": 28
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 9,
+            "industry": "4",
+            "industryName": "医疗 O2O",
+            "statusText": "招募中",
+            "typeText": "小程序",
+            "visitCount": 123
+        },
+        {
+            "ownerId": 189522,
+            "name": "【小白健康】小程序应用测试",
+            "description": "看懂小白健康的issue icp管理流程，并能整理一份流程图\n本需求仅仅是为了给双方进行一次了解。\n详细看：https://github.com/sibbay-ai/public",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/9e10564c-a40f-4824-95bc-a000d5be045f.png",
+            "price": "1000",
+            "roles": "测试工程师",
+            "type": "OTHER",
+            "status": "RECRUITING",
+            "pubTime": "1516599922000",
+            "duration": 7,
+            "contactName": "刘宇",
+            "contactEmail": "1423426860@qq.com",
+            "contactMobile": "18017921481",
+            "applyCount": 1,
+            "serviceFee": "0",
+            "rewardDemand": "了解软件开发的流程，特别是敏捷开发流程。\n精通github的使用\n条理清楚，文字能力强，熟悉流程图\n坚持原则，不达目的不罢休\n善于和人沟通\n女同学优先\n9:00-23:00能随时保持通信畅通\n全职soho",
+            "phoneCountryCode": "+86",
+            "id": 12681,
+            "owner": {
+                "id": 189522,
+                "username": "georgeliuyu",
+                "avatar": "https://dn-coding-net-production-static.qbox.me/325196a6-032d-4b58-952a-8ca3d0acf789.png?imageMogr2/auto-orient/format/png/crop/!509x509a0a0",
+                "status": "ACTIVATED",
+                "name": "刘宇",
+                "city": {
+                    "id": 310115,
+                    "parentId": 310000,
+                    "name": "浦东新区",
+                    "alias": "浦东新区",
+                    "pinyin": "PuDongXinQu",
+                    "abbr": "PDXQ",
+                    "zip": "200120",
+                    "level": 2
+                },
+                "province": {
+                    "id": 310000,
+                    "name": "上海市",
+                    "alias": "上海",
+                    "pinyin": "ShangHai",
+                    "abbr": "SH",
+                    "zip": "200000",
+                    "level": 1
+                },
+                "identityStatus": "CHECKED",
+                "demandType": "ENTERPRISE",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "developerManager": {},
+                "infoComplete": true,
+                "identityPassed": true,
+                "contractComplete": true,
+                "enterpriseDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 97
+                },
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516599922000",
+            "roleType": {
+                "id": 12,
+                "name": "测试工程师",
+                "description": "测试工程师",
+                "showOrder": 34
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 12,
+            "industry": "4",
+            "industryName": "医疗 O2O",
+            "statusText": "招募中",
+            "typeText": "其他",
+            "visitCount": 58
+        },
+        {
+            "ownerId": 544194,
+            "name": "公司内部管理系统",
+            "description": "一个财务公司的内部管理系统，里面会有一些客户管理内容。\n需要你做需求文档和原型设计",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/c80d96c7-b9f1-4763-bfa5-87d81c6386ab.png",
+            "price": "3000",
+            "roles": "产品经理",
+            "status": "RECRUITING",
+            "pubTime": "1516590655000",
+            "duration": 10,
+            "firstSample": "爱客crm",
+            "secondSample": "快启",
+            "contactName": "梁",
+            "contactEmail": "918872153@qq.com",
+            "contactMobile": "13880316721",
+            "applyCount": 7,
+            "serviceFee": "0",
+            "rewardDemand": "成都本地，三年以上产品经验",
+            "phoneCountryCode": "+86",
+            "id": 12680,
+            "owner": {
+                "id": 544194,
+                "username": "sa254",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "district": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516590655000",
+            "roleType": {
+                "id": 10,
+                "name": "产品经理",
+                "description": "负责产品原型制作、需求文档撰写",
+                "showOrder": 21
+            },
+            "developerType": "PERSONAL",
+            "developerRole": 10,
+            "industry": "2",
+            "industryName": "P2P 金融",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "Web 网站",
+            "visitCount": 144
+        },
+        {
+            "ownerId": 544178,
+            "name": "树莓派可视对讲",
+            "description": "1 使用树莓派的GPU硬解码\n2 视频的延迟时间要小，在局域网内绝对不能超过500ms",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/9eea1a40-4294-4f17-92b8-025141834f89.png",
+            "price": "20000",
+            "roles": "开发团队",
+            "type": "OTHER",
+            "status": "RECRUITING",
+            "pubTime": "1516587742000",
+            "duration": 30,
+            "contactName": "王权",
+            "contactEmail": "happy2041@163.com",
+            "contactMobile": "13212277147",
+            "applyCount": 7,
+            "serviceFee": "0",
+            "rewardDemand": " 必须是公司，能够按时交付使用",
+            "phoneCountryCode": "+86",
+            "id": 12671,
+            "owner": {
+                "id": 544178,
+                "username": "wqdiyx",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "city": {},
+                "province": {},
+                "district": {},
+                "demandType": "PERSONAL",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "contractComplete": true,
+                "personalDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 1
+                },
+                "acceptNewRewardAllNotification": true,
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516587742000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "16",
+            "industryName": "智能硬件",
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "其他",
+            "visitCount": 84
+        },
+        {
+            "ownerId": 519130,
+            "name": "代码抓包",
+            "description": "1、实现在手机端对于任何APP内部访问数据的采集和解析\n2、把这个功能合并封装成sdk",
+            "cover": "https://dn-coding-net-production-pp.qbox.me/84cee959-19bb-43bb-8f37-362bc76c2de3.png",
+            "price": "10000",
+            "roles": "开发团队",
+            "type": "WEAPP",
+            "status": "RECRUITING",
+            "pubTime": "1516586868000",
+            "duration": 20,
+            "contactName": "Eleven",
+            "contactEmail": "zhangzhiqiang@smacloud.com",
+            "contactMobile": "15108102093",
+            "firstFile": 67762,
+            "applyCount": 1,
+            "serviceFee": "0",
+            "rewardDemand": "请先详细阅读需求文件\n如确定合作，个人或团队需提供身份证复印件信息\n地区不限，须全职，时间紧凑",
+            "phoneCountryCode": "+86",
+            "id": 12667,
+            "owner": {
+                "id": 519130,
+                "username": "SMAC",
+                "avatar": "https://dn-coding-net-production-pp.qbox.me/29402486-bf33-4cb4-9ea2-ab4bae89bee2.png",
+                "status": "ACTIVATED",
+                "name": "Eleven",
+                "city": {
+                    "id": 510900,
+                    "parentId": 510000,
+                    "name": "遂宁市",
+                    "alias": "遂宁",
+                    "pinyin": "SuiNing",
+                    "abbr": "SN",
+                    "zip": "629000",
+                    "level": 2
+                },
+                "province": {
+                    "id": 510000,
+                    "name": "四川省",
+                    "alias": "四川",
+                    "pinyin": "SiChuan",
+                    "abbr": "SC",
+                    "zip": "610000",
+                    "level": 1
+                },
+                "district": {
+                    "id": 510903,
+                    "parentId": 510900,
+                    "name": "船山区",
+                    "alias": "船山区",
+                    "pinyin": "ChuanShanQu",
+                    "abbr": "CSQ",
+                    "zip": "629000",
+                    "level": 3
+                },
+                "identityStatus": "CHECKED",
+                "demandType": "ENTERPRISE",
+                "accountType": "DEMAND",
+                "evaluation": 3.0,
+                "infoComplete": true,
+                "identityPassed": true,
+                "contractComplete": true,
+                "enterpriseDemand": true,
+                "isDemand": true,
+                "nextVip": [
+                    "SILVER",
+                    "GOLD",
+                    "DIAMOND"
+                ],
+                "vipName": "普通",
+                "counter": {
+                    "published": 30
+                },
+                "vipServiceFee": 0.1
+            },
+            "remarks": {
+                "remark": [
+                    {}
+                ]
+            },
+            "createdAt": "1516586868000",
+            "roleType": {
+                "id": 11,
+                "name": "开发团队",
+                "description": "开发团队",
+                "showOrder": 33
+            },
+            "developerType": "TEAM",
+            "developerRole": 11,
+            "industry": "23",
+            "industryName": "其他",
+            "files": [
+                {
+                    "id": 67762,
+                    "filename": "Quick3.0 SDK需求.doc",
+                    "url": "http://coding-net-public-file.qiniudn.com/4e9ff170-f56e-4dc7-ba64-003fa44772e2.doc",
+                    "extension": "doc",
+                    "size": 349903
+                }
+            ],
+            "bargain": true,
+            "statusText": "招募中",
+            "typeText": "小程序",
+            "visitCount": 128
+        }
+    ]
+}
