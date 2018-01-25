@@ -20,14 +20,21 @@ class Solution:
         stack = []
         res = []
         p = root
-        if p is None:
-            return res
-        while len(stack) > 0:
+        while len(stack) > 0 or p is not None:
             if p is not None:
                 stack.append(p)
                 p = p.left
             else:
                 p = stack.pop()
+                if p is None:
+                    break
                 res.append(p.val)
                 p = p.right
         return res
+
+if __name__ == '__main__':
+    from mylib.BiTree import constructTree
+    testClass = Solution()
+    testCase = []
+    res = testClass.inorderTraversal(constructTree(testCase))
+    print(res)
