@@ -26,6 +26,8 @@
 那么，对于第 i 天，我们只需要遍历所有的 n，然后按照以上递推公式更新 buy 和 sell 数组，
 就可以得到当天之后，可以获得的收益的最大值。
 当我们遍历完所有天数后，最后一次卖出操作后得到的收益，就是符合条件的最大收益。
+
+注：这个代码在Lintcode上会超时，但是同样的算法换成C++版本的就不会超时，只能吐槽lintcode的超时判定很傻逼了。
 """
 
 class Solution:
@@ -57,5 +59,5 @@ class Solution:
 if __name__ == '__main__':
     testClass = Solution()
     testCase = [4, 4, 6, 1, 1, 4, 2, 5]
-    res = testClass.maxProfit(2, testCase)
+    res = testClass.maxProfit(20000, testCase)
     print(res)
