@@ -20,46 +20,6 @@ FINAL_EPSILON = 0.01 # final value of epsilon
 REPLAY_SIZE = 10000
 BATCH_SIZE = 32 # size of minibatch
 
-def main():
-    # 初始化OpenAI Gym 环境和 DQN Agent
-    env = gym.make(ENV_NAME)
-    agent = DQN(env)
-
-    for episode in xrange(EPISODE):
-        state = env.reset()
-        for step in xrange(STEP):
-            # agent产生一个动作
-            action = agent.egreedy_action(state)
-            # 将动作作用到环境中去，获取动作产生之后的状态
-            next_state, reward, done, _ = env.step(action)
-            # 定义reward
-            reward_agent = -1 if done else 0.1
-            # TODO: 搞懂reward的用法
-            agent.perceive(state, action, reward, next_state, done)
-            state = next_state
-            if done:
-                break
-        # 每100次就评估一次算法
-        if episode % 100 == 0:
-            total_reward = 0
-            for i in xrange(TEST):
-                state = env.reset()
-                for j in xrange(STEP):
-                    env.render()
-                    action = agent.action(state)
-                    state, reward, done, _ = env.step(action)
-                    total_reward += reward
-                    if done: 
-                        break
-            aver_reward = total_reward / TEST
-            print('episode: %d, evaluation average reward: %f'%(episode, aver_reward))
-            if aver_reward >= 200:
-                break
-
-if __name__ == '__main__':
-    main()
-
-
 class DQN():
     '''
     DQN Agent
@@ -82,6 +42,20 @@ class DQN():
         self.session = tf.InteractiveSession()
         self.session.run(tf.initialize_all_variables())
 
+    def weight_variable(self, shape):
+        '''
+        权重构造函数
+        '''
+        initial = tf.truncated_normal(shape)
+        return tf.Variable(initial)
+
+    def bias_variable(self, shape):
+        '''
+        偏置变量构造函数
+        '''
+        initial = tf.constant(0.01, shape=shape)
+        return tf.Variable(initial)
+
     def create_Q_network(self):
         '''
         创建Q网络
@@ -101,19 +75,19 @@ class DQN():
         # Q Value层
         self.Q_value = tf.matmul(h_layer, W2) + b2
 
-    def weight_variable(self, shape):
+    def create_training_method(self):
+        '''定义cost函数以及优化方式
         '''
-        权重构造函数
-        '''
-        initial = tf.truncated_normal(shape)
-        return tf.Variable(initial)
-
-    def bias_variable(self, shape):
-        '''
-        偏置变量构造函数
-        '''
-        initial = tf.constant(0.01, shape=shape)
-        return tf.Variable(initial)
+        self.action_input = tf.placeholder('float', [None, self.action_dim])
+        self.y_input = tf.placeholder('float', [None])
+        # TODO: Q_action 是什么？为什么要采用这种方式结合？
+        # 这一步乘法只是为了把正确的Q value留下，因为action_input是经过one-hot编码的，只有选用的action对应Q value才值得留下
+        Q_action = tf.reduce_sum(tf.multiply(self.Q_value, self.action_input), reduction_indices=1)
+        # 定义cost函数，均方误差 mean squared error
+        # 对一个batch的所有值都进行计算
+        self.cost = tf.reduce_mean(tf.square(self.y_input - Q_action))
+        # 然后使用adam优化器优化
+        self.optimizer = tf.train.AdamOptimizer(0.0001).minimize(self.cost)
 
     def perceive(self, state, action, reward, next_state, done):
         '''感知函数
@@ -132,19 +106,18 @@ class DQN():
 
     def egreedy_action(self, state):
         '''action 输出函数
-        有一定的几率是随机产生一个动作
+        初期的时候，要尽可能多得探索随机动作，随着训练的进行，将更多地依赖Q网络来生成现有的值，以保证网络收敛
         '''
         Q_value = self.Q_value.eval(feed_dict = {
             self.state_input: [state]
         })[0]
-        # 通过self.epsilon来控制几率
+        # 通过self.epsilon来控制几率，并且随机探索的概率逐渐下降
+        self.epilon -= (INITIAL_EPSILON - FINAL_EPSILON) / 10000
         if random.random() <= self.epilon:
             return random.randint(0, self.action_dim - 1)
         else:
             return np.argmax(Q_value)
-
-        self.epilon -= (INITIAL_EPSILON - FINAL_EPSILON) / 10000
-
+        
     def action(self, state):
         '''action 输出函数
         根据神经网络的结果输出下一步动作
@@ -152,17 +125,6 @@ class DQN():
         return np.argmax(self.Q_value.eval(feed_dict = {
             self.state_input: [state]
         })[0])
-
-    def create_training_method(self):
-        '''定义cost函数以及优化方式
-        '''
-        self.action_input = tf.placeholder('float', [None, self.action_dim])
-        self.y_input = tf.placeholder('float', [None])
-        Q_action = tf.reduce_sum(tf.matmul(self.Q_value, self.action_input), reduction_indices=1)
-        # 定义cost函数
-        self.cost = tf.reduce_mean(tf.square(self.y_input - Q_action))
-        # 然后使用adam优化器优化
-        self.optimizer = tf.train.AdamOptimizer(0.0001).minimize(self.cost)
 
     def train_Q_network(self):
         '''训练Q网络
@@ -173,7 +135,7 @@ class DQN():
         minibatch = random.sample(self.reply_buffer, BATCH_SIZE)
         state_batch = [data[0] for data in minibatch]
         action_batch = [data[1] for data in minibatch]
-        reward_batch = [data[2] for data in minibatch]
+        reward_batch = [data[2] for data in minibatch] # TODO: reward是谁产生的
         next_state_batch = [data[3] for data in minibatch]
 
         # 2. 计算y
@@ -194,3 +156,44 @@ class DQN():
             self.action_input: action_batch,
             self.state_input: state_batch
         })
+
+def main():
+    # 初始化OpenAI Gym 环境和 DQN Agent
+    env = gym.make(ENV_NAME)
+    agent = DQN(env)
+
+    for episode in range(EPISODE):
+        state = env.reset()
+        for step in range(STEP):
+            # agent产生一个动作
+            action = agent.egreedy_action(state)
+            # 将动作作用到环境中去，获取动作产生之后的状态
+            next_state, reward, done, _ = env.step(action)
+            # 定义reward
+            # reward_agent = -1 if done else 0.1
+            # TODO: 搞懂reward的用法
+            agent.perceive(state, action, reward, next_state, done)
+            state = next_state
+            if done:
+                break
+        # 每100次就评估一次算法
+        if episode % 100 == 0:
+            total_reward = 0
+            for i in range(TEST):
+                state = env.reset()
+                for j in range(STEP):
+                    env.render()
+                    action = agent.action(state)
+                    state, reward, done, _ = env.step(action)
+                    total_reward += reward
+                    if done: 
+                        break
+            aver_reward = total_reward / TEST
+            print('episode: %d, evaluation average reward: %f'%(episode, aver_reward))
+            if aver_reward >= 200:
+                break
+
+if __name__ == '__main__':
+    main()
+
+
