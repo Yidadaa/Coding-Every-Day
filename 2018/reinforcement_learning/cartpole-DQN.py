@@ -1,5 +1,6 @@
 '''
 第一个增强学习算法
+使用deep Q-learning 完成cartpole任务
 '''
 
 import gym
