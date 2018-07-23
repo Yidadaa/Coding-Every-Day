@@ -6,6 +6,12 @@ class ListNode(object):
         self.val = val
         self.next = next
 
+class RandomListNode:
+    def __init__(self, x):
+        self.label = x
+        self.next = None
+        self.random = None
+
 def traverseList(l, func=lambda x: x):
     """
     遍历链表
@@ -17,7 +23,7 @@ def traverseList(l, func=lambda x: x):
         func(l.val)
         l = l.next
 
-def constructList(array):
+def constructList(array, nodeConstructor=ListNode):
     """
     从数组构造链表
     Args:
@@ -28,6 +34,7 @@ def constructList(array):
     """
     lastNode = None
     for i in range(len(array) - 1, -1, -1):
-        tmpNode = ListNode(array[i], lastNode)
+        tmpNode = nodeConstructor(array[i])
+        tmpNode.next = lastNode
         lastNode = tmpNode
     return lastNode
