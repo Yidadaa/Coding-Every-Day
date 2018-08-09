@@ -23,18 +23,25 @@ def traverseList(l, func=lambda x: x):
         func(l.val)
         l = l.next
 
-def constructList(array, nodeConstructor=ListNode):
+def constructList(array, nodeConstructor=ListNode, cycleIndex=-1):
     """
     从数组构造链表
     Args:
         array: 包含链表元素的数组
+        nodeConstructor: 不同的链表的类
+        tail: 带环链表的入口索引
 
     Return:
         List: 链表
     """
     lastNode = None
+    tail = None
     for i in range(len(array) - 1, -1, -1):
         tmpNode = nodeConstructor(array[i])
         tmpNode.next = lastNode
+        if tail == None:
+            tail = tmpNode
         lastNode = tmpNode
+        if i == cycleIndex:
+            tail.next = tmpNode
     return lastNode
