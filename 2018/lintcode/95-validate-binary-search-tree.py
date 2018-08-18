@@ -12,9 +12,7 @@ class Solution:
     @return: True if the binary tree is BST, or false
     """
     def isValidBST(self, root, min=float('-inf'), max=float('inf')):
-        if root == None:
-            return True
-        return root.val < max and root.val > min and self.isValidBST(root.left, min, root.val) and self.isValidBST(root.right, root.val, max)
+        return not root or root.val < max and root.val > min and self.isValidBST(root.left, min, root.val) and self.isValidBST(root.right, root.val, max)
 
 if __name__ == '__main__':
     from mylib.BiTree import *
