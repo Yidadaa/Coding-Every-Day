@@ -37,7 +37,7 @@ def policy_gradient():
 
 def value_gradient():
     '''使用VG方法进行训练
-    TODO: 与DQN的方法有何不同？
+    这个其实是value function
     '''
     with tf.variable_scope('value'):
         state = tf.placeholder('float', [None, 4])
@@ -84,6 +84,7 @@ def run_episode(env, policy_grad, value_grad, sess):
         # 将动作作用到环境
         old_observation = observation
         observation, reward, done, info = env.step(action)
+        env.render()
         # 存储信息
         transitions.append((old_observation, action, reward))
         totalreward += reward
@@ -94,7 +95,7 @@ def run_episode(env, policy_grad, value_grad, sess):
     for i, trans in enumerate(transitions):
         obs, action, reward = trans
 
-        # 计算未来的reward
+        # 计算未来的reward，蒙特卡洛策略梯度
         future_reward = 0
         future_transitions = len(transitions) - i
         decrease = 1 # 衰减系数
