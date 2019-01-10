@@ -1,0 +1,44 @@
+\documentclass{article}
+
+    \input{../template/structure.tex}
+    
+    \title{CFM AI\&VR Weekly Report: Week \#2 of 2019}
+    
+    \author{Zhang Yifei(\texttt{yidadaa@qq.com})}
+    
+    \date{UESTC --- \today}
+    
+    \begin{document}
+    
+    \maketitle
+
+    \section{Summary}
+    Last sunday, I finished the last examination of this semester. And then I immediately started the survey of SLAM. 
+
+    \section{Paper Reading: CNN-SLAM}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth,natwidth=1273,natheight=365]{./img/cnn-slam-overview.aux}
+    \end{figure}
+
+    CNN-SLAM is a direct monolular SLAM algorithm, which is inspired by LSD-SLAM.
+    \subsection{Main Methods}
+    \begin{itemize}
+        \item The camera pose estimation is inspired by the key-frame approach in LSD-SLAM. But in contrast to LSD-SLAM, CNN-SLAM uses a CNN-based depth prediction to generate the depth map, which could validly solve the limitations of traditional monolular SLAM.
+        \item The main contribution of CNN-SLAM is the scheme employed to refine the CNN-predicted depth map associated to each key-frame via small-baseline stero matching.
+        \item The framework of CNN-SLAM is capable of jointly reonstructing the scene while fusing semantic segmentation labels.
+    \end{itemize}
+
+    \subsection{Conclusion}
+    \begin{itemize}
+        \item CNN-SLAM can run in real-time since the two processes of depth prediction from CNNs run on GPU and other stages run on CPU.
+        \item CNN-SLAM overcomes many limitations of traditional SLAM, especially with respect to estimating the absolute scale, obtaining dense depths along texture-less regions andg dealing with pure rotational motions.
+    \end{itemize}
+    \section{Plan}
+    I will continue reading more papers and textbooks about SLAM. Here is a list of to-be-read materiels:
+    \begin{itemize}
+        \item Paper: LSD-SLAM: Large-Scale Direct Monocular SLAM
+        \item Paper: ORB-SLAM2: an Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras
+        \item Textbook: <14 lectures on visual SLAM>
+    \end{itemize}
+    \end{document}
