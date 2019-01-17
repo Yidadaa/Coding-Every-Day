@@ -1,0 +1,42 @@
+\documentclass{article}
+
+    \input{../template/structure.tex}
+    
+    \title{CFM AI\&VR Weekly Report: Week \#3 of 2019}
+    
+    \author{Zhang Yifei(\texttt{yidadaa@qq.com})}
+    
+    \date{UESTC --- \today}
+    
+    \begin{document}
+    
+    \maketitle
+
+    \section{Summary}
+    This week, I spent most of my time on reading the book \textbf{<14 lectures on visual SLAM>}, it's almost the best book for beginners to learn SLAM. In addition, I read a classical paper on the topic of LSD-SLAM, but honestly, I can not fully understand the core methods of those papers, due to lack of basic knowledge of SLAM, and \textbf{Matrix Analysis} methods are also very important.
+
+    \section{Paper Reading: LSD-SLAM}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth,natwidth=1110,natheight=469]{./img/LSD-SLAM.png}
+        \caption{Overview over the complete LSD-SLAM algorithm.}
+    \end{figure}
+
+    LSD-SLAM is a direct monolular SLAM algorithm which alows to build large-scale, consistent maps of the environment.
+    \subsection{Main Methods}
+    \begin{itemize}
+        \item LSD-SLAM uses direct image alignment with filtering-based estimation of semi-dense depth maps;
+        \item The algorithm it proposes probabilistically consistent incorporation of uncertainty of the estimated depth into tracking.
+        \item LSD-SLAM could run in real-time on a CPU, and even on a mordern smartphone. 
+    \end{itemize}
+
+    \section{Book Reading: Chapter 1-3 of SLAM-BOOK}
+    \textbf{Chapter 1 and 2}: Introduction to SLAM, and basic usage of cmake. \textbf{Chapter 3}: Rotation Matrix/Vector, Euler Angles, Quaternion, and how to tranform between them. Practice code is avaliable at: \url{https://github.com/Yidadaa/Coding-Every-Day/tree/master/2019/slam-book-code}.
+
+    \section{Plan}
+    I will continue reading more papers and textbooks about SLAM. Here is a list of to-be-read materiels:
+    \begin{itemize}
+        \item Survey Paper: Past, Present, and Future of Simultaneous Localization and Mapping: Toward the Robust-Perception Age
+        \item Textbook: <14 lectures on visual SLAM>, Chapter 4-6
+    \end{itemize}
+    \end{document}
