@@ -1,0 +1,40 @@
+\documentclass{article}
+
+    \input{../template/structure.tex}
+    
+    \title{CFM AI\&VR Weekly Report: Week \#10 of 2019}
+    
+    \author{Zhang Yifei(\texttt{yidadaa@qq.com})}
+    
+    \date{UESTC --- \today}
+    
+    \begin{document}
+    
+    \maketitle
+
+    \section{Summary}
+    This week, I kept on reading the book \textbf{<14 lectures on visual SLAM>}, until now, I have finished the learning of Chapter 7 - Visual Odomettry, which is an important part of SLAM system. At the same time, I formed a team with my roommates to participate in some deep-learning competitions.
+
+    \section{Book Reading: Chapter 4-7 of SLAM-BOOK}
+    Chapter 4 to 6 of SLAM-BOOK are the foundation of mathematics of SLAM.
+    \begin{itemize}
+       \item Chapter 4: Lie group and Lie algeba, understand how to using Lie-algeba to present position and transformation, and make derivation. Master the usage of cpp library - Sophus. 
+       \item Chapter 5: Models of pinehole camera, RGBD-camera and binocular camera. Basic usage of openCV.
+       \item Chapter 6: Use non-linear optimization methods to optimize non-linear function. Basic usage of cpp library - ceres and g2o.
+       \item Chapter 7: Visual Odomettry via feature-based methods - typically ORB feature. Epipolar geometry(2D-2D), triangulation, PnP(3D-2D) and ICP(3D-3D). Use g2o to solve PnP and ICP problem.
+    \end{itemize}
+    The code is avaliable at \url{https://github.com/Yidadaa/Coding-Every-Day/tree/master/2019/slam-book-code}.
+
+
+    \section{Competition: OPPO TOP AI Competition}
+    We have reached almost rank 1(Percision: 0.96, Time: 4m50s) at the track of Semantic Segmentation. We use DeeplabV3 as baseline, and train it on VOC and Supervise.ly dataset.
+
+    \section{Plan}
+    I will continue reading SLAM-BOOK. And I am going to participate the JinNan Didital Manufacture Competition which is held on Ali TianChi. By the way, I am planing to post a proposal for Goole Summer Of Code 2019, the topic of the proposal is about SLAM in ROS.
+    \begin{itemize}
+        \item Textbook: <14 lectures on visual SLAM>, Chapter 7 - 8;
+        \item Competition: OPPO TOP AI Competition;
+        \item Competition: JinNan Didital Manufacture Competition;
+        \item Proposal: Google Summer of Code 2019 - JdeRobot.
+    \end{itemize}
+    \end{document}
