@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\input{../template/structure.tex}
+
+\usepackage{url}
+
+\title{CFM AI\&VR Weekly Report: Week \#17 of 2019}
+
+\author{Zhang Yifei(\texttt{yidadaa@qq.com})}
+
+\date{UESTC --- \today}
+
+\begin{document}
+
+\maketitle
+
+\section{Summary}
+This week I took a deep insight into Intel RealSense platform and Nvidia Jetson platform, and tried to figure out the possibility of deploying deep learning algorithm on them.
+
+\section{Intel Realsense D400-Series Depth Camera}
+The Intel Realsense Depth Camera D400-series uses stereo vision to calculate depth. It's easy to get RGB image with depth using the camera. Intel developers provide a very convient Python binding of the API. \textbf{Resources}: \url{https://github.com/IntelRealSense/librealsense/tree/master/wrappers/python}.
+\subsection{Application}
+Self-Driving Bot, Hand Gesture Recognition, Edge-Based Intelligence
+
+\section{Nvidia Jetson Series Platform}
+Nvidia Jetson Series Platform integrates hundreds of CUDA units on embedded system, so that we can build AI algorithms at the edge. Nvidia Jetson series platform can provide one-sixth of the performance of Nvidia GTX 1080Ti. Nvidia prepares lots of tutorials and SDK to help developers use the platform.
+
+\subsection{Application}
+Edge-Based Intelligence, AIoT
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./img.png}
+    \caption{Different type of Jetson series product.}
+\end{figure}
+
+\section{Plan}
+\begin{itemize}
+    \item Start developing on Intel Realsense and Nvidia Jetson platforms if possible.
+\end{itemize}
+
+\end{document}

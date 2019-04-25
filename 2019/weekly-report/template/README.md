@@ -1,4 +1,4 @@
-This LaTex template is from web, author's info is here.
+This LaTex template is from web, here is author's info.
 
 ```
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,27 +1,21 @@
 class Solution:
-    def isHappy(self, n):
-        """
-        :type n: int
-        :rtype: bool
-        """
-        if n == 1:
-            return True
-        while n > 0:
-            print(n)
+    def isHappy(self, n: int) -> bool:
+        # Write your code here
+        src = set([n])
+        tmp = None
+        while n != 1:
+            tmp = n
             s = 0
             while n > 0:
-                unit = n % 10
-                n = n // 10
-                s += unit * unit
+                s += (n % 10) ** 2
+                n //= 10
             n = s
-            if n == 1:
-                return True
-            if n == 4:
+            if tmp == n or n in src:
                 return False
-        return False
+            src.add(n)
+        return True
 
-if __name__ == "__main__":
-    testCase = [19, 7, 0, 1]
-    testCase = [7]
-    for i in testCase:
-        print(Solution().isHappy(i))
+'''
+Tips:
+1. 使用`set`加快查找速度
+'''

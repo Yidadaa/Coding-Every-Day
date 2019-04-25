@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/eigen3",
-                "/opt/Sophus/"
+                "/opt/Sophus/",
+                "/usr/include/suitesparse"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
