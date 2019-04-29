@@ -16,16 +16,9 @@ class Solution:
             1: 'I'
         }
         ret = ''
-        while num > 0:
-            mins = 'I' * (num + 1)
-            minn = num + 1
-            thex = 1
-            for x in d:
-                n = num // x
-                if n > 0 and n < minn and len(d[x]) < len(mins):
-                    minn = n
-                    mins = d[x]
-                    thex = x
-            ret += mins * minn
-            num -= thex * minn
+        for x in d:
+            n = num // x
+            if n > 0:
+                ret += d[x] * n
+            num -= n * x
         return ret
