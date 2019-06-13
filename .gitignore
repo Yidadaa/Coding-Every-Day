@@ -1,4 +1,6 @@
 tags
+*.bbl
+*.blg
 *.aux
 *.log
 *.gz

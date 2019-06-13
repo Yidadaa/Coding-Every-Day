@@ -1,0 +1,102 @@
+@inproceedings{lrcn2014,
+   Author = {Jeff Donahue and Lisa Anne Hendricks and Sergio Guadarrama
+             and Marcus Rohrbach and Subhashini Venugopalan and Kate Saenko
+             and Trevor Darrell},
+   Title = {Long-term Recurrent Convolutional Networks
+            for Visual Recognition and Description},
+   Year  = {2015},
+   Booktitle = {CVPR}
+}
+
+
+@article{casser_depth_2018,
+	title = {Depth {Prediction} {Without} the {Sensors}: {Leveraging} {Structure} for {Unsupervised} {Learning} from {Monocular} {Videos}},
+	shorttitle = {Depth {Prediction} {Without} the {Sensors}},
+	url = {http://arxiv.org/abs/1811.06152},
+	abstract = {Learning to predict scene depth from RGB inputs is a challenging task both for indoor and outdoor robot navigation. In this work we address unsupervised learning of scene depth and robot ego-motion where supervision is provided by monocular videos, as cameras are the cheapest, least restrictive and most ubiquitous sensor for robotics.},
+	language = {en},
+	urldate = {2019-04-08},
+	journal = {arXiv:1811.06152 [cs]},
+	author = {Casser, Vincent and Pirk, Soeren and Mahjourian, Reza and Angelova, Anelia},
+	month = nov,
+	year = {2018},
+	note = {arXiv: 1811.06152},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition, AAAI2019, struct2depth},
+	file = {Casser 等。 - 2018 - Depth Prediction Without the Sensors Leveraging S.pdf:/home/yida/Zotero/storage/KBYN7AQ2/Casser 等。 - 2018 - Depth Prediction Without the Sensors Leveraging S.pdf:application/pdf}
+}
+
+@inproceedings{godard_unsupervised_2017,
+	address = {Honolulu, HI},
+	title = {Unsupervised {Monocular} {Depth} {Estimation} with {Left}-{Right} {Consistency}},
+	isbn = {978-1-5386-0457-1},
+	url = {http://ieeexplore.ieee.org/document/8100182/},
+	doi = {10.1109/CVPR.2017.699},
+	abstract = {Learning based methods have shown very promising results for the task of depth estimation in single images. However, most existing approaches treat depth prediction as a supervised regression problem and as a result, require vast quantities of corresponding ground truth depth data for training. Just recording quality depth data in a range of environments is a challenging problem. In this paper, we innovate beyond existing approaches, replacing the use of explicit depth data during training with easier-to-obtain binocular stereo footage.},
+	language = {en},
+	urldate = {2019-04-11},
+	booktitle = {2017 {IEEE} {Conference} on {Computer} {Vision} and {Pattern} {Recognition} ({CVPR})},
+	publisher = {IEEE},
+	author = {Godard, Clement and Aodha, Oisin Mac and Brostow, Gabriel J.},
+	month = jul,
+	year = {2017},
+	pages = {6602--6611},
+	file = {Godard 等。 - 2017 - Unsupervised Monocular Depth Estimation with Left-.pdf:/home/yida/Zotero/storage/8KG3DWAU/Godard 等。 - 2017 - Unsupervised Monocular Depth Estimation with Left-.pdf:application/pdf}
+}
+
+@inproceedings{engel_lsd-slam:_2014,
+	title = {{LSD}-{SLAM}: {Large}-{Scale} {Direct} {Monocular} {SLAM}},
+	shorttitle = {{LSD}-{SLAM}},
+	doi = {10.1007/978-3-319-10605-2_54},
+	abstract = {We propose a direct (feature-less) monocular SLAM algorithm which, in contrast to current state-of-the-art regarding direct methods, allows to build large-scale, consistent maps of the environment. Along with highly accurate pose estimation based on direct image alignment, the 3D environment is reconstructed in real-time as pose-graph of keyframes with associated semi-dense depth maps. These are obtained by filtering over a large number of pixelwise small-baseline stereo comparisons. The explicitly scale-drift aware formulation allows the approach to operate on challenging sequences including large variations in scene scale. Major enablers are two key novelties: (1) a novel direct tracking method which operates on sim(3), thereby explicitly detecting scale-drift, and (2) an elegant probabilistic solution to include the effect of noisy depth values into tracking. The resulting direct monocular SLAM system runs in real-time on a CPU.},
+	booktitle = {{ECCV}},
+	author = {Engel, Jakob and Schöps, Thomas and Cremers, Daniel},
+	year = {2014},
+	keywords = {已读, Algorithm, Baseline (configuration management), Central processing unit, Glossary of computer graphics, Key frame, Map, Real-time locating system, Semiconductor industry, Sensor, Simultaneous localization and mapping},
+	file = {Full Text PDF:/home/yida/Zotero/storage/T6HSS8EN/Engel 等。 - 2014 - LSD-SLAM Large-Scale Direct Monocular SLAM.pdf:application/pdf}
+}
+
+@inproceedings{engel_semi-dense_2013,
+	title = {Semi-dense {Visual} {Odometry} for a {Monocular} {Camera}},
+	doi = {10.1109/ICCV.2013.183},
+	abstract = {We propose a fundamentally novel approach to real-time visual odometry for a monocular camera. It allows to benefit from the simplicity and accuracy of dense tracking - which does not depend on visual features - while running in real-time on a CPU. The key idea is to continuously estimate a semi-dense inverse depth map for the current frame, which in turn is used to track the motion of the camera using dense image alignment. More specifically, we estimate the depth of all pixels which have a non-negligible image gradient. Each estimate is represented as a Gaussian probability distribution over the inverse depth. We propagate this information over time, and update it with new measurements as new images arrive. In terms of tracking accuracy and computational speed, the proposed method compares favorably to both state-of-the-art dense and feature-based visual odometry and SLAM algorithms. As our method runs in real-time on a CPU, it is of large practical value for robotics and augmented reality applications.},
+	booktitle = {2013 {IEEE} {International} {Conference} on {Computer} {Vision}},
+	author = {Engel, J. and Sturm, J. and Cremers, D.},
+	month = dec,
+	year = {2013},
+	keywords = {Simultaneous localization and mapping, Accuracy, augmented reality application, camera motion tracking, cameras, Cameras, computational speed, CPU, dense, dense image alignment, dense tracking accuracy, feature-based visual odometry, Gaussian distribution, Gaussian probability distribution, image gradient, image motion analysis, monocular, monocular camera, Noise, pixel depth estimation, Real-time systems, real-time visual odometry, robotics application, Robustness, semidense inverse depth map estimation, semidense visual odometry, SLAM, SLAM algorithm, stereo, visual odometry, Visualization},
+	pages = {1449--1456},
+	file = {IEEE Xplore Abstract Record:/home/yida/Zotero/storage/JX633P4U/6751290.html:text/html;IEEE Xplore Full Text PDF:/home/yida/Zotero/storage/GFQPS9HQ/Engel 等。 - 2013 - Semi-dense Visual Odometry for a Monocular Camera.pdf:application/pdf}
+}
+
+@article{wang_image_2004,
+	title = {Image {Quality} {Assessment}: {From} {Error} {Visibility} to {Structural} {Similarity}},
+	volume = {13},
+	shorttitle = {Image {Quality} {Assessment}},
+	doi = {10.1109/TIP.2003.819861},
+	abstract = {Objective methods for assessing perceptual image quality traditionally attempted to quantify the visibility of errors (differences) between a distorted image and a reference image using a variety of known properties of the human visual system. Under the assumption that human visual perception is highly adapted for extracting structural information from a scene, we introduce an alternative complementary framework for quality assessment based on the degradation of structural information. As a specific example of this concept, we develop a structural similarity index and demonstrate its promise through a set of intuitive examples, as well as comparison to both subjective ratings and state-of-the-art objective methods on a database of images compressed with JPEG and JPEG2000. A MATLAB implementation of the proposed algorithm is available online at http://www.cns.nyu.edu/∼lcv/ssim/.},
+	journal = {Image Processing, IEEE Transactions on},
+	author = {Wang, Zhou and Bovik, Alan and Rahim Sheikh, Hamid and Simoncelli, Eero},
+	month = may,
+	year = {2004},
+	pages = {600--612},
+	file = {Full Text PDF:/home/yida/Zotero/storage/CTUAQSV2/Wang 等。 - 2004 - Image Quality Assessment From Error Visibility to.pdf:application/pdf}
+}
+
+@inproceedings{yin_geonet:_2018,
+	address = {Salt Lake City, UT},
+	title = {{GeoNet}: {Unsupervised} {Learning} of {Dense} {Depth}, {Optical} {Flow} and {Camera} {Pose}},
+	isbn = {978-1-5386-6420-9},
+	shorttitle = {{GeoNet}},
+	url = {https://ieeexplore.ieee.org/document/8578310/},
+	doi = {10.1109/CVPR.2018.00212},
+	abstract = {We propose GeoNet, a jointly unsupervised learning framework for monocular depth, optical ﬂow and egomotion estimation from videos. The three components are coupled by the nature of 3D scene geometry, jointly learned by our framework in an end-to-end manner. Speciﬁcally, geometric relationships are extracted over the predictions of individual modules and then combined as an image reconstruction loss, reasoning about static and dynamic scene parts separately. Furthermore, we propose an adaptive geometric consistency loss to increase robustness towards outliers and non-Lambertian regions, which resolves occlusions and texture ambiguities effectively. Experimentation on the KITTI driving dataset reveals that our scheme achieves state-of-the-art results in all of the three tasks, performing better than previously unsupervised methods and comparably with supervised ones.},
+	language = {en},
+	urldate = {2019-06-11},
+	booktitle = {2018 {IEEE}/{CVF} {Conference} on {Computer} {Vision} and {Pattern} {Recognition}},
+	publisher = {IEEE},
+	author = {Yin, Zhichao and Shi, Jianping},
+	month = jun,
+	year = {2018},
+	pages = {1983--1992},
+	file = {Yin 和 Shi - 2018 - GeoNet Unsupervised Learning of Dense Depth, Opti.pdf:/home/yida/Zotero/storage/KEQ9YFPM/Yin 和 Shi - 2018 - GeoNet Unsupervised Learning of Dense Depth, Opti.pdf:application/pdf}
+}

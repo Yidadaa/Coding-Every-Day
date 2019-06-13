@@ -1,0 +1,55 @@
+\documentclass{article}
+
+\input{../template/structure.tex}
+
+\title{CFM AI\&VR Weekly Report: Week \#24 of 2019}
+
+\author{Zhang Yifei(\texttt{yidadaa@qq.com})}
+
+\date{UESTC --- \today}
+
+\begin{document}
+
+\maketitle
+
+\section{Summary}
+This week, I spent two days on practicing to use pytorch framework, and wrote and trained a CNN-RNN model on UCF-101 datasets. At the same time, I took a review on the classical methods in depth estimation task, the reaction paper in this report needs your advice and guidance.
+
+\section{Code Practice: Implement LRCN using Pytorch Framework}
+LRCN\cite{lrcn2014} is a classical model for visual recognition and description, it is an end-to-end trainable and suitable Long-term Recurrent Convolutional Networks on action recognition tasks. To practice to use and be acquainted with pytorch framework and workflow, I spent two days implementing the model using it. I use a ResNet-152 network as CNN-Encoder, and a 3-layers GRU network as RNN-Decoder. I trained it on a subset of UCF-101 datasets, which is limited by computing resource. The model achieves a pretty good performance on the tailored UCF datasets(90\% accuracy). 
+
+The code is available at \url{https://github.com/Yidadaa/Pytorch-Video-Classification}.
+
+\section{Reaction Paper of this Week}
+Predicting scene depth from input imagery is important for robot navigation, which is especially important in SLAM system.
+Casser. \cite{casser_depth_2018} trys to solve the problem by explicitly modeling 3D motions of moving objects, together with camera ego-motion. The proposed approach introduces structure in the learning proces by representing objects in 3D and modeling motion as SE3 transforms. Two models are introduced to model the ego-motion of the camera and predict the depth map of image sequences. The main idea of the approach is predicting motions of individual objects in 3D, which leads to handle the dynamic scenes well.
+
+Intriguingly, a reconstrction loss is computed as the minimum reconstrction loss between wraping from either the previous frame or the next frame into the middle one:
+$$L_{rec}=min(||\hat{I}_{1\rightarrow 2}-I_2, \hat{I}_{3\rightarrow 2}-I_2||)$$
+
+Casser claims that the reconstruction loss is proposed by Godard\cite{godard_unsupervised_2017}, but a similar method could be traced back to Engel's work\cite{engel_semi-dense_2013}, which is also used at LSD-SLAM\cite{engel_lsd-slam:_2014}. To refine the estimated inverse depth map from frame to frame, Engel proposes the method\cite{engel_semi-dense_2013} to calclate and project the current corresponding 3D point into the new frame, and the new inverse depth $d_1$ could be approximated by:
+
+$$d_1(d_0)=(d_0^{-1}-t_z)^{-1}$$
+
+where $t_z$ is the camera traslation along the optical axis and $d_0$ is the depth map of the current frame. This method is successfully applied to refine the depth map as an important part of LSD-SLAM pipeline\cite{engel_lsd-slam:_2014}.
+
+The reconstrction loss is not the only loss to refine the depth map at \cite{casser_depth_2018}, the total loss is applied on 3 scales with hyperparameters $\alpha_j$:
+
+$$L=\alpha_1\sum_{i=0}^3 L_{rec}^i+\alpha_2 L_{ssim}^i+\alpha_3\frac{1}{2^i}L_{sm}^i$$
+
+where the $L_{ssim}$ denotes SSIM loss\cite{wang_image_2004} and the $L_{sm}$ denotes depth smoothness loss\cite{godard_unsupervised_2017}.
+
+The approach proposed by Casser\cite{casser_depth_2018} is conceptually deifferent from prior works which is used optical flow for motion in 2D image space\cite{yin_geonet:_2018} in that the object motions are explicitly learned in 3D and are available at inference.
+
+However, the approach\cite{casser_depth_2018} predicts the depth map from a single RGB frame and refine it with another depth map which is predicted from the next frame, it still needs further study to confirm whether it's the best way to predict depth map.
+
+\section{Plans}
+This week, I have taken a deep insight in reconstruction loss, which is an important part of depth estimation. There are still more questions to study, for example, the history of SSIM loss\cite{wang_image_2004} and smoothness loss\cite{godard_unsupervised_2017}, I will try to retrospect the history of these two losses. 
+
+I will write one reaction paper per week in the next few months, please read and give your feedback to me on time.
+
+Get more information about \textbf{Reaction Paper} at: \url{https://zhuanlan.zhihu.com/p/33875687}.
+
+\bibliographystyle{plain}
+\bibliography{ref}
+\end{document}
