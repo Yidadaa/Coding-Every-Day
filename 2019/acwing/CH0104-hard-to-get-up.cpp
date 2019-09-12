@@ -38,4 +38,5 @@ int main() {
     }
   }
 
-  cout << ans << endl;}
+  cout << ans << endl;
+}
