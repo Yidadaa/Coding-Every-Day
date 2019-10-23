@@ -8,7 +8,7 @@
 \usepackage{enumitem}
 \usepackage{setspace}
 \usepackage{url}
-\usepackage{paracol}
+\usepackage{multicol}
 
 \thispagestyle{empty}\pagestyle{empty}
 
@@ -16,7 +16,7 @@
 
 \begin{document}
 
-\cvtitle{Zhang YiFei}{BrickRed}{FrontEnd / Algorithm}{0.5cm}
+\cvtitle{Zhang YiFei}{BrickRed}{FrontEnd / Machine Learning}{0.5cm}
 
 \positionedbox{left}{0.7\textwidth}{%
 	\information{+86 13032883129}{pic}{\Telefon}
@@ -28,32 +28,37 @@
 
 \vspace{2cm}
 
-\begin{paracol}{2}
-	\begin{leftcolumn}	
+\begin{multicols}{2}
 		\cvsectiontitle{Education}
 		\vspace{-1cm}
 		\begin{itemize}[leftmargin=0.5cm]
-			\item \cvcompany{MA. UESTC}{from 2018.09}\\Computer Science
-			\item \cvcompany{BE. UESTC}{2014.09 - 2018.06}\\Computer Science
+			\item \cvcompany{M.S. University of Electronic Science and Technology of China}{2018.09 - 2021.06}\\\vspace{-0.3cm}\\
+						Computer Science, College of Computer Science and Engineering
+			\vspace{0.3cm}
+			\item \cvcompany{B.E. University of Electronic Science and Technology of China}{2014.09 - 2018.06}\\\vspace{-0.3cm}\\
+						Computer Science, Yingcai Honors College of UESTC
 		\end{itemize}
 	
-		\vspace{1cm}
+		\vspace{0.8cm}
 		\cvsectiontitle{Experience}
 		\vspace{-1cm}
 		\begin{itemize}[leftmargin=0.5cm]
-		\item \cvcompany{Research on Depth Estimation}{from 2018}\cvsublevel{%
-			\cvsubbullet{Aliquam dictum volutpat leo, et pellentesque metus tincidunt nec. Proin dolor diam, pellentesque ac molestie consectetur, tempus id neque. Mauris semper semper nisl, nec pulvinar dolor vehicula quis. Cras sagittis varius tempor.}%
+		\item \cvcompany{Depth Estimation}{from 2019.04}\cvsublevel{%
+			\cvsubbullet{Depth and ego-motion estimation is crucial for various applications in robotics and computer vision.
+				However, collecting large and varied training datasets with accurate ground truth depth for supervised learning is itself a formidable challenge.}%
+			\cvsubbullet{I am focusing on using Deep Learning to solve \textbf{Unsupervised Monocular Depth Estimation}}%
+		}
+		\item \cvcompany{Web FrontEnd Developer @Sibbay}{2017.12 - 2019.3}\cvsublevel{%
+			\cvsubbullet{Remote \&\& Part-time}
+			\cvsubbullet{Develop the mini-program that helps people to track their health data, participate in the agile development workflow with BackEnd Developer, PM and QA. Improve the program according to the users’ feedback. }%
 			}
-		\item \cvcompany{Web Developer (Remote)}{2017.12 - 2019.3}\cvsublevel{%
-			\cvsubbullet{Aliquam dictum volutpat leo, et pellentesque metus tincidunt nec. Proin dolor diam, pellentesque ac molestie consectetur, tempus id neque. Mauris semper semper nisl, nec pulvinar dolor vehicula quis. Cras sagittis varius tempor.}%
-			}
-		\item \cvcompany{Web Developer (Intern)}{2016.12 - 2017.5}\cvsublevel{%
-			\cvsubbullet{Aliquam dictum volutpat leo, et pellentesque metus tincidunt nec. Proin dolor diam, pellentesque ac molestie consectetur, tempus id neque. Mauris semper semper nisl, nec pulvinar dolor vehicula quis. Cras sagittis varius tempor.}%
-			}
+		\item \cvcompany{Web FrontEnd Developer @Baidu}{2016.12 - 2017.5}\cvsublevel{%
+			\cvsubbullet{Intern}
+			\cvsubbullet{Develop Baidu 'FengChao' ad-serving system, the technology stack includes React \&\& Redux \&\& Webpack \&\& Git. }%
+		}
 		\end{itemize}
-	\end{leftcolumn}
 
-	\begin{rightcolumn}
+		\vspace{0.8cm}
 		\cvsectiontitle{Projects}
 		\vspace{-0.8cm} % NOTE: There are spacing issues, not sure why, fix them with some vspace
 
@@ -66,9 +71,6 @@
 		\cvcompany{Web Developer (Intern)}{2016.12 - 2017.5}\cvsublevel{%
 			\cvsubbullet{Aliquam dictum volutpat leo, et pellentesque metus tincidunt nec. Proin dolor diam, pellentesque ac molestie consectetur, tempus id neque. Mauris semper semper nisl, nec pulvinar dolor vehicula quis. Cras sagittis varius tempor.}%
 			}
-
-	\end{rightcolumn}
-
-\end{paracol}
+\end{multicols}
 
 \end{document}
