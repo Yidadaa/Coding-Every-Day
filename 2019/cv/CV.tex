@@ -1,8 +1,11 @@
+\usepackage{url}
+\usepackage{hyperref}
+
 % No indent and increased paragraph spacing
 \setlength{\parindent}{0pt}
 
 % Configure margins:
-\geometry{top=1cm,bottom=1cm,left=1.5cm,right=1.5cm}
+\geometry{top=1.5cm,bottom=1.5cm,left=1.5cm,right=1.5cm}
 
 % Commands
 % - \cvtitle{Name}{ColorForName}{LiteralsOrRightText}{SpaceBelow} - Creates the CV title
@@ -67,3 +70,5 @@
 \renewcommand{\labelitemii}{$\bullet$}
 \renewcommand{\labelitemiii}{\RIGHTarrow}
 \renewcommand{\labelitemiv}{\RIGHTarrow}
+
+\newcommand{\project}[3]{\small{\underline{\href{https:#1}{#1}}, (#2) \small{#3}}}

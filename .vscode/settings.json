@@ -6,5 +6,38 @@
         "*.wxs": "javascript",
         "iostream": "cpp"
     },
-    "python.pythonPath": "C:\\Users\\yida\\Anaconda3\\python.exe"
+    "python.pythonPath": "C:\\Users\\yida\\Anaconda3\\python.exe",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "bibtex->xelatex",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "%DOC%.tex"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ]
 }
