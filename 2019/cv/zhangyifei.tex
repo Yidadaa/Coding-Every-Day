@@ -9,68 +9,120 @@
 \usepackage{setspace}
 \usepackage{url}
 \usepackage{multicol}
+\usepackage{paracol}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{changepage}
+\usepackage{listings}
 
 \thispagestyle{empty}\pagestyle{empty}
+
+\XeTeXlinebreaklocale "zh"
+\setCJKmainfont{Source Han Serif SC}
 
 \input{cv.tex}
 
 \begin{document}
 
-\cvtitle{Zhang YiFei}{BrickRed}{FrontEnd / Machine Learning}{0.5cm}
+\cvtitle{\textbf{Zhang YiFei}}{BrickRed}{3D Computer Vision}{0.5cm}
 
 \positionedbox{left}{0.7\textwidth}{%
-	\information{+86 13032883129}{pic}{\Telefon}
-	\information{flynn.zhang@foxmail.com}{pic}{\Letter}\\
-	\information{blog.simplenaive.com}{pic}{\MVAt}
-	\information{github.com/Yidadaa}{pic}{$\mathcal{T}$}
+	Phone: +86 13032883129\\
+	Mail: \url{flynn.zhang@foxmail.com}\\
+	Blog: \url{https://blog.simplenaive.cn}\\
+	Github: \url{https://github.com/Yidadaa}
 }
 \positionedbox{right}{0.3\textwidth}{DOB: 20/01/97\\Chengdu, China}
 
-\vspace{2cm}
+\vspace{0.7cm}
 
+\setlength{\columnsep}{1cm}
 \begin{multicols}{2}
-		\cvsectiontitle{Education}
-		\vspace{-1cm}
-		\begin{itemize}[leftmargin=0.5cm]
-			\item \cvcompany{M.S. University of Electronic Science and Technology of China}{2018.09 - 2021.06}\\\vspace{-0.3cm}\\
-						Computer Science, College of Computer Science and Engineering
-			\vspace{0.3cm}
-			\item \cvcompany{B.E. University of Electronic Science and Technology of China}{2014.09 - 2018.06}\\\vspace{-0.3cm}\\
-						Computer Science, Yingcai Honors College of UESTC
-		\end{itemize}
-	
-		\vspace{0.8cm}
-		\cvsectiontitle{Experience}
-		\vspace{-1cm}
-		\begin{itemize}[leftmargin=0.5cm]
-		\item \cvcompany{Depth Estimation}{from 2019.04}\cvsublevel{%
-			\cvsubbullet{Depth and ego-motion estimation is crucial for various applications in robotics and computer vision.
-				However, collecting large and varied training datasets with accurate ground truth depth for supervised learning is itself a formidable challenge.}%
-			\cvsubbullet{I am focusing on using Deep Learning to solve \textbf{Unsupervised Monocular Depth Estimation}}%
-		}
-		\item \cvcompany{Web FrontEnd Developer @Sibbay}{2017.12 - 2019.3}\cvsublevel{%
-			\cvsubbullet{Remote \&\& Part-time}
-			\cvsubbullet{Develop the mini-program that helps people to track their health data, participate in the agile development workflow with BackEnd Developer, PM and QA. Improve the program according to the users’ feedback. }%
-			}
-		\item \cvcompany{Web FrontEnd Developer @Baidu}{2016.12 - 2017.5}\cvsublevel{%
-			\cvsubbullet{Intern}
-			\cvsubbullet{Develop Baidu 'FengChao' ad-serving system, the technology stack includes React \&\& Redux \&\& Webpack \&\& Git. }%
-		}
-		\end{itemize}
+		\cvsectiontitle{\textbf{Education}}
+		\cvcompany{MSc. UESTC}{2018.09 - 2021.06}\\
+		Computer Science, Dept. of Computer Science and Engineering
 
-		\vspace{0.8cm}
-		\cvsectiontitle{Projects}
-		\vspace{-0.8cm} % NOTE: There are spacing issues, not sure why, fix them with some vspace
+		\cvcompany{B.Eng. UESTC}{2014.09 - 2018.06}\\
+		Computer Science, Yincai Honors College of UESTC
 
-		\cvcompany{Research on Depth Estimation}{2018 - on-going}\cvsublevel{%
-			\cvsubbullet{Aliquam dictum volutpat leo, et pellentesque metus tincidunt nec. Proin dolor diam, pellentesque ac molestie consectetur, tempus id neque. Mauris semper semper nisl, nec pulvinar dolor vehicula quis. Cras sagittis varius tempor.}%
-			}
-		\cvcompany{Web Developer (Remote)}{2017.12 - 2019.3}\cvsublevel{%
-			\cvsubbullet{Aliquam dictum volutpat leo, et pellentesque metus tincidunt nec. Proin dolor diam, pellentesque ac molestie consectetur, tempus id neque. Mauris semper semper nisl, nec pulvinar dolor vehicula quis. Cras sagittis varius tempor.}%
-			}
-		\cvcompany{Web Developer (Intern)}{2016.12 - 2017.5}\cvsublevel{%
-			\cvsubbullet{Aliquam dictum volutpat leo, et pellentesque metus tincidunt nec. Proin dolor diam, pellentesque ac molestie consectetur, tempus id neque. Mauris semper semper nisl, nec pulvinar dolor vehicula quis. Cras sagittis varius tempor.}%
-			}
+		\columnbreak
+
+		\cvsectiontitle{\textbf{Honors}}
+		\vspace{-0.5cm}
+
+		\cvcompany{\small{Second Prize for Postgraduate Scholarship}}{2019.10}\\%
+		\cvcompany{\small{OPPO AI Challenge Segmantation Track \\Excellence Prize}}{2019.04}\\%
+		\cvcompany{\small{First Prize for Postgraduate Scholarship}}{2018.10}\\%
+		\cvcompany{\small{MCM Honorable Mention}}{2017.02}
 \end{multicols}
+	
+		\vspace{0.5cm}
+		\cvsectiontitle{\textbf{Experience}}
+		\vspace{-1cm}
+		\begin{itemize}[leftmargin=0.5cm]
+		\item \cvcompany{Unsupervised Depth Estimation @ CFM. UESTC}{from 2019.04}\cvsublevel{%
+			\cvsubbullet{%
+			My research direction is unsupervised depth estimation algorithm based on monocular video%
+			sequence. Unsupervised training process based on deep neural network can be quickly%
+			transferred to a new environment, and the training only needs the data of monocular%
+			camera video, which has great application prospects.
+			}% 
+			\cvsubbullet{%
+				Existing unsupervised trainning process suffers from slow convergence, %
+				try to improve from the following several aspects: 1) Co-attention module has been shown %
+				to mine association of adjacent video frames, so applying co-attention on feature maps %
+				of adjacent frames may predict more accurate depth map. 2) the pose-net is completely trained %
+				with reconstruction loss which is built upon several frames, but it doesn't consider the %
+				the relations among those adjacent frames. Therefore, it is proposed to improve posenet %
+				training process using filtering methods(eg. kalman filter), which is widely used in SLAM system.
+			}
+			\cvsubbullet{%
+				\textbf{This work will be submitted to IJCAI.}
+			}
+		}
+		\item \cvcompany{Accelerate reinforcement algorithm training in Unity @ Thesis}{2017.10 - 2018.06}\cvsublevel{%
+			\cvsubbullet{Reinforcement learning agent often needs a large number of exploration data to optimize policy %
+				by interacting with the environment. It will take a high time and material cost in the real world. We propose %
+				a framework that allows existing algorithms to interact with Unity environment and collect data in real-time. %
+			}
+		}
+		\item \cvcompany{Front End Web Developer Intern @ Baidu}{2016.12 - 2017.05}\cvsublevel{%
+			\cvsubbullet{%
+				During this internship, I was responsible for implementing new features of Baidu advertisement system, %
+				I worked with UI/UC designer, PM, QA and backend developer and bridged the gap between graphical design %
+				and technical implementation, optimized application for maximum speed and scalability, and built reusable %
+				code for future use.
+			}%
+		}
+		\end{itemize}
+
+		\vspace{0.4cm}
+		\cvsectiontitle{\textbf{Projects \& Skills}}
+		\vspace{-0.8cm}
+
+		\begin{adjustwidth}{0.1cm}{0cm}
+			\cvcompany{\project{github.com/Yidadaa/Pytorch-Video-Classification}{Python / Pytorch}{$\approx 500$ lines}}{2019.04}\\
+				\textit{Make Action Classification on Videos using CNN-RNN, achieves 80\% accuracy on UFF101 Dataset.}
+
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/Satellite-Imagery-Segmantation-Deeplab}{Python / Pytorch}{$\approx 1000$ lines}}{2019.05}\\
+				\textit{Satellite Imagery Segmantation using Deeplabv3.}
+
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/Parallel-Programming-On-GPU}{CUDA / C++}{$\approx 200$ lines}}{2018.11}\\
+				\textit{Accelerate simulation of n-body problem using CUDA, 3000x faster after accelerating.}
+			
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/Captcha-Deep-Learning}{Python / Keras / Tensorflow}{$\approx 500$ lines}}{2018.01}\\
+				\textit{Recognize captcha using an End-to-End CNN pipeline, achieves 98\% accuracy on custom Dataset.}
+			
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/OPPO-Human-Segmentation}{C++ / Dart}{$\approx 1000$ lines}}{2019.03}\\
+				\textit{Deploy deeplabv3 human segmantation model to mobile platform using Tencent NCNN framework.}
+			
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/HUAWEI-Codecraft-2019}{C++}{$\approx 1000$ lines}}{2019.05}\\
+				\textit{Code for HUAWEI Codecraft 2019, contains unit testing, following Google C++ Style Guide.}
+		\end{adjustwidth}
 
 \end{document}
