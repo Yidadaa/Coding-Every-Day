@@ -5,6 +5,7 @@ tags
 *.log
 *.gz
 *.out
+*.bbl
 *.pyc
 log
 

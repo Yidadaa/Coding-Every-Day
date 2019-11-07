@@ -1,0 +1,32 @@
+\section{Method}
+In this section, we describe our unsupervised framework for monocular depth estimation. We first review the self-supervised training pipeline for monocular depth estimation, and then introduce the co-attention module and pose graph consistency loss function.
+
+\subsection{Supervision from Image Reconstruction}
+Following the formulation in \cite{zhou_unsupervised_2017}, the whole framework includes a DispNet and a PoseNet, the DispNet produces depth map and the PoseNet produces the relative pose between two RGB frames.
+
+Given a sequence of consecutive frames $X_{t-1}, X_t$ and $X_{t+1}$，we estimate the depth for each frame, and the relative pose for every two adjacent frames, then we get depth map $D_{t-1}, D_t, D_{t+1}$ and translation matrix $T_{t-1\rightarrow t}, T_{t\rightarrow t+1}$.
+
+Consider the adjacent frame pair $I_t$ and $I_{t+1}$, once the estimated depth $D_t$ and translation matrix $T_{t\rightarrow t+1}$ are available, we can project the source image $I_t$ to the next moment
+\begin{equation}
+  \label{projection}
+  p(\hat{I}_{t+1}) = KT_{t\rightarrow t+1}D_tK^{-1}p(I_t)
+\end{equation}
+
+the function $p(.)$ denotes sampling from the homogeneous coordinates of image and $K$ denotes the camera insrinsic matrix, $\hat{I}_{t+1}$ can be reconstucted using the differentiable sampling mechanism proposed in \cite{jaderberg_spatial_2015}.
+
+Hence the problem is formulated to the minimization of a phtometric reprojection error $L_p$
+\begin{equation}
+  \label{photometric error}
+  L_p = \alpha \left\|I_{t+1} - \hat{I}_{t+1}\right\|_1 + (1 - \alpha)SSIM(I_{t+1}, \hat{I}_{t+1})
+\end{equation}
+
+$SSIM(.)$ is the structural similarity\cite{wang_image_2004} loss for evaluating the quality of image predictions, and to regularize the depth, we use a disparity image smoothness constraint as widely used in previous work\cite{mahjourian_unsupervised_2018,zhou_unsupervised_2017,garg_unsupervised_2016}
+
+\begin{equation}
+  \label{smooth}
+  L_{\mathrm{s}}=\sum_{x, y}\left\|\partial_{x} D_{t}\right\| e^{-\left\|\partial_{x} I_{t}\right\|}+\left\|\partial_{y} D_{t}\right\| e^{-\left\|\partial_{y} I_{t}\right\|}
+\end{equation}
+
+\subsection{Pose Graph Consistency}
+
+\subsection{Co-attention in Temporary Context}
