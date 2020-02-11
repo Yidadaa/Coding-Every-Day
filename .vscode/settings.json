@@ -6,7 +6,7 @@
         "*.wxs": "javascript",
         "iostream": "cpp"
     },
-    "python.pythonPath": "C:\\Users\\yida\\Anaconda3\\python.exe",
+    "python.pythonPath": "C:\\Users\\juhyg\\Anaconda3\\python.exe",
     "latex-workshop.latex.recipes": [
         {
             "name": "xelatex",
