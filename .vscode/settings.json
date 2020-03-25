@@ -39,5 +39,6 @@
                 "%DOCFILE%"
             ]
         }
-    ]
+    ],
+    "python.formatting.provider": "black"
 }
