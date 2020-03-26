@@ -19,7 +19,7 @@ class Application(Frame):
     self.t = self.get_timestamp_ms()
     self.is_running = False
     self.max_speed = 20
-    self.speed = 1
+    self.speed = self.max_speed // 2 # default value
     self.canvas_width = 640
     self.canvas_height = 400
     self.block_width = 10 # pixels
