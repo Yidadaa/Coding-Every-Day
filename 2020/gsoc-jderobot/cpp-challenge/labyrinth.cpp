@@ -156,7 +156,7 @@ void solve(Map input_map)
   }
 
   // output result
-  cout << final_pos.count << endl;
+  cout << final_pos.count + 1 << endl;
   for (int r = 0; r < final_pos.map.rows; r += 1)
   {
     for (int c = 0; c < final_pos.map.cols; c += 1)
