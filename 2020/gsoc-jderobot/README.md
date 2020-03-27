@@ -20,7 +20,7 @@ I definitely understand that GSoC is a full-time summer internship, and I am rea
 I am very interested in Robotics, and my graduation thesis is about how to accelerate the training of reinforcement learning in Unity, so I think this GSoC project will be a strong supplement for that.
 
 ## 4. Programming Background
-My major is computer science, so I have a strong programming background, as you can see from you resume, I have accumulated rich experience in programming.
+My major is computer science, so I have a strong programming background, as you can see from my resume, I have accumulated rich experience in programming.
 
 I am very familiar with Python / Javascript / C++ and have written many projects with them.
 
