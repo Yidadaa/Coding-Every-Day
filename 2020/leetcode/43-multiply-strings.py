@@ -3,17 +3,17 @@ class Solution:
         ret = ''
         zeros = ''
         for i in range(len(num1)):
-            m = self.mul(num2, num1[i])
+            m = self.mul(num2, num1[-i - 1])
             ret = self.add(m + zeros, ret)
             zeros += '0'
-        return ret
+        return '0' if ret[0] == '0' else ret
 
     def mul(self, s, x):
         s = list(s)
         x = int(x)
         ret, res = '', 0
         while s or res > 0:
-            a = int(s.pop()) if s else 1
+            a = int(s.pop()) if s else 0
             b = a * x + res
             res = b // 10
             ret = str(b % 10) + ret
@@ -32,4 +32,4 @@ class Solution:
         return ret
 
 if __name__ == '__main__':
-    print(Solution().multiply('18088998432423081', '11008080800800808979000'))
+    print(Solution().multiply('123', '456'))
