@@ -2,10 +2,14 @@
 #include <unordered_map>
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 
 using namespace std;
 
-int nums[100005];
+const int MAXN = 100005;
+const int MAXT = 100 * MAXN;
+int nums[MAXN];
+int table[2 * MAXT];
 
 int main()
 {
@@ -17,39 +21,35 @@ int main()
         int n;
         scanf("%d", &n);
 
-        unordered_map<int, int> table;
-
         int s = 0, mi = 0, ma = 0;
-        int R = 0;
 
         for (int i = 0; i < n; i += 1)
         {
             scanf("%d", nums + i);
-            s += nums[i];
-            ma = max(nums[i], max(s, ma));
-            mi = min(nums[i], min(s, mi));
-            R = max(R, ma - mi);
+            if (nums[i] >= 0) ma += nums[i];
+            else mi -= nums[i];
         }
 
-        R = (int)sqrt(R);
+        int R = (int)sqrt(mi + ma);
         int* ks = new int[R + 1];
         for (int i = 0; i <= R; i += 1)
         {
             ks[i] = i * i;
         }
 
-        table[0] = 1;
+        memset(table, 0, 2 * MAXT * sizeof(int));
+
+        table[MAXT] = 1;
         s = 0;
-        int count = 0;
+        long long count = 0;
         for (int i = 0; i < n; i += 1)
         {
             s += nums[i];
             for (int j = 0; j <= R; j += 1)
             {
-                if (table.count(s - ks[j]) == 1) count += table[s - ks[j]];
-                if (table.count(s) == 0) table[s] = 0;
+                count += table[s - ks[j] + MAXT];
             }
-            table[s] += 1;
+            table[s + MAXT] += 1;
         }
 
         cout << "Case #" << t << ": " << count << endl;

@@ -4,6 +4,9 @@ import bisect
 def read_ints():
     return list(map(int, input().split(' ')))
 
+MAXT = 100 * 100000
+m = [0] * 2 * MAXT
+
 def solve():
     T = int(input())
     for t in range(1, T + 1):
@@ -20,19 +23,19 @@ def solve():
         R = int(math.sqrt(ma - mi))
         ks = [i * i for i in range(R + 1)]
 
-        table = {0: 1}
+        table = m.copy()
         count = 0
         s = 0
         mins = 0
+        table[MAXT] = 1
         for x in nums:
             s += x
             mins = min(mins, s)
             kn = min(bisect.bisect_right(ks, s - mins) + 1, len(ks))
             for j in range(kn):
                 k = ks[j]
-                if s - k in table:
-                    count += table[s - k]
-            table[s] = table.get(s, 0) + 1
+                count += table[MAXT + s - k]
+            table[s + MAXT] += 1
         print('Case #{}: {}'.format(t, count))
         
 solve()

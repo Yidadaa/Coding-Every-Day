@@ -1,148 +1,130 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
-class Node
-{
-public:
-    int l = 0, r = 0;
-    Node* lchild = nullptr;
-    Node* rchild = nullptr;
-    int val = 0, sweet = 0;
-    bool empty = true;
-
-    Node(int l, int r)
-    {
-        this->l = l;
-        this->r = r;
-        empty = false;
-    }
-
-    Node() {}
-};
+const int MAXN = 2 * 1e5 + 10;
+typedef long long ll;
 
 class Tree
 {
 public:
-    int nums[100005];
-    int n = 0;
-    Node* tree;
-    Node* q[100005];
+    int nums[MAXN];
+    ll aarr[MAXN + 1];
+    ll sarr[MAXN + 1];
+    int n;
+    ll val_sum = 0;
+    ll sweet_sum = 0;
 
-    Tree(int nums[], int n)
-    {
-        for (int i = 0; i < n; i += 1) this->nums[i] = nums[i];
-        tree = build(0, n - 1);
-    }
+    Tree() {}
 
-    ~Tree()
+    void reset(int nums[], int n)
     {
-        for (int i = 0; i < n; i += 1) delete tree;
-    }
-
-    Node* build(int l, int r)
-    {
-        if (l > r) return nullptr;
-        Node* node = new Node(l, r);
-        if (l == r)
+        memset(aarr, 0, sizeof(ll) * (MAXN + 1));
+        memset(sarr, 0, sizeof(ll) * (MAXN + 1));
+        this->n = n;
+        for (int i = 0; i < n; i += 1)
         {
-            node->sweet = nums[l] * (l + 1) * (l % 2 ? -1 : 1);
-            node->val = nums[l] * (l % 2 ? -1 : 1);
-            return node;
+            add(i + 1, nums[i]);
+            this->nums[i] = nums[i];
+            // cout << aarr[i + 1] << ' ' << sarr[i + 1] << ' ' << nums[i] << endl;
         }
-        int m = (l + r) >> 1;
-        node->lchild = build(l, m);
-        node->rchild = build(m + 1, r);
-        node->sweet = node->lchild->sweet + node->rchild->sweet;
-        node->val = node->lchild->val + node->rchild->val;
-        return node;
+    }
+
+    void add(int i, int val)
+    {
+        int neg = i % 2 ? 1 : -1;
+        ll aval = val * neg;
+        ll sval = val * neg * i;
+        while (i <= n)
+        {
+            aarr[i] += aval;
+            sarr[i] += sval;
+            i += (i & -i);
+        }
     }
 
     void update(int i, int val)
     {
-        i -= 1;
-        int d = val - nums[i];
-        nums[i] = val;
-        q[0] = tree;
-        int count = 1;
-        while (count)
+        add(i, val - nums[i - 1]);
+        nums[i - 1] = val;
+    }
+
+    void get(int i)
+    {
+        val_sum = 0, sweet_sum = 0;
+        while (i > 0)
         {
-            Node* node = q[count - 1];
-            count -= 1;
-            if (i >= node->l && i <= node->r)
-            {
-                node->val += d * (i % 2 ? -1 : 1);
-                node->sweet += d * (i + 1) * (i % 2 ? -1 : 1);
-            } else continue;
-            if (!node->lchild->empty)
-            {
-                q[count] = node->lchild;
-                count += 1;
-            }
-            if (!node->rchild->empty)
-            {
-                q[count] = node->rchild;
-                count += 1;
-            }
+            val_sum += aarr[i];
+            sweet_sum += sarr[i];
+            i -= (i & -i);
         }
     }
 
-    int sum(int i, int j)
+    ll sum(int i, int j)
     {
-        i -= 1, j -=1;
-        int val_sum = 0, sweet_sum = 0;
-        q[0] = tree;
-        int count = 1;
-        while (count)
-        {
-            Node* node = q[count - 1];
-            count -= 1;
-            if (node->l >= i && node->r <= j)
-            {
-                val_sum += node->val;
-                sweet_sum += node->sweet;
-                continue;
-            }
-            if (node->l > j || node->r < i) continue;
-            if (!node->lchild->empty)
-            {
-                q[count] = node->lchild;
-                count += 1;
-            }
-            if (!node->rchild->empty)
-            {
-                q[count] = node->rchild;
-                count += 1;
-            }
-        }
-        int ret = (sweet_sum - i * val_sum) * (i % 2 ? -1 : 1);
-        return ret;
+        get(j);
+        ll vsum = val_sum, ssum = sweet_sum;
+        // cout << ssum << " " <<  vsum << endl;
+        get(i - 1);
+        vsum -= val_sum;
+        ssum -= sweet_sum;
+        // cout << sweet_sum << " " <<  val_sum << endl;
+        return (ssum - (i - 1) * vsum) * (i % 2 ? 1 : -1);
     }
 };
 
-int nums[100005];
+int nums[MAXN];
 
 int main()
 {
     int T;
-    scanf("%d", &T);
+    cin >> T;
+
+    Tree tree;
 
     for (int t = 1; t <= T; t += 1)
     {
         int n, q;
-        scanf("%d %d", &n, &q);
-        for (int i = 0; i < n; i += 1) scanf("%d", nums + i);
+        cin >> n >> q;
+        for (int i = 0; i < n; i += 1) cin >> nums[i];
 
-        Tree tree(nums, n);
-        int ret = 0;
+        tree.reset(nums, n);
+        ll ret = 0;
         for (int i = 0; i < q; i += 1)
         {
             char action;
             int a, b;
-            scanf("%c %d %d", &action, &a, &b);
+            cin >> action >> a >> b;
             if (action == 'Q') ret += tree.sum(a, b);
             else if (action == 'U') tree.update(a, b);
+            // cout << action << endl;
         }
         cout << "Case #" << t << ": " << ret << endl;
     }
 }
+
+/*
+2
+5 4
+1 3 9 8 2
+Q 2 4
+Q 5 5
+U 2 10
+Q 1 2
+3 3
+4 5 5
+U 1 2
+U 1 7
+Q 1 2
+
+1
+5 4
+1 3 9 8 21 3 9 8 21 3 9 8 21 3 9 8 2
+Q 2 4
+Q 5 5
+U 2 10
+Q 1 2
+Q 10 25
+U 12 13
+*/
