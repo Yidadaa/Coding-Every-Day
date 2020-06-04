@@ -24,7 +24,7 @@
 
 \begin{document}
 
-\cvtitle{\textbf{Zhang YiFei}}{BrickRed}{3D Computer Vision}{0.5cm}
+\cvtitle{\textbf{Zhang YiFei}}{BrickRed}{Software Engineerer}{0.5cm}
 
 \positionedbox{left}{0.7\textwidth}{%
 	Phone: +86 13032883129\\
@@ -32,9 +32,9 @@
 	Blog: \url{https://blog.simplenaive.cn}\\
 	Github: \url{https://github.com/Yidadaa}
 }
-\positionedbox{right}{0.3\textwidth}{DOB: 20/01/97\\Chengdu, China}
+% \positionedbox{right}{0.3\textwidth}{UESTC\\Chengdu, China}
 
-\vspace{0.7cm}
+\vspace{0.3cm}
 
 \setlength{\columnsep}{1cm}
 \begin{multicols}{2}
@@ -56,42 +56,66 @@
 		\cvcompany{\small{MCM Honorable Mention}}{2017.02}
 \end{multicols}
 	
-		\vspace{0.5cm}
+		\vspace{0.3cm}
 		\cvsectiontitle{\textbf{Experience}}
 		\vspace{-1cm}
 		\begin{itemize}[leftmargin=0.5cm]
-		\item \cvcompany{Unsupervised Depth Estimation @ CFM. UESTC}{from 2019.04}\cvsublevel{%
+		\item \cvcompany{Research Software Engineerer Intern @ Tencent AI Lab Robotics X}{2019.11 - 2020.06}\cvsublevel{%
 			\cvsubbullet{%
-			My research direction is unsupervised depth estimation algorithm based on monocular video%
-			sequence. Unsupervised training process based on deep neural network can be quickly%
-			transferred to a new environment, and the training only needs the data of monocular%
-			camera video, which has great application prospects.
+				Survey and optimize real-time 3d reconstruction algorithms, implemented Kinect camera driver for %
+				Elastic Fusion 3D reconstruction algorithm, implemented the ROS message passing interface for Voxblox %
+				and ORB-SLAM.
 			}% 
 			\cvsubbullet{%
-				Existing unsupervised trainning process suffers from slow convergence, %
-				try to improve from the following several aspects: 1) Co-attention module has been shown %
-				to mine association of adjacent video frames, so applying co-attention on feature maps %
-				of adjacent frames may predict more accurate depth map. 2) the pose-net is completely trained %
-				with reconstruction loss which is built upon several frames, but it doesn't consider the %
-				the relations among those adjacent frames. Therefore, it is proposed to improve posenet %
-				training process using filtering methods(eg. kalman filter), which is widely used in SLAM system.
+				Developed a real-time point cloud data streaming algorithm, and optimize the lantency and robustness of the %
+				algorithm.
+			}
+			\cvsubbullet{
+				Developed a virtual reality robot control system, combined 3D real-time reconstruction, dynamic calibration and %
+				high-performance 3d rendering.
 			}
 			\cvsubbullet{%
-				\textbf{This work will be submitted to IJCAI.}
+				\textbf{Keywords:} 3D Reconstruction, SLAM, Real-Time Data Streaming, C++
 			}
 		}
-		\item \cvcompany{Accelerate reinforcement algorithm training in Unity @ Thesis}{2017.10 - 2018.06}\cvsublevel{%
-			\cvsubbullet{Reinforcement learning agent often needs a large number of exploration data to optimize policy %
-				by interacting with the environment. It will take a high time and material cost in the real world. We propose %
-				a framework that allows existing algorithms to interact with Unity environment and collect data in real-time. %
-			}
-		}
-		\item \cvcompany{Front End Web Developer Intern @ Baidu}{2016.12 - 2017.05}\cvsublevel{%
+		% \item \cvcompany{Accelerate reinforcement algorithm training in Unity @ Thesis}{2017.10 - 2018.06}\cvsublevel{%
+		% 	\cvsubbullet{Reinforcement learning agent often needs a large number of exploration data to optimize policy %
+		% 		by interacting with the environment. It will take a high time and material cost in the real world. We propose %
+		% 		a framework that allows existing algorithms to interact with Unity environment and collect data in real-time. %
+		% 	}
+		% }
+		\item \cvcompany{Software Engineerer (Part-Time \& Remote) @ Sibbay.Inc}{2017.12 - 2019.03}\cvsublevel{%
 			\cvsubbullet{%
-				During this internship, I was responsible for implementing new features of Baidu advertisement system, %
-				I worked with UI/UC designer, PM, QA and backend developer and bridged the gap between graphical design %
+				Sibbay.Inc builds a new fitness and health data sharing community for the people, provides a private and secure %
+				health data sharing system for users and their doctors.
+			}%
+			\cvsubbullet{%
+				Worked as a remote part-time developer, developed the wechat mini-program with other web developers. %
+			}%
+			\cvsubbullet{%
+				Designed and validated new features in online meetings. Built and optimized the workflow based on Github, %
+				reviewed the code and ensured the quality of the source code.%
+			}
+			\cvsubbullet{%
+				Balanced requirements, UX, and deadlines in order to get most of the business value in a limited timeframe.%
+			}
+			\cvsubbullet{%
+				\textbf{Keywords:} Web Development, Team Cooperation, Vue, Git Workflow
+			}%
+		}
+		\item \cvcompany{Software Engineerer Intern @ Baidu}{2016.12 - 2017.05}\cvsublevel{%
+			\cvsubbullet{%
+				Baidu FengChao is the core marketing department of Baidu.Inc, provides marketing services for %
+				over 8 handred thousands of enterprise users.
+			}%
+			\cvsubbullet{%
+				Implemented the new features of Baidu advertisement system, %
+				worked with UI/UX designer, PM, QA and backend developer and bridged the gap between graphical design %
 				and technical implementation, optimized application for maximum speed and scalability, and built reusable %
 				code for future use.
+			}%
+			\cvsubbullet{%
+				\textbf{Keywords:} Web Development, Team Cooperation, React \& Redux, Git Workflow
 			}%
 		}
 		\end{itemize}
