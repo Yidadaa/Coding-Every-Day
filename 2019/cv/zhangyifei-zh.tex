@@ -24,7 +24,7 @@
 
 \begin{document}
 
-\cvtitle{\textbf{张义飞}}{BrickRed}{三维视觉}{0.5cm}
+\cvtitle{\textbf{张义飞}}{BrickRed}{研发工程师}{0.5cm}
 
 \positionedbox{left}{0.7\textwidth}{%
 	电话：+86 13032883129\\
@@ -61,43 +61,47 @@
 		\cvsectiontitle{\textbf{实习\&研究经历}}
 		\vspace{-1cm}
 		\begin{itemize}[leftmargin=0.5cm]
-		\item \cvcompany{三维重建以及点云传输算法 @ 腾讯 Robotics X}{from 2019.11}\cvsublevel{%
+		\item \cvcompany{算法开发实习生 @ 腾讯 AI Lab Robotics X 实验室}{2019.11 - 2020.06}\cvsublevel{%
 			\cvsubbullet{%
-				主要负责调研三维重建算法，以及解决动态场景下三维重建算法的可用性。%
+				负责开发三维重建算法，实现实时点云数据流传输算法，并提升动态场景下三维重建算法的可用性。%
 			}% 
 			\cvsubbullet{%
-				前期优化 Elastic Fusion 重建算法，使用 C++ 为其编写 RealSense 驱动，同时负责 VoxBlox 重建算法与 ORB-SLAM%
-				的对接，使用 C++ 编写 ROS 接口，并调研各种数据传输算法的性能优劣。
+				优化 Elastic Fusion 三维重建算法，使用 C++ 为该算法编写 Kinect 相机驱动，同时负责 VoxBlox 三维重建算法与 ORB-SLAM%
+				系统对接，使用 C++ 编写 ROS 数据传输接口，并调研实时数据流传输算法的性能。
 			}
 			\cvsubbullet{%
-				随后基于 Elastic Fusion 重建算法，配合实时动态标定算法，实现 VR 环境下的机器臂遥操作，主要负责%
-				开发从重建端到展示端的点云数据传输以及点云渲染算法，并对其实时性、丢包率等性能设计实验进行验证。
+				基于 Elastic Fusion 重建算法，优化 GPU 到 CPU 之间的数据同步性能，开发实时点云数据流传输以及渲染算法，%
+				配合实时动态标定，实现虚拟环境下的机器臂控制操作%
+				并对其实时性、丢包率等性能设计实验进行验证。
+			}
+			\cvsubbullet{%
+				\textbf{关键字：三维重建、实时数据流传输、高性能算法、C++}
 			}
 		}
-		% \item \cvcompany{前端开发工程师 @ 上海尘微科技}{2017.12 - 2019.3}\cvsublevel{%
-		% 	\cvsubbullet{远程开发，兼职参与，负责了两处重要的面向用户的首屏和社区页面的开发工作，协调小型团队从需求分析到上线的全套流程，并负责攻克技术难点，%
-		% 		主要技术难点包括首屏动态布局、Feed 流长列表优化等。
+		\item \cvcompany{前端开发工程师（在校远程兼职） @ 尘微科技}{2017.12 - 2019.03}\cvsublevel{%
+			\cvsubbullet{远程参与该公司某医疗微信小程序的开发工作，主要负责小程序首屏和社区动态流页面的开发，协调小型团队从需求分析到上线的全套流程，%
+				并主要解决高性能 CSS 动效实现、首屏动态布局和 Feed 流长列表优化等技术难点。
+			}
+			\cvsubbullet{%
+				\textbf{关键字：远程协作、中型项目开发经验、Git 工作流、小程序开发、Vue}
+			}
+		}
+		% \item \cvcompany{基于 Unity 虚拟环境和强化学习的机械臂控制算法 @ 毕业设计}{2017.10 - 2018.06}\cvsublevel{%
+		% 	\cvsubbullet{强化学习算法在机械智能控制中愈发重要，然而强化学习算法往往需要在训练阶段通过大量地 exploration 与环境交互取得数据来优化策略，这种训练策略将会在
+		% 		真实世界带来极高的时间和物料成本，本文提出了一种架构，可以使得现有强化学习模型可以实时与 Unity 中的虚拟环境交互并获取训练数据，为迁移至真实环境提供预训练基础。
 		% 	}
-		% 	\cvsubbullet{%
-		% 		\textbf{关键字：团队协调、中型项目开发经验、Git 工作流、小程序开发技术、Vue}
+		% 	\cvsubbullet{主要工作如下：1) 构建 Unity 运行时和 Python 运行时的中间层，使得使用 Tensorflow 和 Pytorch 的构建的
+		% 		深度学习模型可以与 Unity 虚拟环境交互；2) 实现了强化学习中经典的 PPO 算法，并分别在二维和三维环境中设计对应的任务来验证算法和中间层的可用性；
+		% 		3) 基于本文提出的架构，探讨了多线程以及离屏和低分辨率渲染等手段对强化学习训练任务的加速能力。
 		% 	}
 		% }
-		\item \cvcompany{基于 Unity 虚拟环境和强化学习的机械臂控制算法 @ 毕业设计}{2017.10 - 2018.06}\cvsublevel{%
-			\cvsubbullet{强化学习算法在机械智能控制中愈发重要，然而强化学习算法往往需要在训练阶段通过大量地 exploration 与环境交互取得数据来优化策略，这种训练策略将会在
-				真实世界带来极高的时间和物料成本，本文提出了一种架构，可以使得现有强化学习模型可以实时与 Unity 中的虚拟环境交互并获取训练数据，为迁移至真实环境提供预训练基础。
-			}
-			\cvsubbullet{主要工作如下：1) 构建 Unity 运行时和 Python 运行时的中间层，使得使用 Tensorflow 和 Pytorch 的构建的
-				深度学习模型可以与 Unity 虚拟环境交互；2) 实现了强化学习中经典的 PPO 算法，并分别在二维和三维环境中设计对应的任务来验证算法和中间层的可用性；
-				3) 基于本文提出的架构，探讨了多线程以及离屏和低分辨率渲染等手段对强化学习训练任务的加速能力。
-			}
-		}
 		\item \cvcompany{前端开发实习生 @ 百度}{2016.12 - 2017.05}\cvsublevel{%
 			\cvsubbullet{%
-				主要负责百度凤巢的广告智能推荐系统的开发，参与了相关需求的正式上线和后续维护的整套流程，工作期间通过与其他部门紧密合作，%
-				对 Bug 迅速响应，并产出可维护强的、健壮的工程代码。
+				参与百度凤巢的广告智能推荐系统的前端页面开发，负责智能词条推荐界面的开发并参与该功能的上线和后续维护工作，%
+				掌握并熟悉 React \& Redux 框架的开发流程，产出高质量的工程代码。
 			}%
 			\cvsubbullet{%
-				\textbf{关键字：中型团队合作、大型项目开发经验、React \& Redux}
+				\textbf{关键字：团队合作、大型项目开发工作流、React \& Redux、Git 工作流}
 			}
 		}
 		\end{itemize}
@@ -107,6 +111,9 @@
 		\vspace{-0.8cm}
 
 		\begin{adjustwidth}{0.1cm}{0cm}
+			\cvcompany{\project{leetcode-cn.com/u/yidadaa/}{C++ / Python}{全站排名 $\approx 500$}}{2020.05}\\
+				刷题量 $\approx 800$，常用编程语言：C++ / Python，熟练掌握常见算法与数据结构以及算法性能分析。
+
 			\cvcompany{\project{github.com/Yidadaa/Pytorch-Video-Classification}{Python / Pytorch}{$\approx 500$ lines}}{2019.04}\\
 				基于 CNN-RNN 架构的视频动作分类网络，在 UCF101 上达到 80\% 的准确率。
 
@@ -114,16 +121,19 @@
 				阿里天池比赛代码，使用 Deeplabv3 对超大卫星图做分割。
 
 			\cvcompany{\project{github.com/Yidadaa/Parallel-Programming-On-GPU}{CUDA / C++}{$\approx 200$ lines}}{2018.11}\\
-				使用 CUDA 加速 n-body 模拟程序，加速比达到 3000。
+				使用 CUDA 加速 n-body 模拟程序，加速比 $\approx$ 3000。
 
 			\cvcompany{\project{github.com/Yidadaa/Captcha-Deep-Learning}{Python / Keras / Tensorflow}{$\approx 500$ lines}}{2018.01}\\
-				搭建端到端的验证码识别网络，分别使用 Keras 和 Tensorflow 实现，在测试集上达到 98\% 的准确率。
+				端到端验证码识别网络，分别使用 Keras 和 Tensorflow 实现，在测试集上达到 98\% 的准确率。
 
 			\cvcompany{\project{github.com/Yidadaa/OPPO-Human-Segmentation}{C++ / Dart}{$\approx 1000$ lines}}{2019.03}\\
 				OPPO AI 挑战赛 Demo 源码，将人像语义分割网络经过腾讯开源的 ncnn 框架转换后部署到移动端。
 
 			\cvcompany{\project{github.com/Yidadaa/HUAWEI-Codecraft-2019}{C++}{$\approx 1000$ lines}}{2019.05}\\
-				华为软件精英挑战赛代码，车辆路径智能规划，包含完整的单元测试，严格遵循 Google C++ Style Guide 规范。
+				华为软件精英挑战赛，车辆路径智能规划，使用 gtest 进行单元测试，遵循 Google C++ Style Guide。
+			
+			\cvcompany{\project{https://github.com/Yidadaa/P2P-Message}{Dart}{$\approx 1000$ lines}}{2018.11}\\
+				分布式系统大作业，基于 Flutter 开发的 P2P 聊天程序，在良好的 NAT 环境下实现纯文字聊天。
 		\end{adjustwidth}
 
 \end{document}
