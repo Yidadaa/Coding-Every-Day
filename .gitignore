@@ -23,3 +23,5 @@ CTestTestfile.cmake
 ipch
 
 __pycache__
+
+build
