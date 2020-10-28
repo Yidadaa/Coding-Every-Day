@@ -8,7 +8,6 @@
         "iostream": "cpp",
         "ostream": "cpp"
     },
-    "python.pythonPath": "C:\\Python38\\python.exe",
     "latex-workshop.latex.recipes": [
         {
             "name": "xelatex",
