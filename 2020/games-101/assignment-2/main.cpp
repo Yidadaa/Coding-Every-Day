@@ -30,8 +30,37 @@ Eigen::Matrix4f get_model_matrix(float rotation_angle)
 
 Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio, float zNear, float zFar)
 {
-    // TODO: Copy-paste your implementation from the previous assignment.
-    Eigen::Matrix4f projection;
+    Eigen::Matrix4f projection = Eigen::Matrix4f::Identity();
+	Eigen::Matrix4f M_persp2ortho(4, 4);
+	Eigen::Matrix4f M_ortho_scale(4, 4);
+	Eigen::Matrix4f M_ortho_trans(4, 4);
+
+	float angle = eye_fov * MY_PI / 180.0; // half angle
+	float height = zNear * tan(angle) * 2;
+	float width = height * aspect_ratio;
+
+	auto t = -zNear * tan(angle / 2);
+	auto r = t * aspect_ratio;
+	auto l = -r;
+	auto b = -t;
+
+	M_persp2ortho << zNear, 0, 0, 0,
+		0, zNear, 0, 0,
+		0, 0, zNear + zFar, -zNear * zFar,
+		0, 0, 1, 0;
+
+	M_ortho_scale << 2 / (r - l), 0, 0, 0,
+		0, 2 / (t - b), 0, 0,
+		0, 0, 2 / (zNear - zFar), 0,
+		0, 0, 0, 1;
+
+	M_ortho_trans << 1, 0, 0, -(r + l) / 2,
+		0, 1, 0, -(t + b) / 2,
+		0, 0, 1, -(zNear + zFar) / 2,
+		0, 0, 0, 1;
+
+	Eigen::Matrix4f M_ortho = M_ortho_scale * M_ortho_trans;
+	projection = M_ortho * M_persp2ortho;
 
     return projection;
 }
@@ -124,5 +153,14 @@ int main(int argc, const char** argv)
     }
 
     return 0;
+}
+
+void myTestFunction() {
+    struct Node {
+        int value;
+        Node *next;
+    };
+
+    Node *next, *root;
 }
 // clang-format on
