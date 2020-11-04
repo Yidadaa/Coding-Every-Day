@@ -1,7 +1,7 @@
 """An example solution for my girlfriend."""
 
 from __future__ import annotations
-import math, random
+import random
 from itertools import permutations, product
 from functools import reduce, lru_cache
 from typing import Callable, List, Dict, Tuple
