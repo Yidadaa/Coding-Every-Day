@@ -6,6 +6,7 @@ from itertools import permutations, product
 from functools import reduce, lru_cache
 from typing import Callable, List, Dict, Tuple
 from queue import PriorityQueue
+import time
 
 PuzzleType = List[List[int]]
 
@@ -87,6 +88,7 @@ class EightFigurePuzzle():
       h_function: h(x) function, default: self.default_h_function
     """
     self.N, self.W = 9, 3
+    self.MAX_STATE_COUNT = reduce(lambda l, c: l * c, range(1, self.N + 1))
     self.puzzle = self.random_state() if puzzle is None else puzzle
     self.target = self.random_state() if target is None else target
     self.h_function = self.default_h_function if h_function is None else h_function
@@ -132,18 +134,15 @@ class EightFigurePuzzle():
   def default_h_function(state: PuzzleType, target: PuzzleType) -> int:
     """Define default h(x) if there is no h_function defined by user."""
     rows, cols = len(state), len(state[0])
-    h = 0
-    for r in range(rows):
-      for c in range(cols):
-        h += int(state[r][c] != target[r][c])
-    return h
+    return sum(int(state[r][c] != target[r][c])
+      for r, c in product(range(rows), range(cols)))
 
   def random_state(self) -> list:
     """Get random state as initial puzzle."""
     puzzle_generator = permutations(range(self.N))
 
     # generate puzzle randomly
-    times = random.randint(0, reduce(lambda last, cur: last * cur, range(1, self.N + 1)))
+    times = random.randint(0, self.MAX_STATE_COUNT)
     for _ in range(times): next(puzzle_generator)
     puzzle = next(puzzle_generator)
     return self.reshape(puzzle)
@@ -157,9 +156,9 @@ class EightFigurePuzzle():
 
 if __name__ == "__main__":
   puzzle = [
-    [2, 8, 3],
-    [1, 6, 4],
-    [7, 0, 5]
+    [1, 3, 0],
+    [8, 2, 4],
+    [7, 6, 5]
   ]
   target = [
     [1, 2, 3],
@@ -167,6 +166,14 @@ if __name__ == "__main__":
     [7, 6, 5]
   ]
 
-  solver = EightFigurePuzzle(puzzle=puzzle, target=target)
-  solver.solve()
-  solver.show_output()
+  time_point = time.time()
+  bfs_solver = EightFigurePuzzle(puzzle=puzzle, target=target, h_function=lambda _, __: 0) # type: ignore
+  bfs_solver.solve()
+  bfs_solver.show_output()
+  print('BFS: %.4f' % (time.time() - time_point))
+
+  time_point = time.time()
+  astar_solver = EightFigurePuzzle(puzzle=bfs_solver.puzzle, target=bfs_solver.target)
+  astar_solver.solve()
+  astar_solver.show_output()
+  print('A star: %.4f' % (time.time() - time_point))
