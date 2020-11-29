@@ -48,17 +48,17 @@ class Displayer(object):
     self.name = name
     self.scale = scale
 
-  def draw(self, curves: List[np.ndarray] = [], color: int = 0, ball_radius: int = 0.0, max_d: float = 1) -> None:
+  def draw(self, curves: List[np.ndarray] = [], visibility: List[np.ndarray] = [],
+      color: int = 0, ball_radius: int = 0.0) -> None:
     """Draw curves to screen."""
     if curves:
-      for curve in curves:
+      for curve, vis in zip(curves, visibility):
         render_curve = self.xy(curve)
         n = render_curve.shape[0]
         for i in range(n):
-          st, ed = render_curve[i], render_curve[(i + 1) % n]
-          dis = np.linalg.norm(curve[i] - curve[(i + 1) % n])
-          # if dis > max_d: continue
-          cv2.line(self.img, tuple(st), tuple(ed), color=color)
+          j = (i + 1) % n
+          st, ed = render_curve[i], render_curve[j]
+          if len(visibility) == 0 or vis[i] and vis[j]: cv2.line(self.img, tuple(st), tuple(ed), color=color)
         if ball_radius <= 0: continue
         for i, (x, y) in enumerate(render_curve):
           cv2.circle(self.img, (x, y), int(ball_radius * self.scale), 0, thickness=1)
@@ -98,14 +98,20 @@ class IntersectPoint(object):
 class Graph(object):
   """Graph object to compute."""
 
-  def __init__(self, curves: List[np.ndarray], norms: List[np.ndarray], name: str = None) -> None:
+  def __init__(self, curves: List[np.ndarray], norms: List[np.ndarray], visibility: List[np.ndarray] = None, name: str = None) -> None:
     """Init graph with file."""
     self.curves: List[np.ndarray] = curves
     self.norms: List[np.ndarray] = norms
+    self.visibility: List[np.ndarray] = self.init_visibility(curves) if visibility is None else visibility
     self.tree: List[int] = self.get_relation()
     self.name = name
     self.all_points = np.concatenate(self.curves) if self.curves else np.array([[0, 0]])
     self.kd_tree = None
+
+  @staticmethod
+  def init_visibility(curves: List[np.ndarray]):
+    """Initialize visibility for each curve."""
+    return [np.ones(c.shape[0]).astype(bool) for c in curves]
 
   def get_relation(self) -> List[int]:
     """Get relationship of each plogon."""
@@ -139,22 +145,26 @@ class Graph(object):
     """Return offset of graph."""
     offset_curves: List[np.ndarray] = []
     offset_all_norms: List[np.ndarray] = []
+    offset_all_vis: List[np.ndarray] = []
     if not self.kd_tree: self.kd_tree = KDTree(self.all_points)
-    for curve, norm in zip(self.curves, self.norms):
+    for curve, norm, vis in zip(self.curves, self.norms, self.visibility):
       offset_curve = curve + norm * d
       offset_points = []
       offset_norms = []
-      for p, n in zip(offset_curve, norm):
+      offset_vis = []
+      for p, n, v in zip(offset_curve, norm, vis):
         s_points = self.kd_tree.search(p[0] - 2 * d, p[0] + 2 * d, p[1] - 2 * d, p[1] + 2 * d)
         # min_dis = np.linalg.norm(all_points - p, axis=1).min()
         min_dis = np.linalg.norm(s_points - p, axis=1).min()
-        if abs(min_dis - d) > EPS: continue
+        # if abs(min_dis - d) > EPS: continue
         offset_points.append(p)
         offset_norms.append(n)
+        offset_vis.append(v and (abs(min_dis - d) <= EPS))
       if offset_points:
         offset_curves.append(np.array(offset_points))
         offset_all_norms.append(np.array(offset_norms))
-    return Graph(offset_curves, offset_all_norms)
+        offset_all_vis.append(np.array(offset_vis))
+    return Graph(offset_curves, offset_all_norms, offset_all_vis)
 
   def offset_simulate(self, d: float) -> list[np.ndarray]:
     """Return offset of graph."""
@@ -173,46 +183,69 @@ class Graph(object):
         curve.append(p)
     return [np.array(curve)]
 
+  @staticmethod
+  def norm_of_line(vec: np.ndarray) -> np.ndarray:
+    """Get norm of line."""
+    norm = np.array([1.0, -vec[0] / (vec[1] + EPS)])
+    norm = Graph.normalize(norm)
+    norm = norm if np.cross(norm, vec) > 0 else -norm
+    return norm
+
+  @staticmethod
+  def normalize(vec: np.ndarray) -> np.ndarray:
+    l = np.linalg.norm(vec)
+    return vec / l if l > EPS else vec
+
   def interplot(self, max_step: float) -> Graph:
     """Interplot curves with more vertexs."""
     in_curves = []
     in_norms = []
-    for curve, norm in zip(self.curves, self.norms):
+    in_all_vis = []
+    for curve, norm, vis in zip(self.curves, self.norms, self.visibility):
       n = curve.shape[0]
       in_curve = []
       in_norm = []
+      in_vis = []
       i = 1
       while i < n - 1:
         step_value = np.arccos(np.clip(norm[i - 1].dot(norm[i + 1]) / np.linalg.norm(norm[i - 1]) / np.linalg.norm(norm[i + 1]), -1, 1))
         if step_value <= max_step:
           in_curve.append(curve[i])
           in_norm.append(norm[i])
+          in_vis.append(vis[i])
         else:
           interp_count = int(step_value / max_step) + 1
           for si in range(interp_count):
             alpha = 1 - si / interp_count
+            # ij_vec, jk_vec = self.norm_of_line(curve[i] - curve[i - 1]), self.norm_of_line(curve[i + 1] - curve[i])
+            # in_norm_vec = alpha * ij_vec + (1 - alpha) * jk_vec
             in_norm_vec = alpha * norm[i - 1] + (1 - alpha) * norm[i + 1]
-            in_norm.append(in_norm_vec / np.linalg.norm(in_norm_vec))
+            in_norm.append(self.normalize(in_norm_vec))
             in_curve.append(curve[i])
+            in_vis.append(vis[i])
           i += 1
         i += 1
       in_curves.append(np.array(in_curve, dtype=np.float))
       in_norms.append(np.array(in_norm, dtype=np.float))
-    return Graph(in_curves, in_norms)
+      in_all_vis.append(np.array(in_vis))
+    return Graph(in_curves, in_norms, in_all_vis)
 
   def interplot_with_distance(self, max_step: float) -> Graph:
     """Interplot graph according to distance."""
     in_curves = []
     in_norms = []
-    for curve, norm in zip(self.curves, self.norms):
+    in_all_vis = []
+    for curve, norm, vis in zip(self.curves, self.norms, self.visibility):
       n = curve.shape[0]
       in_curve = []
       in_norm = []
+      in_vis = []
       for i in range(n):
         j = (i + 1) % n
         step_value = np.linalg.norm(curve[i] - curve[j])
         in_curve.append(curve[i])
         in_norm.append(norm[i])
+        in_vis.append(vis[i])
         if step_value > max_step:
           interp_count = int(step_value / max_step) + 1
           direction_vec = curve[j] - curve[i]
@@ -221,10 +254,12 @@ class Graph(object):
             in_curve.append(curve[i] + si / interp_count * direction_vec)
             in_norm_vec = norm[i] + si / interp_count * norm_intp
             in_norm.append(in_norm_vec / np.linalg.norm(in_norm_vec))
+            in_vis.append(vis[i] * vis[j])
       in_curves.append(np.array(in_curve, dtype=np.float))
       in_norms.append(np.array(in_norm, dtype=np.float))
+      in_all_vis.append(np.array(in_vis))
     # return Graph(in_curves, [self.get_norms(c) for c in in_curves])
-    return Graph(in_curves, in_norms)
+    return Graph(in_curves, in_norms, in_all_vis)
 
   def zigzag_shadow(self, d: float, resolution: float) -> Tuple[List[np.ndarray], int, float, float]:
     """Generate zig-zag shadow."""
@@ -331,13 +366,16 @@ class Graph(object):
     curves = []
     width = min(self.all_points[:, 0].max() - self.all_points[:, 0].min(), self.all_points[:, 1].max() - self.all_points[:, 1].min())
     steps = int(width / d / 2)
-    g = self.interplot(0.1)
+    g = self.interplot_with_distance(resolution).interplot(0.5)
+
+    displayer.draw_norms(g)
     for i in tqdm(range(steps)):
       g = g.offset(distance)
       curves += g.curves
       if i % intp_step == 0: g = g.interplot_with_distance(resolution)
+      if all(v.sum() == 0 for v in g.visibility): break
       if not displayer: continue
-      displayer.draw(g.curves, (255, 0, 0))
+      displayer.draw(g.curves, g.visibility, (255, 0, 0))
       displayer.show(1)
     total_time = (time.time() - start_time_point) * 1000
     return curves, total_time
@@ -367,7 +405,7 @@ class Graph(object):
       ik_vec: np.ndarray = (curve[k] - curve[i])
       norm_vec = ji_vec / (np.linalg.norm(ji_vec) + EPS) + jk_vec / (np.linalg.norm(jk_vec) + EPS)
       if np.linalg.norm(norm_vec) < EPS:
-        norm_vec = np.array([1.0, -ik_vec[0] / (ik_vec[1] + EPS)])
+        norm_vec = Graph.norm_of_line(ik_vec)
       norm_vec = norm_vec / np.linalg.norm(norm_vec)
       norms[j] = norm_vec if np.cross(norm_vec, ik_vec) > 0 else -norm_vec
     norms[-1] = norms[0]
@@ -381,10 +419,10 @@ class Graph(object):
 
 if __name__ == '__main__':
   d = Displayer(name='Default', scale=20, w=800, h=800)
-  g1 = Graph.from_file(to_absolute_path('./attachments/graph1.csv'))
-  d.draw(g1.curves, ball_radius=0)
-  distance = 0.5
-  resolution = 0.2
+  g1 = Graph.from_file(to_absolute_path('./attachments/graph2.csv'))
+  d.draw(g1.curves, g1.visibility, ball_radius=0)
+  distance = 1
+  resolution = 0.3
 
   # g1.contour_shadow_polygon(distance, distance, d)
   # d.draw(g1.offset_simulate(distance * 2))
