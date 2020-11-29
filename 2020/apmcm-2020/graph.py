@@ -1,16 +1,13 @@
 from __future__ import annotations
 import functools
-from functools import cmp_to_key, total_ordering
-from sys import displayhook
 from typing import *
 import os
 
 import numpy as np
 import cv2
-from numpy.linalg.linalg import norm
-from shapely.geometry import Polygon, MultiLineString
-from shapely.geometry.linestring import LineString
-from shapely.geometry.polygon import LinearRing
+# from shapely.geometry import Polygon, MultiLineString
+# from shapely.geometry.linestring import LineString
+# from shapely.geometry.polygon import LinearRing
 import bisect
 from tqdm import tqdm
 import time
@@ -338,27 +335,27 @@ class Graph(object):
 
     return connected_lines, horizontal_lines_count, total_length, total_time
 
-  def contour_shadow_polygon(self, d: float, resolution: float, displayer: Displayer) -> np.ndarray:
-    """Generate contour shadow with Shapley."""
-    width = min(self.all_points[:, 0].max() - self.all_points[:, 0].min(), self.all_points[:, 1].max() - self.all_points[:, 1].min())
-    steps = int(width / d / 2)
-    intg = self.interplot_with_distance(resolution)
-    lrs = LineString(np.concatenate(intg.curves))
-    ret_curves = []
-    for i in tqdm(range(steps)):
-      next_lrs = []
-      ops = lrs.parallel_offset((i + 1) * distance, resolution=4)
-      if isinstance(ops, LineString): ops = [ops]
-      for op in ops:
-        if op.length < EPS: continue
-        xy = op.xy
-        if len(xy[0]) < 5: continue
-        next_lrs.append(np.array(list(zip(xy[0], xy[1]))))
-      if len(next_lrs) == 0: break
-      ret_curves += next_lrs
-      displayer.draw(next_lrs)
-      displayer.show(1)
-    return ret_curves
+  # def contour_shadow_polygon(self, d: float, resolution: float, displayer: Displayer) -> np.ndarray:
+  #   """Generate contour shadow with Shapley."""
+  #   width = min(self.all_points[:, 0].max() - self.all_points[:, 0].min(), self.all_points[:, 1].max() - self.all_points[:, 1].min())
+  #   steps = int(width / d / 2)
+  #   intg = self.interplot_with_distance(resolution)
+  #   lrs = LineString(np.concatenate(intg.curves))
+  #   ret_curves = []
+  #   for i in tqdm(range(steps)):
+  #     next_lrs = []
+  #     ops = lrs.parallel_offset((i + 1) * distance, resolution=4)
+  #     if isinstance(ops, LineString): ops = [ops]
+  #     for op in ops:
+  #       if op.length < EPS: continue
+  #       xy = op.xy
+  #       if len(xy[0]) < 5: continue
+  #       next_lrs.append(np.array(list(zip(xy[0], xy[1]))))
+  #     if len(next_lrs) == 0: break
+  #     ret_curves += next_lrs
+  #     displayer.draw(next_lrs)
+  #     displayer.show(1)
+  #   return ret_curves
 
   def contour_shadow(self, d: float, resolution: float, displayer: Displayer = None, intp_step: int = 1) -> Tuple[List[np.ndarray], float]:
     """Generate contour shadow."""
@@ -411,11 +408,11 @@ class Graph(object):
     norms[-1] = norms[0]
     return norms
 
-  @staticmethod
-  def polygon2curves(p: Union[Polygon, LinearRing]) -> List[np.ndarray]:
-    """Convert polygon to curves."""
-    xy = p.exterior.xy if isinstance(p, Polygon) else p.xy
-    return [np.array(list(zip(*xy)))]
+  # @staticmethod
+  # def polygon2curves(p: Union[Polygon, LinearRing]) -> List[np.ndarray]:
+  #   """Convert polygon to curves."""
+  #   xy = p.exterior.xy if isinstance(p, Polygon) else p.xy
+  #   return [np.array(list(zip(*xy)))]
 
 if __name__ == '__main__':
   d = Displayer(name='Default', scale=20, w=800, h=800)
