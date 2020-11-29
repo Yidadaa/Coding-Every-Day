@@ -1,6 +1,7 @@
 from __future__ import annotations
 import functools
-from functools import total_ordering
+from functools import cmp_to_key, total_ordering
+from sys import displayhook
 from typing import *
 import os
 
@@ -17,6 +18,26 @@ import time
 from utils import to_absolute_path
 
 EPS = 0.000001
+
+class KDTree(object):
+  """KD-Tree to search points."""
+  def __init__(self, points: np.ndarray) -> None:
+    self.points = points
+    n = self.points.shape[0]
+    self.x_sorted = sorted(points[:, 0])
+    self.xi_sorted = sorted(range(n), key=functools.cmp_to_key(lambda a, b: points[a][0] - points[b][0]))
+    self.y_sorted = sorted(points[:, 1])
+    self.yi_sorted = sorted(range(n), key=functools.cmp_to_key(lambda a, b: points[a][1] - points[b][1]))
+
+  def search(self, x_min: float, x_max: float, y_min: float, y_max: float) -> np.ndarray:
+    x_l = bisect.bisect_left(self.x_sorted, x_min)
+    x_r = bisect.bisect_right(self.x_sorted, x_max)
+    y_l = bisect.bisect_left(self.y_sorted, y_min)
+    y_r = bisect.bisect_right(self.y_sorted, y_max)
+    x_range_indexes = set(self.xi_sorted[x_l:x_r])
+    y_range_indexes = set(self.yi_sorted[y_l:y_r])
+    selected_points = list(x_range_indexes & y_range_indexes)
+    return self.points[selected_points]
 
 class Displayer(object):
   """Display graph."""
@@ -83,6 +104,8 @@ class Graph(object):
     self.norms: List[np.ndarray] = norms
     self.tree: List[int] = self.get_relation()
     self.name = name
+    self.all_points = np.concatenate(self.curves) if self.curves else np.array([[0, 0]])
+    self.kd_tree = None
 
   def get_relation(self) -> List[int]:
     """Get relationship of each plogon."""
@@ -112,19 +135,26 @@ class Graph(object):
     norms = [Graph.get_norms(curve) for curve in curves]
     return Graph(curves, norms)
 
-  def offset(self, d: float) -> list[np.ndarray]:
+  def offset(self, d: float) -> Graph:
     """Return offset of graph."""
     offset_curves: List[np.ndarray] = []
-    all_points = np.concatenate(self.curves) if len(self.curves) else []
+    offset_all_norms: List[np.ndarray] = []
+    if not self.kd_tree: self.kd_tree = KDTree(self.all_points)
     for curve, norm in zip(self.curves, self.norms):
       offset_curve = curve + norm * d
       offset_points = []
-      for p in offset_curve:
-        min_dis = np.linalg.norm(all_points - p, axis=1).min()
+      offset_norms = []
+      for p, n in zip(offset_curve, norm):
+        s_points = self.kd_tree.search(p[0] - 2 * d, p[0] + 2 * d, p[1] - 2 * d, p[1] + 2 * d)
+        # min_dis = np.linalg.norm(all_points - p, axis=1).min()
+        min_dis = np.linalg.norm(s_points - p, axis=1).min()
         if abs(min_dis - d) > EPS: continue
         offset_points.append(p)
-      if offset_points: offset_curves.append(np.array(offset_points))
-    return offset_curves
+        offset_norms.append(n)
+      if offset_points:
+        offset_curves.append(np.array(offset_points))
+        offset_all_norms.append(np.array(offset_norms))
+    return Graph(offset_curves, offset_all_norms)
 
   def offset_simulate(self, d: float) -> list[np.ndarray]:
     """Return offset of graph."""
@@ -196,22 +226,20 @@ class Graph(object):
     # return Graph(in_curves, [self.get_norms(c) for c in in_curves])
     return Graph(in_curves, in_norms)
 
-  def zigzag_shadow(self, d: float) -> Tuple[List[np.ndarray], int, float, float]:
+  def zigzag_shadow(self, d: float, resolution: float) -> Tuple[List[np.ndarray], int, float, float]:
     """Generate zig-zag shadow."""
     start_time_point = time.time()
-    curves = self.interplot(0.2).offset(d)
-    if d >= 0.5:
-      curves = Graph.from_curves(curves).interplot_with_distance(d / 5).curves
+    g = self.interplot(0.5).offset(d).interplot_with_distance(resolution)
     min_y = min(curve[:, 1].min() for curve in self.curves)
     max_y = max(curve[:, 1].max() for curve in self.curves)
     line_count = int((max_y - min_y) / d)
     lines = [i * d + min_y for i in range(line_count + 1)]
 
     points_group_by_line = [[] for _ in range(line_count + 1)]
-    points_group_by_curve = [[] for _ in curves]
+    points_group_by_curve = [[] for _ in g.curves]
 
     intersect_points: List[IntersectPoint] = []
-    for ci, curve in enumerate(curves):
+    for ci, curve in enumerate(g.curves):
       n = curve.shape[0]
       for i in range(n - 1):
         st, ed = curve[i], curve[i + 1]
@@ -257,8 +285,8 @@ class Graph(object):
           last_point = p.xy
           # connect curve between two intersect points
           for pi in range(p.ed_index, np.st_index + 1):
-            connected_lines.append((last_point, curves[p.curve_index][pi]))
-            last_point = curves[p.curve_index][pi]
+            connected_lines.append((last_point, g.curves[p.curve_index][pi]))
+            last_point = g.curves[p.curve_index][pi]
           connected_lines.append((last_point, np.xy))
           total_length += self.distance(*connected_lines[-1])
 
@@ -277,8 +305,7 @@ class Graph(object):
 
   def contour_shadow_polygon(self, d: float, resolution: float, displayer: Displayer) -> np.ndarray:
     """Generate contour shadow with Shapley."""
-    all_points = np.concatenate(self.curves)
-    width = min(all_points[:, 0].max() - all_points[:, 0].min(), all_points[:, 1].max() - all_points[:, 1].min())
+    width = min(self.all_points[:, 0].max() - self.all_points[:, 0].min(), self.all_points[:, 1].max() - self.all_points[:, 1].min())
     steps = int(width / d / 2)
     intg = self.interplot_with_distance(resolution)
     lrs = LineString(np.concatenate(intg.curves))
@@ -298,20 +325,22 @@ class Graph(object):
       displayer.show(1)
     return ret_curves
 
-  def contour_shadow(self, d: float, resolution: float, displayer: Displayer) -> List[np.ndarray]:
+  def contour_shadow(self, d: float, resolution: float, displayer: Displayer = None, intp_step: int = 1) -> Tuple[List[np.ndarray], float]:
     """Generate contour shadow."""
+    start_time_point = time.time()
     curves = []
-    all_points = np.concatenate(self.curves)
-    width = min(all_points[:, 0].max() - all_points[:, 0].min(), all_points[:, 1].max() - all_points[:, 1].min())
-    steps = int(width / d / 2) + 1
-    g = self.interplot(resolution)
+    width = min(self.all_points[:, 0].max() - self.all_points[:, 0].min(), self.all_points[:, 1].max() - self.all_points[:, 1].min())
+    steps = int(width / d / 2)
+    g = self.interplot(0.1)
     for i in tqdm(range(steps)):
-      g = Graph.from_curves(g.offset(distance))
+      g = g.offset(distance)
       curves += g.curves
+      if i % intp_step == 0: g = g.interplot_with_distance(resolution)
+      if not displayer: continue
       displayer.draw(g.curves, (255, 0, 0))
       displayer.show(1)
-      if i % 1 == 0: g = g.interplot_with_distance(resolution)
-    return curves
+    total_time = (time.time() - start_time_point) * 1000
+    return curves, total_time
 
   @staticmethod
   def distance(st: np.ndarray, ed: np.ndarray) -> float:
@@ -345,34 +374,28 @@ class Graph(object):
     return norms
 
   @staticmethod
-  def polygon2curves(p: Union[Polygon, LinearRing]) -> list[np.ndarray]:
+  def polygon2curves(p: Union[Polygon, LinearRing]) -> List[np.ndarray]:
     """Convert polygon to curves."""
     xy = p.exterior.xy if isinstance(p, Polygon) else p.xy
     return [np.array(list(zip(*xy)))]
 
-def test_graph():
-  curve = np.array([[0, 0], [0, 1], [1, 0], [0, 0]], dtype=np.float)
-  norms = Graph.get_norms(curve)
-  # print(norms)
-
 if __name__ == '__main__':
-  test_graph()
-  d = Displayer(name='Default', scale=14, w=800, h=800)
+  d = Displayer(name='Default', scale=20, w=800, h=800)
   g1 = Graph.from_file(to_absolute_path('./attachments/graph1.csv'))
   d.draw(g1.curves, ball_radius=0)
-  steps = 5
-  distance = 1
-  resolution = 0.1
+  distance = 0.5
+  resolution = 0.2
 
   # g1.contour_shadow_polygon(distance, distance, d)
   # d.draw(g1.offset_simulate(distance * 2))
 
-  # g1.contour_shadow(distance, resolution, d)
-  # d.draw_norms(g1)
+  l, t = g1.contour_shadow(distance, resolution, d)
+  print('Contour total time = {:.2f} ms.'.format(t))
+  # d.draw(l, (255, 0, 0))
 
   # zig-zag
-  lines, count, total_length, total_time = g1.zigzag_shadow(distance)
-  for st, ed in lines: cv2.line(d.img, tuple(d.xy(st)), tuple(d.xy(ed)), (255, 0, 0))
-  print('Zig-zag with {} horizontal lines, total length = {:.2f} mm, total time = {:.2f}ms.\n'.format(count, total_length, total_time))
+  # lines, count, total_length, total_time = g1.zigzag_shadow(0.1, 0.05)
+  # for st, ed in lines: cv2.line(d.img, tuple(d.xy(st)), tuple(d.xy(ed)), (255, 0, 0))
+  # print('Zig-zag with {} horizontal lines, total length = {:.2f} mm, total time = {:.2f}ms.\n'.format(count, total_length, total_time))
 
   d.show()
