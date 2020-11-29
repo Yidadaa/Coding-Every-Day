@@ -1,4 +1,6 @@
 from __future__ import annotations
+import functools
+from functools import total_ordering
 from typing import *
 import os
 
@@ -10,6 +12,7 @@ from shapely.geometry.linestring import LineString
 from shapely.geometry.polygon import LinearRing
 import bisect
 from tqdm import tqdm
+import time
 
 from utils import to_absolute_path
 
@@ -33,12 +36,19 @@ class Displayer(object):
         for i in range(n):
           st, ed = render_curve[i], render_curve[(i + 1) % n]
           dis = np.linalg.norm(curve[i] - curve[(i + 1) % n])
-          if dis > max_d: continue
+          # if dis > max_d: continue
           cv2.line(self.img, tuple(st), tuple(ed), color=color)
-          # cv2.polylines(self.img, [render_curve], isClosed=True, color=color)
         if ball_radius <= 0: continue
         for i, (x, y) in enumerate(render_curve):
           cv2.circle(self.img, (x, y), int(ball_radius * self.scale), 0, thickness=1)
+
+  def draw_norms(self, g: Graph, width: float = 1) -> None:
+    """Draw norm vectors of graph."""
+    for curve, norm in zip(g.curves, g.norms):
+      for p, n in zip(curve, norm):
+        dp = self.xy((p + n * distance * width))
+        inp = self.xy(p)
+        cv2.line(d.img, tuple(inp), tuple(dp), (0, 168, 0))
 
   def show(self, delay: int = 0) -> None:
     cv2.imshow(self.name, self.img)
@@ -51,6 +61,18 @@ class Displayer(object):
   def xy(self, pxy: np.ndarray) -> np.ndarray:
     """Get pixel postion of point."""
     return (pxy * self.scale + self.center).astype(np.int)
+
+class IntersectPoint(object):
+  def __init__(self, xy: np.ndarray, line_index: int, curve_index: int, st_index: int,
+      ed_index: int, mark: int, number_mark: int, lp_index: int) -> None:
+    self.xy = xy
+    self.line_index = line_index
+    self.curve_index = curve_index
+    self.st_index = st_index
+    self.ed_index = ed_index
+    self.mark = mark
+    self.number_mark = number_mark
+    self.lp_index = lp_index # index in a split line
 
 class Graph(object):
   """Graph object to compute."""
@@ -93,11 +115,12 @@ class Graph(object):
   def offset(self, d: float) -> list[np.ndarray]:
     """Return offset of graph."""
     offset_curves: List[np.ndarray] = []
+    all_points = np.concatenate(self.curves) if len(self.curves) else []
     for curve, norm in zip(self.curves, self.norms):
       offset_curve = curve + norm * d
       offset_points = []
       for p in offset_curve:
-        min_dis = min(np.linalg.norm(curve - p, axis=1).min() for curve in self.curves)
+        min_dis = np.linalg.norm(all_points - p, axis=1).min()
         if abs(min_dis - d) > EPS: continue
         offset_points.append(p)
       if offset_points: offset_curves.append(np.array(offset_points))
@@ -170,18 +193,25 @@ class Graph(object):
             in_norm.append(in_norm_vec / np.linalg.norm(in_norm_vec))
       in_curves.append(np.array(in_curve, dtype=np.float))
       in_norms.append(np.array(in_norm, dtype=np.float))
-    return Graph(in_curves, [self.get_norms(c) for c in in_curves])
+    # return Graph(in_curves, [self.get_norms(c) for c in in_curves])
+    return Graph(in_curves, in_norms)
 
-  def zigzag_shadow(self, d: float) -> np.ndarray:
+  def zigzag_shadow(self, d: float) -> Tuple[List[np.ndarray], int, float, float]:
     """Generate zig-zag shadow."""
-    c = self.offset(d)
-    min_y = min(curve[:, 1].min() for curve in c)
-    max_y = max(curve[:, 1].max() for curve in c)
+    start_time_point = time.time()
+    curves = self.interplot(0.2).offset(d)
+    if d >= 0.5:
+      curves = Graph.from_curves(curves).interplot_with_distance(d / 5).curves
+    min_y = min(curve[:, 1].min() for curve in self.curves)
+    max_y = max(curve[:, 1].max() for curve in self.curves)
     line_count = int((max_y - min_y) / d)
     lines = [i * d + min_y for i in range(line_count + 1)]
-    sorted_points_along_line = [[] for i in range(line_count + 1)]
-    intersect_points: List[np.ndarray] = []
-    for curve in self.curves:
+
+    points_group_by_line = [[] for _ in range(line_count + 1)]
+    points_group_by_curve = [[] for _ in curves]
+
+    intersect_points: List[IntersectPoint] = []
+    for ci, curve in enumerate(curves):
       n = curve.shape[0]
       for i in range(n - 1):
         st, ed = curve[i], curve[i + 1]
@@ -189,16 +219,68 @@ class Graph(object):
         si, ei = self.search_range(lines, st[1], ed[1])
         for li in range(si, ei):
           ly = lines[li]
-          sorted_points_along_line[li].append(len(intersect_points))
-          intersect_points.append(st + (ly - st[1]) / vec[1] * vec)
-    return intersect_points, sorted_points_along_line, lines
+          int_point = st + (ly - st[1]) / vec[1] * vec
+          intp_index = len(intersect_points)
+          points_group_by_line[li].append(intp_index)
+          points_group_by_curve[ci].append(intp_index)
+          # xy, line_index, curve_index, st_index, ed_index, mark, number_mark
+          intersect_points.append(IntersectPoint(int_point, li, ci, i, i + 1, None, 2 * li, None))
+    for line_index in range(line_count + 1):
+      points_group_by_line[line_index].sort(key=functools.cmp_to_key(lambda a, b: intersect_points[a].xy[0] - intersect_points[b].xy[0]))
+      for lp_index in range(len(points_group_by_line[line_index])):
+        intersect_points[points_group_by_line[line_index][lp_index]].lp_index = lp_index
 
-  def contour_shadow(self, d: float) -> np.ndarray:
-    """Generate contour shadow."""
+    # use number mark to connect points
+    for layer in points_group_by_curve:
+      mark = -1 # initial mark
+      for pi in layer:
+        p = intersect_points[pi]
+        lpi = p.lp_index + (-1 if p.lp_index % 2 else 1) # find adjcent point in the same line
+        if lpi < 0 or lpi >= len(points_group_by_line[p.line_index]):
+          mark *= -1 # reverse mark
+        else:
+          np = intersect_points[points_group_by_line[p.line_index][lpi]]
+          if np.mark is None or np.mark == mark:
+            mark *= -1
+        p.mark = mark # mark current point
+        p.number_mark += p.mark
+
+    total_length: float = 0.0
+    # generate edge lines
+    connected_lines: List[np.ndarray] = []
+    for layer in points_group_by_curve:
+      for lpi in range(len(layer)):
+        p, np = intersect_points[layer[lpi]], intersect_points[layer[(lpi + 1) % len(layer)]]
+        # we only connect points with equal number mark or the sum of their number marks equals 2 * line_index
+        if p.number_mark == np.number_mark or p.line_index == np.line_index \
+            and p.number_mark + np.number_mark == 4 * p.line_index:
+          last_point = p.xy
+          # connect curve between two intersect points
+          for pi in range(p.ed_index, np.st_index + 1):
+            connected_lines.append((last_point, curves[p.curve_index][pi]))
+            last_point = curves[p.curve_index][pi]
+          connected_lines.append((last_point, np.xy))
+          total_length += self.distance(*connected_lines[-1])
+
+    horizontal_lines_count = len(connected_lines)
+    # generate horizontal lines
+    for line in points_group_by_line:
+      for lpi in range(len(line)):
+        if lpi % 2: continue # skip and connect horizontal lines
+        p, np = intersect_points[line[lpi]], intersect_points[line[(lpi + 1) % len(line)]]
+        connected_lines.append((p.xy, np.xy))
+        total_length += self.distance(*connected_lines[-1])
+    horizontal_lines_count = len(connected_lines) - horizontal_lines_count
+    total_time = (time.time() - start_time_point) * 1000
+
+    return connected_lines, horizontal_lines_count, total_length, total_time
+
+  def contour_shadow_polygon(self, d: float, resolution: float, displayer: Displayer) -> np.ndarray:
+    """Generate contour shadow with Shapley."""
     all_points = np.concatenate(self.curves)
     width = min(all_points[:, 0].max() - all_points[:, 0].min(), all_points[:, 1].max() - all_points[:, 1].min())
-    steps = int(width / d / 2) + 1
-    intg = self.interplot(0.5)
+    steps = int(width / d / 2)
+    intg = self.interplot_with_distance(resolution)
     lrs = LineString(np.concatenate(intg.curves))
     ret_curves = []
     for i in tqdm(range(steps)):
@@ -212,7 +294,28 @@ class Graph(object):
         next_lrs.append(np.array(list(zip(xy[0], xy[1]))))
       if len(next_lrs) == 0: break
       ret_curves += next_lrs
+      displayer.draw(next_lrs)
+      displayer.show(1)
     return ret_curves
+
+  def contour_shadow(self, d: float, resolution: float, displayer: Displayer) -> List[np.ndarray]:
+    """Generate contour shadow."""
+    curves = []
+    all_points = np.concatenate(self.curves)
+    width = min(all_points[:, 0].max() - all_points[:, 0].min(), all_points[:, 1].max() - all_points[:, 1].min())
+    steps = int(width / d / 2) + 1
+    g = self.interplot(resolution)
+    for i in tqdm(range(steps)):
+      g = Graph.from_curves(g.offset(distance))
+      curves += g.curves
+      displayer.draw(g.curves, (255, 0, 0))
+      displayer.show(1)
+      if i % 1 == 0: g = g.interplot_with_distance(resolution)
+    return curves
+
+  @staticmethod
+  def distance(st: np.ndarray, ed: np.ndarray) -> float:
+    return np.linalg.norm(st - ed)
 
   @staticmethod
   def search_range(lines: List[float], y_from: float, y_to: float) -> Union[Tuple[int, int], None]:
@@ -254,47 +357,22 @@ def test_graph():
 
 if __name__ == '__main__':
   test_graph()
-  d = Displayer(name='Default', scale=20, w=800, h=800)
-  g1 = Graph.from_file(to_absolute_path('./attachments/graph2.csv'))
-  # d.draw(g1.curves, ball_radius=0)
-  steps = 20
-  distance = 0.3
+  d = Displayer(name='Default', scale=14, w=800, h=800)
+  g1 = Graph.from_file(to_absolute_path('./attachments/graph1.csv'))
+  d.draw(g1.curves, ball_radius=0)
+  steps = 5
+  distance = 1
   resolution = 0.1
 
-  # d.draw(g1.contour_shadow(distance))
+  # g1.contour_shadow_polygon(distance, distance, d)
   # d.draw(g1.offset_simulate(distance * 2))
 
-  g = g1.interplot(resolution).interplot_with_distance(resolution)
-
-  # center = np.array([d.cx, d.cy])
-  # for curve, norm in zip(g.curves, g.norms):
-  #   for p, n in zip(curve, norm):
-  #     dp = ((p + n * distance * 2) * d.scale).astype(np.int) + center
-  #     inp = (p * d.scale).astype(np.int) + center
-  #     cv2.line(d.img, tuple(inp), tuple(dp), (0, 168, 0))
-
-  d.draw(g.curves, ball_radius=0)
-  print(g.curves[0].shape[0])
-  for i in tqdm(range(steps)):
-    g = Graph.from_curves(g.offset(distance))
-    d.draw(g.curves, color=(255, 0, 0), ball_radius=0, max_d=distance)
-    if i % 5 == 0: g = g.interplot_with_distance(resolution)
-    d.show(10 if i < steps - 1 else 0)
-    # d.draw(g.offset((i + 1) * distance))
+  # g1.contour_shadow(distance, resolution, d)
+  # d.draw_norms(g1)
 
   # zig-zag
-  # offset_g1 = Graph.from_curves(g1.offset(distance))
-  # points, slps, lines = offset_g1.zigzag_shadow(distance)
-  # count = 0
-  # for pi in range(len(points) - 1):
-  #   # cv2.circle(d.img, tuple((points[pi] * d.scale).astype(np.int) + center), 0.1, (255, 0, 0), -1)
-  #   st, ed = points[pi], points[pi + 1]
-  #   count += int(abs(st[1] - ed[1]) > EPS)
-  #   if count % 2 == 0: continue
-  #   cv2.line(d.img, tuple(d.xy(st)), tuple(d.xy(ed)), (255, 0, 0))
+  lines, count, total_length, total_time = g1.zigzag_shadow(distance)
+  for st, ed in lines: cv2.line(d.img, tuple(d.xy(st)), tuple(d.xy(ed)), (255, 0, 0))
+  print('Zig-zag with {} horizontal lines, total length = {:.2f} mm, total time = {:.2f}ms.\n'.format(count, total_length, total_time))
 
-  # for slp, line in zip(slps, lines):
-  #   for i in range(0, len(slp), 2):
-  #     st, ed = points[slp[i]], points[slp[i + 1]]
-  #     cv2.line(d.img, tuple(d.xy(st)), tuple(d.xy(ed)), (255, 0, 0))
   d.show()
