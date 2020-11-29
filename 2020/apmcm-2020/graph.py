@@ -1,16 +1,21 @@
 from __future__ import annotations
 import functools
+import re
 from typing import *
 import os
 
 import numpy as np
 import cv2
-# from shapely.geometry import Polygon, MultiLineString
-# from shapely.geometry.linestring import LineString
-# from shapely.geometry.polygon import LinearRing
 import bisect
 from tqdm import tqdm
 import time
+
+USE_SHAPELY = True
+
+if USE_SHAPELY:
+  from shapely.geometry import Polygon, MultiLineString
+  from shapely.geometry.linestring import LineString
+  from shapely.geometry.polygon import LinearRing
 
 from utils import to_absolute_path
 
@@ -46,16 +51,20 @@ class Displayer(object):
     self.scale = scale
 
   def draw(self, curves: List[np.ndarray] = [], visibility: List[np.ndarray] = [],
-      color: int = 0, ball_radius: int = 0.0) -> None:
+      color: int = 0, ball_radius: int = 0.0, max_d: float = 10) -> None:
     """Draw curves to screen."""
     if curves:
+      if len(visibility) == 0: visibility = [None] * len(curves)
       for curve, vis in zip(curves, visibility):
         render_curve = self.xy(curve)
         n = render_curve.shape[0]
         for i in range(n):
           j = (i + 1) % n
           st, ed = render_curve[i], render_curve[j]
-          if len(visibility) == 0 or vis[i] and vis[j]: cv2.line(self.img, tuple(st), tuple(ed), color=color)
+          dis = np.linalg.norm(st - ed)
+          if dis > self.scale * max_d: continue
+          if vis is None or vis[i] and vis[j]:
+            cv2.line(self.img, tuple(st), tuple(ed), color=color)
         if ball_radius <= 0: continue
         for i, (x, y) in enumerate(render_curve):
           cv2.circle(self.img, (x, y), int(ball_radius * self.scale), 0, thickness=1)
@@ -138,7 +147,7 @@ class Graph(object):
     norms = [Graph.get_norms(curve) for curve in curves]
     return Graph(curves, norms)
 
-  def offset(self, d: float) -> Graph:
+  def offset(self, d: float, remove: bool = False) -> Graph:
     """Return offset of graph."""
     offset_curves: List[np.ndarray] = []
     offset_all_norms: List[np.ndarray] = []
@@ -153,7 +162,7 @@ class Graph(object):
         s_points = self.kd_tree.search(p[0] - 2 * d, p[0] + 2 * d, p[1] - 2 * d, p[1] + 2 * d)
         # min_dis = np.linalg.norm(all_points - p, axis=1).min()
         min_dis = np.linalg.norm(s_points - p, axis=1).min()
-        # if abs(min_dis - d) > EPS: continue
+        if remove and abs(min_dis - d) > EPS: continue
         offset_points.append(p)
         offset_norms.append(n)
         offset_vis.append(v and (abs(min_dis - d) <= EPS))
@@ -261,7 +270,7 @@ class Graph(object):
   def zigzag_shadow(self, d: float, resolution: float) -> Tuple[List[np.ndarray], int, float, float]:
     """Generate zig-zag shadow."""
     start_time_point = time.time()
-    g = self.interplot(0.5).offset(d).interplot_with_distance(resolution)
+    g = self.interplot_with_distance(resolution).interplot(0.1).offset(d, True).interplot_with_distance(resolution)
     min_y = min(curve[:, 1].min() for curve in self.curves)
     max_y = max(curve[:, 1].max() for curve in self.curves)
     line_count = int((max_y - min_y) / d)
@@ -335,47 +344,55 @@ class Graph(object):
 
     return connected_lines, horizontal_lines_count, total_length, total_time
 
-  # def contour_shadow_polygon(self, d: float, resolution: float, displayer: Displayer) -> np.ndarray:
-  #   """Generate contour shadow with Shapley."""
-  #   width = min(self.all_points[:, 0].max() - self.all_points[:, 0].min(), self.all_points[:, 1].max() - self.all_points[:, 1].min())
-  #   steps = int(width / d / 2)
-  #   intg = self.interplot_with_distance(resolution)
-  #   lrs = LineString(np.concatenate(intg.curves))
-  #   ret_curves = []
-  #   for i in tqdm(range(steps)):
-  #     next_lrs = []
-  #     ops = lrs.parallel_offset((i + 1) * distance, resolution=4)
-  #     if isinstance(ops, LineString): ops = [ops]
-  #     for op in ops:
-  #       if op.length < EPS: continue
-  #       xy = op.xy
-  #       if len(xy[0]) < 5: continue
-  #       next_lrs.append(np.array(list(zip(xy[0], xy[1]))))
-  #     if len(next_lrs) == 0: break
-  #     ret_curves += next_lrs
-  #     displayer.draw(next_lrs)
-  #     displayer.show(1)
-  #   return ret_curves
+  def contour_shadow_polygon(self, d: float, resolution: float, displayer: Displayer) -> np.ndarray:
+    """Generate contour shadow with Shapley."""
+    width = min(self.all_points[:, 0].max() - self.all_points[:, 0].min(), self.all_points[:, 1].max() - self.all_points[:, 1].min())
+    steps = int(width / d / 2)
+    intg = self.interplot_with_distance(resolution)
+    lrs = LineString(np.concatenate(intg.curves))
+    ret_curves = []
+    for i in tqdm(range(steps)):
+      next_lrs = []
+      ops = lrs.parallel_offset((i + 1) * distance)
+      if isinstance(ops, LineString): ops = [ops]
+      for op in ops:
+        if op.length < EPS: continue
+        xy = op.xy
+        if len(xy[0]) < 5: continue
+        next_lrs.append(np.array(list(zip(xy[0], xy[1]))))
+      if len(next_lrs) == 0: break
+      ret_curves += next_lrs
+      displayer.draw(next_lrs)
+      displayer.show(1)
+    return ret_curves
 
   def contour_shadow(self, d: float, resolution: float, displayer: Displayer = None, intp_step: int = 1) -> Tuple[List[np.ndarray], float]:
     """Generate contour shadow."""
     start_time_point = time.time()
-    curves = []
     width = min(self.all_points[:, 0].max() - self.all_points[:, 0].min(), self.all_points[:, 1].max() - self.all_points[:, 1].min())
     steps = int(width / d / 2)
     g = self.interplot_with_distance(resolution).interplot(0.5)
+    curves = [g.curves]
 
-    displayer.draw_norms(g)
     for i in tqdm(range(steps)):
-      g = g.offset(distance)
-      curves += g.curves
-      if i % intp_step == 0: g = g.interplot_with_distance(resolution)
+      g = g.offset(distance, True)
+      curves.append(g.interplot_with_distance(resolution).curves)
+      # curves += g.curves
       if all(v.sum() == 0 for v in g.visibility): break
-      if not displayer: continue
-      displayer.draw(g.curves, g.visibility, (255, 0, 0))
-      displayer.show(1)
+      if i % intp_step == 0: g = g.interplot_with_distance(resolution)
     total_time = (time.time() - start_time_point) * 1000
-    return curves, total_time
+    removed_curves = []
+    all_points = np.concatenate([np.concatenate(c) for c in curves])
+    for ci in tqdm(range(len(curves) - 1, 0, -1)):
+      other_points = np.concatenate([np.concatenate(c) for c in curves[:ci]])
+      for c in curves[ci]:
+        mask = np.ones(c.shape[0], dtype=bool)
+        for pi in range(c.shape[0]):
+          dis = np.linalg.norm(other_points - c[pi], axis=1).min()
+          mask[pi] = abs(dis - d) < EPS
+        removed_curves.append(c[mask])
+        # if removed_curves[-1].shape[0] < 10: removed_curves.pop()
+    return removed_curves, total_time
 
   @staticmethod
   def distance(st: np.ndarray, ed: np.ndarray) -> float:
@@ -408,29 +425,32 @@ class Graph(object):
     norms[-1] = norms[0]
     return norms
 
-  # @staticmethod
-  # def polygon2curves(p: Union[Polygon, LinearRing]) -> List[np.ndarray]:
-  #   """Convert polygon to curves."""
-  #   xy = p.exterior.xy if isinstance(p, Polygon) else p.xy
-  #   return [np.array(list(zip(*xy)))]
+  @staticmethod
+  def polygon2curves(p: Union['Polygon', LinearRing]) -> List[np.ndarray]:
+    """Convert polygon to curves."""
+    xy = p.exterior.xy if isinstance(p, Polygon) else p.xy
+    return [np.array(list(zip(*xy)))]
 
 if __name__ == '__main__':
-  d = Displayer(name='Default', scale=20, w=800, h=800)
+  d = Displayer(name='Default', scale=14, w=800, h=800)
   g1 = Graph.from_file(to_absolute_path('./attachments/graph2.csv'))
   d.draw(g1.curves, g1.visibility, ball_radius=0)
   distance = 1
-  resolution = 0.3
+  resolution = 0.1
 
+  (1, 8)
   # g1.contour_shadow_polygon(distance, distance, d)
   # d.draw(g1.offset_simulate(distance * 2))
 
   l, t = g1.contour_shadow(distance, resolution, d)
   print('Contour total time = {:.2f} ms.'.format(t))
-  # d.draw(l, (255, 0, 0))
+  d.draw(l, color=(255, 0, 0), max_d=distance * 1)
 
   # zig-zag
-  # lines, count, total_length, total_time = g1.zigzag_shadow(0.1, 0.05)
+  # params = [(0.1, 0.02), (1, 0.1)]
+  # lines, count, total_length, total_time = g1.zigzag_shadow(*(params[1]))
   # for st, ed in lines: cv2.line(d.img, tuple(d.xy(st)), tuple(d.xy(ed)), (255, 0, 0))
   # print('Zig-zag with {} horizontal lines, total length = {:.2f} mm, total time = {:.2f}ms.\n'.format(count, total_length, total_time))
 
+  # cv2.imwrite()
   d.show()
