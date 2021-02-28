@@ -1,0 +1,153 @@
+\documentclass[10pt]{article}
+
+\usepackage{ifthen}
+\usepackage{geometry}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{paracol}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{changepage}
+\usepackage{listings}
+
+\thispagestyle{empty}\pagestyle{empty}
+
+\XeTeXlinebreaklocale "zh"
+\setCJKmainfont{Source Han Serif SC}
+
+\input{cv.tex}
+
+\begin{document}
+
+\cvtitle{\textbf{Zhang Yifei}}{BrickRed}{Software Engineer}{0.5cm}
+
+\positionedbox{left}{0.7\textwidth}{%
+	Mail: \url{flynn.zhang@foxmail.com}\\
+	Blog: \url{https://blog.simplenaive.cn}\\
+	Github: \url{https://github.com/Yidadaa}
+}
+% \positionedbox{right}{0.3\textwidth}{UESTC\\Chengdu, China}
+
+\vspace{0.3cm}
+
+\setlength{\columnsep}{1cm}
+\begin{multicols}{2}
+		\cvsectiontitle{\textbf{Education}}
+		\cvcompany{MSc. UESTC}{2018.09 - 2021.06}\\
+		Computer Science, Dept. of Computer Science and Engineering
+
+		\cvcompany{B.Eng. UESTC}{2014.09 - 2018.06}\\
+		Computer Science, Yingcai Honors College of UESTC
+
+		\columnbreak
+
+		\cvsectiontitle{\textbf{Honors}}
+		\vspace{-0.5cm}
+
+		\cvcompany{\small{Second Prize for Postgraduate Scholarship}}{2019.10}\\%
+		\cvcompany{\small{OPPO AI Challenge Segmantation Track \\Excellence Prize}}{2019.04}\\%
+		\cvcompany{\small{First Prize for Postgraduate Scholarship}}{2018.10}\\%
+		\cvcompany{\small{MCM Honorable Mention}}{2017.02}
+\end{multicols}
+	
+		\vspace{0.3cm}
+		\cvsectiontitle{\textbf{Experience}}
+		\vspace{-1cm}
+		\begin{itemize}[leftmargin=0.5cm]
+		\item \cvcompany{Software Engineer Intern @ Amazon Beijing}{from 2020.07}\cvsublevel{%
+			\cvsubbullet{%
+				Prototyped, designed and implemented Storage Service Module for IOS MShop client.
+			}% 
+		}
+		\item \cvcompany{Research Software Engineer Intern @ Tencent.Inc AI Lab Robotics X}{2019.11 - 2020.06}\cvsublevel{%
+			\cvsubbullet{%
+				Surveyed and optimized real-time 3d reconstruction algorithms, implemented Kinect camera driver for %
+				Elastic Fusion 3D reconstruction algorithm, implemented ROS message passing interface for Voxblox %
+				and ORB-SLAM.
+			}% 
+			\cvsubbullet{%
+				Developed a real-time 3D data streaming algorithm, and optimized the latency and robustness of the %
+				algorithm.
+			}
+			\cvsubbullet{
+				Developed a virtual reality robot control system, combining 3D real-time reconstruction, dynamic calibration and %
+				high-performance 3D rendering.
+			}
+			% \cvsubbullet{%
+			% 	\textbf{Keywords:} 3D Reconstruction, SLAM, Real-Time Data Streaming, C++
+			% }
+		}
+		% \item \cvcompany{Accelerate reinforcement algorithm training in Unity @ Thesis}{2017.10 - 2018.06}\cvsublevel{%
+		% 	\cvsubbullet{Reinforcement learning agent often needs a large number of exploration data to optimize policy %
+		% 		by interacting with the environment. It will take a high time and material cost in the real world. We propose %
+		% 		a framework that allows existing algorithms to interact with Unity environment and collect data in real-time. %
+		% 	}
+		% }
+		\item \cvcompany{Software Engineer (Part-Time \& Remote) @ Sibbay.Inc}{2017.12 - 2019.03}\cvsublevel{%
+			\cvsubbullet{%
+				Sibbay.Inc builds a new fitness and health data sharing community for the people, provides a private and secure %
+				health data sharing system for users and their doctors.
+			}%
+			\cvsubbullet{%
+				Designed and validated new features in online meetings. Built and optimized the workflow based on Github, %
+				and reviewed the code and ensured the quality of the source code.%
+			}
+			\cvsubbullet{%
+				Balanced requirements, UX, and deadlines in order to get most of the business value in a limited timeframe.%
+			}
+			% \cvsubbullet{%
+			% 	\textbf{Keywords:} Web Development, Team Cooperation, Vue, Git Workflow
+			% }%
+		}
+		\item \cvcompany{Software Engineer Intern @ Baidu.Inc}{2016.12 - 2017.05}\cvsublevel{%
+			\cvsubbullet{%
+				Baidu FengChao is the core marketing department of Baidu.Inc, provides marketing services for %
+				over 8 hundred thousand of enterprise users.
+			}%
+			\cvsubbullet{%
+				Implemented the new features of Baidu advertisement system, %
+				worked with UI/UX designer, PM, QA and backend developer and bridged the gap between graphical design %
+				and technical implementation, optimized application for maximum speed and scalability, and built reusable %
+				code for future use.
+			}%
+			% \cvsubbullet{%
+			% 	\textbf{Keywords:} Web Development, Team Cooperation, React \& Redux, Git Workflow
+			% }%
+		}
+		\end{itemize}
+
+		\vspace{0.4cm}
+		\cvsectiontitle{\textbf{Projects \& Skills}}
+		\vspace{-0.8cm}
+
+		\begin{adjustwidth}{0.1cm}{0cm}
+			\cvcompany{\project{github.com/Yidadaa/Pytorch-Video-Classification}{Python / Pytorch}{$\approx 500$ lines}}{2019.04}\\
+				\textit{Make Action Classification on Videos using CNN-RNN, achieves 80\% accuracy on UFF101 Dataset.}
+
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/Satellite-Imagery-Segmantation-Deeplab}{Python / Pytorch}{$\approx 1000$ lines}}{2019.05}\\
+				\textit{Satellite Imagery Segmantation using Deeplabv3.}
+
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/Parallel-Programming-On-GPU}{CUDA / C++}{$\approx 200$ lines}}{2018.11}\\
+				\textit{Accelerate simulation of n-body problem using CUDA, 3000x faster after accelerating.}
+			
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/Captcha-Deep-Learning}{Python / Keras / Tensorflow}{$\approx 500$ lines}}{2018.01}\\
+				\textit{Recognize captcha using an End-to-End CNN pipeline, achieves 98\% accuracy on custom Dataset.}
+			
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/OPPO-Human-Segmentation}{C++ / Dart}{$\approx 1000$ lines}}{2019.03}\\
+				\textit{Deploy deeplabv3 human segmantation model to mobile platform using Tencent NCNN framework.}
+			
+			\vspace{0.1cm}
+			\cvcompany{\project{github.com/Yidadaa/HUAWEI-Codecraft-2019}{C++}{$\approx 1000$ lines}}{2019.05}\\
+				\textit{Code for HUAWEI Codecraft 2019, contains unit testing, following Google C++ Style Guide.}
+		\end{adjustwidth}
+
+\end{document}
