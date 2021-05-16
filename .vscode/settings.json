@@ -6,7 +6,8 @@
         "*.wxss": "css",
         "*.wxs": "javascript",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "algorithm": "cpp"
     },
     "latex-workshop.latex.recipes": [
         {
@@ -46,5 +47,5 @@
     "python.linting.pydocstyleEnabled": false,
     "python.linting.pylamaEnabled": false,
     "python.linting.enabled": true,
-    "python.pythonPath": "C:\\Users\\juhyg\\Anaconda3\\python.exe"
+    "python.pythonPath": "C:\\Users\\yida\\anaconda3\\python.exe"
 }
