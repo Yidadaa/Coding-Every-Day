@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试文档</title>
+</head>
+
+<style>
+#displayer {
+  height: 200px;
+  width: 200px;
+  background-color: red;
+}
+</style>
+
+<body>
+  <div class="content">
+    <button id="test-btn">淡出</button>
+    <div id="displayer" style="opacity: 1;"></div>
+  </div>
+</body>
+
+<script>
+  const displayer = document.getElementById('displayer')
+  const button = document.getElementById('test-btn')
+  let step = -1 // 1 表示淡入，-1 表示淡出
+  button.onclick = timeoutFadeInAndOut
+
+  function timeoutFadeInAndOut() {
+    let opc = displayer.style.opacity
+    displayer.style.opacity = parseFloat(opc) + step * 0.1
+    button.innerText = opc
+    if (opc > 1) {
+      displayer.style.opacity = 1
+      button.innerText = '淡出'
+      step = -1
+    } else if (opc < 0) {
+      displayer.style.opacity = 0
+      button.innerText = '淡入'
+      step = 1
+    } else {
+      setTimeout(timeoutFadeInAndOut, 100);
+    }
+  }
+</script>
+
+</html>
