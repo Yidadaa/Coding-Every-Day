@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<title>Rotating Square</title>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vColor;
+
+uniform float theta;
+uniform vec4  vertColor;
+
+// varying type variable to share with fragment shader, as the color
+// will be sent to the fragment shader
+
+varying vec4 fColor;
+
+void main() {
+	float s = sin( theta );
+	float c = cos( theta );
+
+	gl_Position.x = c * vPosition.x - s * vPosition.y;
+    gl_Position.y = s * vPosition.x + c * vPosition.y;
+	gl_Position.z = 0.0;
+	gl_Position.w = 1.0;
+
+	fColor = vColor;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+// vertex color coming from vertex shader
+varying vec4 fColor;
+
+void main() {
+    gl_FragColor = fColor;
+}
+
+</script>
+
+<script type="text/javascript" src="./include/webgl-utils.js"></script>
+<script type="text/javascript" src="./include/initShaders.js"></script>
+<script type="text/javascript" src="./include/MV.js"></script>
+<script type="text/javascript" src="./lab3.js"></script>
+</head>   
+
+<body>
+<form>
+    <button type="button" id="Triangles">Triangles</button>
+    <button type="button" id="TrianglesStrips">Triangle Stripes</button>
+    <button type="button" id="TrianglesFans">Triangle Fans</button>
+</form> 
+
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</body>
+</html>
